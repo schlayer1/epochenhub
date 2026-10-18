@@ -205,6 +205,47 @@ export const EPOCH_GAMES: EpochGame[] = [
         badge: 'Arbeitsblatt'
       }
     ]
+  },
+  {
+    id: 'wikinger-vom-fjord-nach-vinland',
+    title: 'Die Wikinger: Vom Fjord nach Vinland',
+    shortTitle: 'Die Wikinger',
+    subtitle: 'Vom Fjord nach Vinland',
+    epoch: 'Die Wikinger',
+    epochCategory: 'mittelalter',
+    period: '780–1066 n. Chr.',
+    yearStart: 780,
+    yearEnd: 1066,
+    grade: 'Klasse 6 / 7',
+    chaptersCount: 12,
+    duration: 'ca. 75–90 Min.',
+    liveUrl: 'https://retrolernspielvikings.vercel.app',
+    coverImage: '/assets/covers/vikings_cover.png',
+    spriteImage: '/assets/sprites/vikings_hero.png',
+    theme: {
+      primary: '#0284c7',
+      accent: '#d97706',
+      badgeBg: 'bg-sky-950/90 text-amber-300 border-sky-600',
+      border: 'border-sky-600',
+      glowClass: 'hover:shadow-[0_0_25px_rgba(2,132,199,0.35)]',
+    },
+    guidingQuestion: 'Waren die Wikinger bloße Plünderer oder herausragende Seefahrer, Händler und Schöpfer neuer Staats- und Rechtsordnungen?',
+    didacticFocus: [
+      'Alltag, Hof & Stände: Autarke Fjordwirtschaft, Schlüsselgewalt der Frau (Hausherrin) und soziale Schichtung (Jarl, Karl, Thraell).',
+      'Schiffsbau & Technologie: Klinkerbauweise, elastische Eichenplanken, Langschiff (Drakkar) und Frachtsegler (Knarr).',
+      'Raubzüge, Tribut & Fernhandel: Ursachen der Fahrten (Lindisfarne 793), Danegeld-Tributzahlungen bei Paris (885/886) und Waräger-Flusshandel bis Byzanz.',
+      'Sesshaftwerdung & Rechtstransfer: Das Danelag in England (Jorvik), Christianisierung unter Harald Blauzahn (Jelling) und das Althing auf Island (930).',
+      'Atlantik-Pionierfahrten & Epochenende: Sonnenstein-Navigation, Besiedlung Grönlands, Entdeckung Vinlands (Neufundland ca. 1000) und Stamford Bridge 1066 als Ende der Wikingerzeit.'
+    ],
+    tags: ['Wikinger', 'Drakkar', 'Knarr', 'Klinkerbau', 'Schlüsselgewalt', 'Danelag', 'Althing', 'Jelling', 'Vinland', 'Stamford Bridge'],
+    companionMaterials: [
+      {
+        title: 'Didaktische Quellenanalyse: Schlüsselgewalt & Klinkerbauweise',
+        type: 'pdf',
+        url: '#',
+        badge: 'Arbeitsblatt'
+      }
+    ]
   }
 ];
 
