@@ -57,7 +57,7 @@ export const PassportModal: React.FC<PassportModalProps> = ({
             Chronik der Entdeckungen
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 max-w-lg mx-auto">
-            Erkunde alle vier großen Epochen in den Retro-Lernspielen und sammle deine Epochen-Stempel.
+            Erkunde alle großen Epochen in den Retro-Lernspielen und sammle deine Epochen-Stempel.
           </p>
 
           {/* Progress Bar */}

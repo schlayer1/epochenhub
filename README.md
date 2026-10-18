@@ -13,6 +13,7 @@ Zentrales, immersives 16-Bit-Epochenportal zur Verteilung und Entdeckung aller G
 | **II** | **Kemet – Das Geschenk des Nils** *(Hochkultur am Nil)* | Altes Ägypten *(3.000 – 30 v. Chr.)* | Kl. 5/6 | **6 Kapitel** | [retrolernspielegypt.vercel.app](https://retrolernspielegypt.vercel.app/) |
 | **III** | **Hellas – Von der Polis zum Weltreich** *(Wiege Europas)* | Antikes Griechenland *(800 – 30 v. Chr.)* | Kl. 5/6 | **10 Kapitel** | [retrolernspielgreece.vercel.app](https://retrolernspielgreece.vercel.app/) |
 | **IV** | **Imperium Romanum: Roma Aeterna** *(Vom Dorf zum Weltreich)* | Römisches Reich *(753 v. Chr. – 476 n. Chr.)* | Kl. 6 | **12 Kapitel** | [retrospielrome.vercel.app](https://retrospielrome.vercel.app/) |
+| **V** | **Die Germanen: Vom Langhaus zum Limes** *(Alltag, Thing & Limes)* | Germanische Stämme *(ca. 10 v. Chr. – 350 n. Chr.)* | Kl. 6 | **8 Kapitel** | [retrolernspielgermanic.vercel.app](https://retrolernspielgermanic.vercel.app/) |
 
 ---
 

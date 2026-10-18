@@ -165,6 +165,46 @@ export const EPOCH_GAMES: EpochGame[] = [
         badge: 'Zeitleiste'
       }
     ]
+  },
+  {
+    id: 'germanen-vom-langhaus-zum-limes',
+    title: 'Die Germanen: Vom Langhaus zum Limes',
+    shortTitle: 'Die Germanen',
+    subtitle: 'Vom Langhaus zum Limes',
+    epoch: 'Die Germanen',
+    epochCategory: 'antike',
+    period: 'ca. 10 v. Chr. – 350 n. Chr.',
+    yearStart: -10,
+    yearEnd: 350,
+    grade: 'Klasse 6',
+    chaptersCount: 8,
+    duration: 'ca. 60–75 Min.',
+    liveUrl: 'https://retrolernspielgermanic.vercel.app',
+    coverImage: '/assets/covers/german_cover.png',
+    spriteImage: '/assets/sprites/german_hero.png',
+    theme: {
+      primary: '#15803d',
+      accent: '#d97706',
+      badgeBg: 'bg-emerald-950/90 text-amber-300 border-emerald-600',
+      border: 'border-emerald-600',
+      glowClass: 'hover:shadow-[0_0_25px_rgba(21,128,61,0.35)]',
+    },
+    guidingQuestion: 'Wie lebten die germanischen Sippen im Schatten des Römischen Reiches – und wie wandelten sie sich von freien Stämmen zu Mitgestaltern Europas?',
+    didacticFocus: [
+      'Alltag, Siedlung & Sippe: Das Wohnstallhaus als Lebenszentrum von Mensch und Vieh, Spelzweizen-Ackerbau und Vorratshaltung.',
+      'Technologie & Glaubenswelt: Eisengewinnung aus Raseneisenerz im Rennofen, Naturheiligtümer im Moor und Seherinnen (Völva).',
+      'Recht & Kulturtransfer: Thing-Versammlung (Wergeld statt Blutrache), friedlicher Handel (Waldgirmes) und die Varusschlacht bei Kalkriese (9 n. Chr.).',
+      'Grenze & Wandel: Alltag am Obergermanischen Limes (Zollgrenze & Vicus) bis zum Föderaten-Bündnis der Spätantike.'
+    ],
+    tags: ['Germanen', 'Langhaus', 'Rennofen', 'Thing', 'Kalkriese', 'Varusschlacht', 'Limes', 'Föderaten'],
+    companionMaterials: [
+      {
+        title: 'Didaktische Analyse: Wohnstallhaus & Rennofen-Technik',
+        type: 'pdf',
+        url: '#',
+        badge: 'Arbeitsblatt'
+      }
+    ]
   }
 ];
 

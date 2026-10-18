@@ -37,14 +37,13 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
           <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping" />
           <span className="font-pixel text-[10px] text-amber-400 uppercase">Chronologische Zeitreise</span>
         </div>
-        <div className="hidden sm:flex items-center gap-1.5 text-slate-500 font-mono text-[11px]">
-          <span>Urgeschichte</span>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <span>Ägypten</span>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <span>Griechenland</span>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <span>Rom</span>
+        <div className="hidden sm:flex items-center gap-1.5 text-slate-500 font-mono text-[11px] overflow-x-auto">
+          {sortedGames.map((g, idx) => (
+            <React.Fragment key={g.id}>
+              {idx > 0 && <ChevronRight className="w-3.5 h-3.5 text-slate-600 shrink-0" />}
+              <span className="hover:text-slate-300 transition-colors shrink-0">{g.shortTitle}</span>
+            </React.Fragment>
+          ))}
         </div>
       </div>
 
@@ -52,10 +51,10 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
       <div className="relative">
         
         {/* Continuous Connecting Line for Desktop */}
-        <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-stone-600 via-amber-600 via-sky-600 to-red-600 -translate-y-1/2 z-0 opacity-40 rounded-full" />
+        <div className="hidden xl:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-stone-600 via-amber-600 via-sky-600 via-red-600 to-emerald-600 -translate-y-1/2 z-0 opacity-40 rounded-full" />
 
         {/* Dynamic Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 sm:gap-6 relative z-10">
           {sortedGames.map((game, index) => {
             const isExplored = exploredGameIds.includes(game.id);
 
