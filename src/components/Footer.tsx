@@ -35,14 +35,14 @@ export const Footer: React.FC = () => {
             </p>
           </div>
 
-          {/* Col 3: Teacher Note & Extension */}
+          {/* Col 3: Classroom & Curriculum */}
           <div className="space-y-3">
             <h4 className="font-pixel text-[11px] text-slate-200 uppercase tracking-wider flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-amber-400" />
-              <span>Künftige Spiele ergänzen</span>
+              <span>Unterricht & Lehrplan</span>
             </h4>
             <p className="text-slate-400 leading-relaxed">
-              Neue Epochen und Spiele können in Sekunden über die Datei <code className="bg-[#1b172d] text-amber-300 px-1.5 py-0.5 rounded border border-[#2d2747]">games.config.ts</code> im Quelltext hinzugefügt werden.
+              Konzipiert für den Fachunterricht Geschichte der Klassen 5 &amp; 6 an Thüringer Regelschulen. Handlungsorientiert, binnendifferenziert und optimiert für Smartboards, Schüler-Tablets und PC-Kabinette.
             </p>
             <div className="pt-1">
               <a

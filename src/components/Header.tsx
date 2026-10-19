@@ -33,7 +33,14 @@ export const Header: React.FC<HeaderProps> = ({
 
     updateStamps();
     window.addEventListener('storage', updateStamps);
-    return () => window.removeEventListener('storage', updateStamps);
+    const unsubBgm = audioService.subscribeBgm((active) => {
+      setIsBgmActive(active);
+      setIsMuted(audioService.getMuted());
+    });
+    return () => {
+      window.removeEventListener('storage', updateStamps);
+      unsubBgm();
+    };
   }, []);
 
   const handleToggleMute = () => {
@@ -42,9 +49,9 @@ export const Header: React.FC<HeaderProps> = ({
     setIsBgmActive(audioService.isBgmActive());
   };
 
-  const handleToggleBgm = () => {
+  const handleToggleBgm = async () => {
     audioService.playClickSound();
-    const active = audioService.toggleBgm();
+    const active = await audioService.toggleBgm();
     setIsBgmActive(active);
     setIsMuted(audioService.getMuted());
   };
@@ -147,14 +154,15 @@ export const Header: React.FC<HeaderProps> = ({
           {/* 16-Bit Chiptune BGM Button */}
           <button
             onClick={handleToggleBgm}
-            className={`p-2 rounded-lg border transition-all ${
+            className={`p-2 rounded-lg border transition-all flex items-center justify-center ${
               isBgmActive
-                ? 'bg-emerald-950/80 border-emerald-500 text-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.3)] animate-pulse'
-                : 'bg-[#151322] border-[#2b2544] text-slate-400 hover:text-slate-200'
+                ? 'bg-emerald-900/90 border-emerald-400 text-emerald-200 shadow-[0_0_15px_rgba(16,185,129,0.5)] ring-2 ring-emerald-500/40'
+                : 'bg-[#151322] border-[#2b2544] text-slate-400 hover:text-slate-200 hover:border-amber-500/50'
             }`}
-            title={isBgmActive ? '16-Bit Hintergrundmusik pausieren' : '16-Bit Retro-Musik abspielen'}
+            title={isBgmActive ? '16-Bit Epochen-Musik anhalten (Musik spielt)' : '16-Bit Epochen-Musik abspielen'}
+            aria-label={isBgmActive ? '16-Bit Epochen-Musik anhalten' : '16-Bit Epochen-Musik abspielen'}
           >
-            <Music className="w-4 h-4" />
+            <Music className={`w-4 h-4 ${isBgmActive ? 'text-emerald-300 animate-pulse' : ''}`} />
           </button>
 
           {/* Sound FX Mute Toggle */}
