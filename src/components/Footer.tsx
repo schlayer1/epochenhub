@@ -1,5 +1,4 @@
-import React from 'react';
-import { Compass, Heart, ShieldCheck, Mail, Sparkles } from 'lucide-react';
+import { Compass, Heart, ShieldCheck, Sparkles } from 'lucide-react';
 import { PORTAL_META } from '../config/games.config';
 
 export const Footer: React.FC = () => {
@@ -42,17 +41,8 @@ export const Footer: React.FC = () => {
               <span>Unterricht & Lehrplan</span>
             </h4>
             <p className="text-slate-400 leading-relaxed">
-              Konzipiert für den Fachunterricht Geschichte der Klassen 5 &amp; 6 an Thüringer Regelschulen. Handlungsorientiert, binnendifferenziert und optimiert für Smartboards, Schüler-Tablets und PC-Kabinette.
+              Konzipiert für den Fachunterricht Geschichte an Thüringer Regelschulen. Handlungsorientiert, gamifiziert und optimiert für Smartboards, Schüler-Tablets und PC-Kabinette.
             </p>
-            <div className="pt-1">
-              <a
-                href={`mailto:${PORTAL_META.supportEmail}`}
-                className="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 transition-colors"
-              >
-                <Mail className="w-3.5 h-3.5" />
-                <span>{PORTAL_META.supportEmail}</span>
-              </a>
-            </div>
           </div>
 
         </div>
