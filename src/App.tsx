@@ -7,6 +7,7 @@ import { AtlasView } from './components/AtlasView';
 import { GameModal } from './components/GameModal';
 import { PassportModal } from './components/PassportModal';
 import { QrCodeModal } from './components/QrCodeModal';
+import { GuideModal } from './components/GuideModal';
 import { Footer } from './components/Footer';
 import { EPOCH_GAMES } from './config/games.config';
 import { EpochGame } from './types/game';
@@ -25,6 +26,7 @@ export const App: React.FC = () => {
   const [selectedGame, setSelectedGame] = useState<EpochGame | null>(null);
   const [qrGame, setQrGame] = useState<EpochGame | null>(null);
   const [isPassportOpen, setIsPassportOpen] = useState(false);
+  const [isGuideOpen, setIsGuideOpen] = useState(false);
 
   // Zeitreise-Pass Progress
   const [exploredGameIds, setExploredGameIds] = useState<string[]>(() => {
@@ -89,6 +91,7 @@ export const App: React.FC = () => {
         viewMode={viewMode}
         onViewModeChange={setViewMode}
         onOpenPassport={() => setIsPassportOpen(true)}
+        onOpenGuide={() => setIsGuideOpen(true)}
         isCrtEnabled={isCrtEnabled}
         onToggleCrt={() => setIsCrtEnabled(prev => !prev)}
       />
@@ -154,6 +157,12 @@ export const App: React.FC = () => {
         exploredGameIds={exploredGameIds}
         onToggleStamp={handleToggleStamp}
         onResetPassport={handleResetPassport}
+      />
+
+      {/* Schüler-Guide / Anleitung Modal */}
+      <GuideModal
+        isOpen={isGuideOpen}
+        onClose={() => setIsGuideOpen(false)}
       />
 
       {/* Instant QR-Code Modal (for Smartboards & Tablets) */}

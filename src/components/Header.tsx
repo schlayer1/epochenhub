@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Music, Compass, Award, Tv, LayoutGrid, Milestone, Leaf } from 'lucide-react';
+import { Volume2, VolumeX, Music, Compass, Award, Tv, LayoutGrid, Milestone, Leaf, HelpCircle } from 'lucide-react';
 import { audioService } from '../services/audioService';
 import { storageService } from '../services/storageService';
 import { EPOCH_GAMES, PORTAL_META } from '../config/games.config';
@@ -8,6 +8,7 @@ interface HeaderProps {
   viewMode: 'timeline' | 'grid' | 'atlas';
   onViewModeChange: (mode: 'timeline' | 'grid' | 'atlas') => void;
   onOpenPassport: () => void;
+  onOpenGuide: () => void;
   isCrtEnabled: boolean;
   onToggleCrt: () => void;
 }
@@ -16,6 +17,7 @@ export const Header: React.FC<HeaderProps> = ({
   viewMode,
   onViewModeChange,
   onOpenPassport,
+  onOpenGuide,
   isCrtEnabled,
   onToggleCrt,
 }) => {
@@ -134,6 +136,19 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Right: Actions, Passport & Audio */}
         <div className="flex items-center gap-1.5 sm:gap-2.5">
           
+          {/* Schüler-Guide Button */}
+          <button
+            onClick={() => {
+              audioService.playClickSound();
+              onOpenGuide();
+            }}
+            className="flex items-center gap-1.5 bg-[#171424] hover:bg-[#231e38] text-slate-300 hover:text-amber-300 border border-[#2d2747] hover:border-amber-500/50 px-2 sm:px-3 py-1.5 rounded-lg text-xs font-medium pixel-button transition-all"
+            title="Schüler-Leitfaden: Wie nutze ich den Epochenhub?"
+          >
+            <HelpCircle className="w-4 h-4 text-amber-400 shrink-0" />
+            <span className="hidden md:inline font-pixel text-[10px]">Anleitung</span>
+          </button>
+
           {/* Zeitreise-Pass Button */}
           <button
             onClick={() => {
