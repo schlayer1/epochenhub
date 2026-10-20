@@ -1,0 +1,227 @@
+/**
+ * Druckoptimiertes A4-Hefterblatt für Schüler & Lehrkräfte (PrintSheet.ts)
+ * Erzeugt einen sauberen, tintensparenden DIN A4 Ausdruck für die Geschichtsmappe.
+ * Funktioniert 100% epochen-unabhängig für alle bestehenden und künftigen Spiele!
+ */
+
+export interface PrintSheetData {
+  schoolName: string;          // z. B. 'Staatliche Regelschule Heimbürgeschule Kahla'
+  epochTitle: string;          // z. B. 'Altes Ägypten: Kemet – Das Geschenk des Nils'
+  playerName: string;
+  hefterCode: string;          // z. B. 'AEG-481-K3'
+  rankTitle: string;           // z. B. 'Meister-Chronist von Memphis (S-Rang)'
+  relics: { title: string; note: string }[]; // 5 Relikte mit Merksätzen
+  dilemmaSummary?: string;     // Gefälltes Urteil aus dem Rats-Dilemma
+  keyTerms: { term: string; definition: string }[]; // 3 Schlüsselbegriffe
+}
+
+export class PrintSheetManager {
+  public static triggerPrint(data: PrintSheetData): void {
+    // Vorhandenes Druck-Element entfernen, falls existent
+    const existing = document.getElementById('hefter-print-sheet');
+    if (existing) existing.remove();
+
+    const sheet = document.createElement('div');
+    sheet.id = 'hefter-print-sheet';
+    sheet.className = 'print-sheet-root';
+
+    sheet.innerHTML = `
+      <div class="print-page">
+        <!-- Kopfzeile -->
+        <div class="print-header">
+          <div class="print-school-meta">
+            <span>${data.schoolName}</span> • <span>Fachunterricht Geschichte</span>
+          </div>
+          <h1 class="print-title">${data.epochTitle}</h1>
+          <div class="print-meta-grid">
+            <div>Forscher/in: <strong>${data.playerName || 'Sippenkind'}</strong></div>
+            <div>Datum: <strong>${new Date().toLocaleDateString('de-DE')}</strong></div>
+            <div>Klasse: <strong>________</strong></div>
+            <div class="print-code-box">Hefter-Code: <strong>${data.hefterCode}</strong></div>
+          </div>
+        </div>
+
+        <hr class="print-divider" />
+
+        <!-- 1. Geborgene Relikte & Primärquellen -->
+        <div class="print-section">
+          <h2>1. Geborgene Primärquellen & Archäologische Relikte</h2>
+          <div class="print-relics-list">
+            ${data.relics.map((r, i) => `
+              <div class="print-relic-item">
+                <span class="relic-num">${i + 1}.</span>
+                <div>
+                  <strong>${r.title}</strong>
+                  <p class="relic-note">📌 <em>${r.note}</em></p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 2. Gefällter Schiedsspruch (Dilemma) -->
+        ${data.dilemmaSummary ? `
+          <div class="print-section">
+            <h2>2. Geschichtlicher Schiedsspruch (Ratsentscheidung)</h2>
+            <div class="print-box">
+              ${data.dilemmaSummary}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- 3. Zentrale Fachbegriffe für den Hefter -->
+        <div class="print-section">
+          <h2>3. Wichtige Fachbegriffe der Epoche</h2>
+          <div class="print-terms-grid">
+            ${data.keyTerms.slice(0, 3).map(t => `
+              <div class="print-term-item">
+                <strong>${t.term}:</strong> ${t.definition}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Fußzeile mit Urkunden-Rang -->
+        <div class="print-footer">
+          <div>Erreichte Auszeichnung: <strong>${data.rankTitle}</strong></div>
+          <div>Eingeklebt in den Geschichtshefter am: __________________</div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(sheet);
+    this.injectPrintStyles();
+
+    // Druckdialog starten
+    window.print();
+  }
+
+  private static injectPrintStyles(): void {
+    if (document.getElementById('hefter-print-styles')) return;
+
+    const style = document.createElement('style');
+    style.id = 'hefter-print-styles';
+    style.textContent = `
+      #hefter-print-sheet {
+        display: none;
+      }
+      @media print {
+        /* Verstecke das komplette Spiel, Canvas, HUD und Modals */
+        body * {
+          visibility: hidden;
+        }
+        #hefter-print-sheet, #hefter-print-sheet * {
+          visibility: visible;
+        }
+        #hefter-print-sheet {
+          display: block !important;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          background: #ffffff !important;
+          color: #111827 !important;
+          padding: 24px;
+          box-sizing: border-box;
+          font-family: system-ui, -apple-system, sans-serif;
+          font-size: 11pt;
+          line-height: 1.4;
+        }
+        .print-page {
+          max-width: 760px;
+          margin: 0 auto;
+        }
+        .print-header {
+          margin-bottom: 12px;
+        }
+        .print-school-meta {
+          font-size: 9pt;
+          color: #4b5563;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-bottom: 4px;
+        }
+        .print-title {
+          font-size: 16pt;
+          font-weight: 800;
+          color: #111827;
+          margin: 0 0 10px 0;
+        }
+        .print-meta-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 8px;
+          font-size: 10pt;
+          background: #f9fafb;
+          border: 1px solid #d1d5db;
+          padding: 8px 12px;
+          border-radius: 4px;
+        }
+        .print-code-box {
+          color: #b45309;
+        }
+        .print-divider {
+          border: 0;
+          border-top: 1px solid #9ca3af;
+          margin: 14px 0;
+        }
+        .print-section {
+          margin-bottom: 14px;
+        }
+        .print-section h2 {
+          font-size: 11pt;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          color: #1f2937;
+          border-bottom: 1px solid #e5e7eb;
+          padding-bottom: 3px;
+          margin: 0 0 8px 0;
+        }
+        .print-relics-list {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .print-relic-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+          font-size: 10pt;
+        }
+        .relic-num {
+          font-weight: 700;
+          color: #b45309;
+        }
+        .relic-note {
+          margin: 2px 0 0 0;
+          font-size: 9.5pt;
+          color: #374151;
+        }
+        .print-box {
+          background: #fdfaf3;
+          border: 1px solid #e5e7eb;
+          padding: 8px 12px;
+          border-radius: 4px;
+          font-size: 9.5pt;
+        }
+        .print-terms-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 4px;
+          font-size: 9.5pt;
+        }
+        .print-footer {
+          margin-top: 20px;
+          border-top: 1px dashed #9ca3af;
+          padding-top: 10px;
+          display: flex;
+          justify-content: space-between;
+          font-size: 9pt;
+          color: #4b5563;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+}
