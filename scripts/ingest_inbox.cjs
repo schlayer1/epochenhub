@@ -24,29 +24,67 @@ function cleanFilename(rawName) {
   return rawName
     .toLowerCase()
     .replace(/^pc\s*_\s*computer\s*-\s*stardew\s*valley\s*-\s*/i, '')
-    .replace(/^(animals|environment|props)\s*-\s*/i, '')
+    .replace(/^(animals|environment|props|tilesets)\s*-\s*/i, '')
+    .replace(/&/g, 'and')
     .replace(/[\(\)]/g, '')
     .trim()
-    .replace(/[\s\-_]+/g, '_') + (rawName.endsWith('.png') ? '' : '.png');
+    .replace(/[\s\-_]+/g, '_')
+    .replace(/_+/g, '_') + (rawName.endsWith('.png') ? '' : '.png');
 }
 
-function classifyCategory(cleanName) {
-  const name = cleanName.toLowerCase();
-  if (name.includes('tree') || name.includes('crop') || name.includes('plant') || name.includes('bush') || name.includes('grass') || name.includes('flower') || name.includes('forage')) {
-    return 'flora';
-  }
-  if (name.includes('torch') || name.includes('flag') || name.includes('banner') || name.includes('mine') || name.includes('ore') || name.includes('item') || name.includes('tool') || name.includes('player') || name.includes('prop')) {
+function classifyCategory(rawName, cleanName) {
+  const raw = rawName.toLowerCase();
+  const clean = cleanName.toLowerCase();
+
+  // Props (Möbel, Craftables, Zäune, Dekoration)
+  if (
+    clean.includes('chair') || clean.includes('desk') || clean.includes('table') ||
+    clean.includes('furniture') || clean.includes('craftable') || clean.includes('fence') ||
+    clean.includes('torch') || clean.includes('flag') || clean.includes('banner') ||
+    clean.includes('mine') || clean.includes('ore') || clean.includes('item') ||
+    clean.includes('tool') || clean.includes('player') || clean.includes('prop') ||
+    clean.includes('pirate') || clean.includes('festival')
+  ) {
     return 'props';
   }
+
+  // Flora (Pflanzen, Bäume, Ernte)
+  if (
+    clean.includes('tree') || clean.includes('crop') || clean.includes('plant') ||
+    clean.includes('bush') || clean.includes('grass') || clean.includes('flower') ||
+    clean.includes('forage')
+  ) {
+    return 'flora';
+  }
+
+  // Tilesets (Böden, Wände, Gelände, Outdoor, Höhlen, Gebäude)
+  if (
+    raw.includes('tileset') || clean.includes('outdoor') || clean.includes('desert') ||
+    clean.includes('wall') || clean.includes('floor') || clean.includes('cabin') ||
+    clean.includes('farmhouse') || clean.includes('sewer') || clean.includes('dirt') ||
+    clean.includes('cave') || clean.includes('pond')
+  ) {
+    return 'tilesets';
+  }
+
   return 'fauna';
 }
 
-function guessFrameSize(width, height) {
-  // Typical Stardew/SNES sprite sizes: 32x32, 16x16, 16x32, 48x80
+function guessFrameSize(width, height, category) {
+  if (category === 'tilesets') return { w: 16, h: 16 };
   if (width % 32 === 0 && width <= 128) return { w: 32, h: 32 };
   if (width % 16 === 0 && width <= 64) return { w: 16, h: 16 };
   if (width % 48 === 0) return { w: 48, h: height > 100 ? 80 : 48 };
-  return { w: 32, h: 32 };
+  return { w: 16, h: 16 };
+}
+
+function getEpochsForAsset(cleanName) {
+  const name = cleanName.toLowerCase();
+  if (name.includes('desert')) return ['aegypten', 'rom'];
+  if (name.includes('cave') || name.includes('diggable')) return ['steinzeit'];
+  if (name.includes('winter') || name.includes('pirate')) return ['wikinger'];
+  if (name.includes('outdoor')) return ['germanen', 'griechenland', 'rom', 'wikinger', 'steinzeit'];
+  return [];
 }
 
 function runIngest() {
@@ -83,7 +121,7 @@ function runIngest() {
   for (const rawFile of files) {
     const rawPath = path.join(INBOX_DIR, rawFile);
     const clean = cleanFilename(rawFile);
-    const category = classifyCategory(clean);
+    const category = classifyCategory(rawFile, clean);
     const targetDir = path.join(SHARED_DIR, category);
 
     if (!fs.existsSync(targetDir)) {
@@ -94,7 +132,7 @@ function runIngest() {
     fs.renameSync(rawPath, targetPath);
 
     const dims = getPngDimensions(targetPath);
-    const frames = guessFrameSize(dims.width, dims.height);
+    const frames = guessFrameSize(dims.width, dims.height, category);
     const assetId = clean.replace('.png', '');
 
     // Prüfe, ob Eintrag schon im Manifest existiert
@@ -108,10 +146,12 @@ function runIngest() {
       height: dims.height,
       frameWidth: frames.w,
       frameHeight: frames.h,
-      isDidactic: category === 'fauna' || (category === 'flora' && !clean.includes('grass')),
-      epochs: [],
+      isDidactic: (category === 'fauna' || category === 'flora') && !clean.includes('grass'),
+      epochs: getEpochsForAsset(clean),
       titleDe: clean.replace('.png', '').replace(/_/g, ' ').toUpperCase(),
-      subtitleDe: `Neu importiertes Spritesheet (${dims.width}x${dims.height}px)`
+      subtitleDe: category === 'tilesets' 
+        ? `16-Bit Umgebungskachel-Set (${dims.width}x${dims.height}px, 16x16 Grid)`
+        : `Neu importiertes Spritesheet (${dims.width}x${dims.height}px)`
     };
 
     if (existingIdx >= 0) {
@@ -125,10 +165,12 @@ function runIngest() {
   }
 
   // Kategorienzähler aktualisieren
-  manifest.categories = { fauna: 0, flora: 0, props: 0 };
+  manifest.categories = { fauna: 0, flora: 0, props: 0, tilesets: 0 };
   for (const a of manifest.assets) {
     if (manifest.categories[a.category] !== undefined) {
       manifest.categories[a.category]++;
+    } else {
+      manifest.categories[a.category] = 1;
     }
   }
   manifest.totalAssets = manifest.assets.length;

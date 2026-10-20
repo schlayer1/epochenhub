@@ -1,10 +1,11 @@
 {
-  "generatedAt": "2026-10-20T14:55:57.520Z",
-  "totalAssets": 51,
+  "generatedAt": "2026-10-20T16:23:53.418Z",
+  "totalAssets": 71,
   "categories": {
     "fauna": 41,
     "flora": 7,
-    "props": 3
+    "props": 9,
+    "tilesets": 14
   },
   "assets": [
     {
@@ -864,6 +865,318 @@
       "epochs": [],
       "titleDe": "Klassische Spieler-Base",
       "subtitleDe": "Animations-Vorlage"
+    },
+    {
+      "id": "cabins",
+      "cleanName": "cabins.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/cabins.png",
+      "width": 240,
+      "height": 784,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "CABINS",
+      "subtitleDe": "16-Bit Umgebungskachel-Set (240x784px, 16x16 Grid)"
+    },
+    {
+      "id": "chairs_and_desks",
+      "cleanName": "chairs_and_desks.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/chairs_and_desks.png",
+      "width": 239,
+      "height": 125,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "CHAIRS AND DESKS",
+      "subtitleDe": "Neu importiertes Spritesheet (239x125px)"
+    },
+    {
+      "id": "craftables",
+      "cleanName": "craftables.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/craftables.png",
+      "width": 128,
+      "height": 1408,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "CRAFTABLES",
+      "subtitleDe": "Neu importiertes Spritesheet (128x1408px)"
+    },
+    {
+      "id": "desert_festival",
+      "cleanName": "desert_festival.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_festival.png",
+      "width": 512,
+      "height": 568,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [
+        "aegypten",
+        "rom"
+      ],
+      "titleDe": "DESERT FESTIVAL",
+      "subtitleDe": "Neu importiertes Spritesheet (512x568px)"
+    },
+    {
+      "id": "desert",
+      "cleanName": "desert.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/desert.png",
+      "width": 304,
+      "height": 368,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [
+        "aegypten",
+        "rom"
+      ],
+      "titleDe": "DESERT",
+      "subtitleDe": "16-Bit Umgebungskachel-Set (304x368px, 16x16 Grid)"
+    },
+    {
+      "id": "dirt_hoed",
+      "cleanName": "dirt_hoed.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/dirt_hoed.png",
+      "width": 192,
+      "height": 192,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "DIRT HOED",
+      "subtitleDe": "16-Bit Umgebungskachel-Set (192x192px, 16x16 Grid)"
+    },
+    {
+      "id": "farmhouse",
+      "cleanName": "farmhouse.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/farmhouse.png",
+      "width": 192,
+      "height": 352,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "FARMHOUSE",
+      "subtitleDe": "16-Bit Umgebungskachel-Set (192x352px, 16x16 Grid)"
+    },
+    {
+      "id": "fences",
+      "cleanName": "fences.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/fences.png",
+      "width": 207,
+      "height": 358,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "FENCES",
+      "subtitleDe": "Neu importiertes Spritesheet (207x358px)"
+    },
+    {
+      "id": "fish_pond",
+      "cleanName": "fish_pond.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/fish_pond.png",
+      "width": 160,
+      "height": 176,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "FISH POND",
+      "subtitleDe": "16-Bit Umgebungskachel-Set (160x176px, 16x16 Grid)"
+    },
+    {
+      "id": "flooring",
+      "cleanName": "flooring.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/flooring.png",
+      "width": 512,
+      "height": 256,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "FLOORING",
+      "subtitleDe": "16-Bit Umgebungskachel-Set (512x256px, 16x16 Grid)"
+    },
+    {
+      "id": "furniture",
+      "cleanName": "furniture.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/furniture.png",
+      "width": 980,
+      "height": 1488,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "FURNITURE",
+      "subtitleDe": "Neu importiertes Spritesheet (980x1488px)"
+    },
+    {
+      "id": "island_cave",
+      "cleanName": "island_cave.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/island_cave.png",
+      "width": 96,
+      "height": 192,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [
+        "steinzeit"
+      ],
+      "titleDe": "ISLAND CAVE",
+      "subtitleDe": "16-Bit Umgebungskachel-Set (96x192px, 16x16 Grid)"
+    },
+    {
+      "id": "outdoors_fall",
+      "cleanName": "outdoors_fall.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/outdoors_fall.png",
+      "width": 656,
+      "height": 1664,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [
+        "germanen",
+        "griechenland",
+        "rom",
+        "wikinger",
+        "steinzeit"
+      ],
+      "titleDe": "OUTDOORS FALL",
+      "subtitleDe": "16-Bit Umgebungskachel-Set (656x1664px, 16x16 Grid)"
+    },
+    {
+      "id": "outdoors_spring",
+      "cleanName": "outdoors_spring.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/outdoors_spring.png",
+      "width": 656,
+      "height": 1664,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [
+        "germanen",
+        "griechenland",
+        "rom",
+        "wikinger",
+        "steinzeit"
+      ],
+      "titleDe": "OUTDOORS SPRING",
+      "subtitleDe": "16-Bit Umgebungskachel-Set (656x1664px, 16x16 Grid)"
+    },
+    {
+      "id": "outdoors_summer",
+      "cleanName": "outdoors_summer.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/outdoors_summer.png",
+      "width": 656,
+      "height": 1664,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [
+        "germanen",
+        "griechenland",
+        "rom",
+        "wikinger",
+        "steinzeit"
+      ],
+      "titleDe": "OUTDOORS SUMMER",
+      "subtitleDe": "16-Bit Umgebungskachel-Set (656x1664px, 16x16 Grid)"
+    },
+    {
+      "id": "outdoors_winter",
+      "cleanName": "outdoors_winter.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/outdoors_winter.png",
+      "width": 656,
+      "height": 1664,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [
+        "wikinger"
+      ],
+      "titleDe": "OUTDOORS WINTER",
+      "subtitleDe": "16-Bit Umgebungskachel-Set (656x1664px, 16x16 Grid)"
+    },
+    {
+      "id": "pirates",
+      "cleanName": "pirates.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/pirates.png",
+      "width": 304,
+      "height": 160,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [
+        "wikinger"
+      ],
+      "titleDe": "PIRATES",
+      "subtitleDe": "Neu importiertes Spritesheet (304x160px)"
+    },
+    {
+      "id": "sewer",
+      "cleanName": "sewer.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/sewer.png",
+      "width": 128,
+      "height": 176,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "SEWER",
+      "subtitleDe": "16-Bit Umgebungskachel-Set (128x176px, 16x16 Grid)"
+    },
+    {
+      "id": "wall_diggable",
+      "cleanName": "wall_diggable.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/wall_diggable.png",
+      "width": 480,
+      "height": 576,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [
+        "steinzeit"
+      ],
+      "titleDe": "WALL DIGGABLE",
+      "subtitleDe": "16-Bit Umgebungskachel-Set (480x576px, 16x16 Grid)"
+    },
+    {
+      "id": "walls_and_floors",
+      "cleanName": "walls_and_floors.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/walls_and_floors.png",
+      "width": 256,
+      "height": 848,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "WALLS AND FLOORS",
+      "subtitleDe": "16-Bit Umgebungskachel-Set (256x848px, 16x16 Grid)"
     }
   ]
 }

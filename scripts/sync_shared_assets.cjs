@@ -64,10 +64,12 @@ function runSync() {
   const targetFauna = path.join(targetPublic, 'fauna');
   const targetFlora = path.join(targetPublic, 'flora');
   const targetProps = path.join(targetPublic, 'props');
+  const targetTilesets = path.join(targetPublic, 'tilesets');
 
   if (!fs.existsSync(targetFauna)) fs.mkdirSync(targetFauna, { recursive: true });
   if (!fs.existsSync(targetFlora)) fs.mkdirSync(targetFlora, { recursive: true });
   if (!fs.existsSync(targetProps)) fs.mkdirSync(targetProps, { recursive: true });
+  if (!fs.existsSync(targetTilesets)) fs.mkdirSync(targetTilesets, { recursive: true });
 
   let copiedCount = 0;
   const phaserSnippets = [];
