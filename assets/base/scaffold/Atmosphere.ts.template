@@ -1,0 +1,115 @@
+/**
+ * Secret-of-Mana Atmosphären- & Partikel-Engine (Atmosphere.ts)
+ * Erzeugt lebendige Umwelt-Immersion:
+ * - Wehende Naturpartikel (Laubblätter / Wüstensand-Schleier)
+ * - Tänzelnde Glühwürmchen bei Dämmerung und Nacht
+ * - Flackernder, warm-goldener Fackelschein um Feuerstellen
+ */
+
+import Phaser from 'phaser';
+
+export type ClimateType = 'temperate' | 'desert' | 'mediterranean' | 'nordic';
+
+export class AtmosphereEngine {
+  private scene: Phaser.Scene;
+  private climate: ClimateType;
+  private windParticles: Phaser.GameObjects.Arc[] = [];
+  private fireflies: Phaser.GameObjects.Arc[] = [];
+  private lightSources: Phaser.GameObjects.Arc[] = [];
+  private timeElapsed: number = 0;
+
+  constructor(scene: Phaser.Scene, climate: ClimateType = 'temperate') {
+    this.scene = scene;
+    this.climate = climate;
+    this.spawnWindParticles();
+    this.spawnFireflies();
+  }
+
+  /**
+   * 1. Wehende Naturpartikel (Blätter, Sandstaub)
+   */
+  private spawnWindParticles(): void {
+    const count = this.climate === 'desert' ? 16 : 12;
+    const color = this.climate === 'desert' ? 0xecd082 : 0x859900; // Goldgelber Sand vs. Moosgrün/Herbstlaub
+
+    for (let i = 0; i < count; i++) {
+      const p = this.scene.add.circle(
+        Phaser.Math.Between(0, 1280),
+        Phaser.Math.Between(0, 960),
+        Phaser.Math.Between(2, 3),
+        color,
+        Phaser.Math.FloatBetween(0.35, 0.75)
+      ).setDepth(20);
+
+      this.windParticles.push(p);
+    }
+  }
+
+  /**
+   * 2. Glühwürmchen bei Dämmerung und Nacht
+   */
+  private spawnFireflies(): void {
+    for (let i = 0; i < 16; i++) {
+      const f = this.scene.add.circle(
+        Phaser.Math.Between(100, 1180),
+        Phaser.Math.Between(80, 880),
+        2,
+        0xc7f464, // Leuchtendes Lindgrün/Gelb
+        0
+      ).setDepth(22);
+
+      this.fireflies.push(f);
+    }
+  }
+
+  /**
+   * 3. Registriert ein Lagerfeuer oder eine Fackel für warmen Fackelschein
+   */
+  public registerTorch(x: number, y: number, radius: number = 38): void {
+    // Warm-goldener Lichtkreis mit weichem Schein
+    const light = this.scene.add.circle(x, y, radius, 0xffa024, 0.22)
+      .setDepth(2)
+      .setBlendMode(Phaser.BlendModes.ADD);
+
+    // Sanftes Mana-Feuerflackern
+    this.scene.tweens.add({
+      targets: light,
+      scaleX: { from: 0.94, to: 1.06 },
+      scaleY: { from: 0.94, to: 1.06 },
+      alpha: { from: 0.18, to: 0.28 },
+      duration: Phaser.Math.Between(120, 180),
+      yoyo: true,
+      repeat: -1,
+      ease: 'Sine.easeInOut'
+    });
+
+    this.lightSources.push(light);
+  }
+
+  public update(deltaMs: number, dayTime: number): void {
+    this.timeElapsed += deltaMs;
+    const isNightOrDusk = dayTime > 0.6 || dayTime < 0.15;
+
+    // Windpartikel wehen in sanften Sinuswellen diagonal über die Map
+    for (const p of this.windParticles) {
+      p.x += 0.85 * (deltaMs / 16);
+      p.y += Math.sin((this.timeElapsed / 350) + p.x) * 0.45;
+
+      // Wrap-around an den Map-Grenzen
+      if (p.x > 1280) p.x = 0;
+      if (p.y > 960) p.y = 0;
+      if (p.y < 0) p.y = 960;
+    }
+
+    // Glühwürmchen leuchten nur nachts auf und tanzen sanft
+    for (const f of this.fireflies) {
+      if (isNightOrDusk) {
+        f.alpha = Math.max(0, (Math.sin((this.timeElapsed / 400) + f.x) * 0.4) + 0.5);
+        f.x += Math.sin(this.timeElapsed / 600 + f.y) * 0.3;
+        f.y += Math.cos(this.timeElapsed / 500 + f.x) * 0.25;
+      } else {
+        f.alpha = 0; // Tagsüber unsichtbar
+      }
+    }
+  }
+}

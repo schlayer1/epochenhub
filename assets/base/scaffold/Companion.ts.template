@@ -1,0 +1,165 @@
+/**
+ * Secret-of-Evermore Begleiter-KI (Companion.ts)
+ * Verwaltet den treuen Tierbegleiter des Spielers (Wolfshund, Tesem, Molosser).
+ * Features:
+ * - Weiches Hinterherlaufen (Tethered Following)
+ * - Fährtensuche & Relikt-Spürsinn (Bellen & Aufspüren bei < 64px)
+ * - Streichel-Mechanik mit animierter Herzchen-Blase (❤️)
+ * - Historisch-narrative Freischaltung im passenden Kapitel
+ */
+
+import Phaser from 'phaser';
+import { sfx } from '../audio/sound';
+
+export interface CompanionConfig {
+  key: string;              // z. B. 'dog_tesem', 'dog_lupo', 'dog_molosser'
+  name: string;             // z. B. 'Lupo', 'Anubis', 'Argos', 'Garm'
+  historicalBreed: string;  // z. B. 'Altägyptischer Tesem-Windhund'
+  unlockedChapter: number;  // Wann schließt sich das Tier historisch an?
+}
+
+export class CompanionManager {
+  private scene: Phaser.Scene;
+  private sprite: Phaser.GameObjects.Sprite | null = null;
+  private config: CompanionConfig;
+  private state: 'following' | 'idle' | 'sniffing' | 'petting' = 'following';
+  private idleTimer: number = 0;
+  private alertCooldown: number = 0;
+  private heartEmitter: Phaser.GameObjects.Particles.ParticleEmitter | null = null;
+  private isUnlocked: boolean = false;
+
+  constructor(scene: Phaser.Scene, config: CompanionConfig) {
+    this.scene = scene;
+    this.config = config;
+  }
+
+  public unlock(startX: number, startY: number): void {
+    if (this.isUnlocked && this.sprite) return;
+    this.isUnlocked = true;
+
+    this.sprite = this.scene.add.sprite(startX, startY, this.config.key, 0)
+      .setOrigin(0.5, 0.85)
+      .setDepth(15);
+
+    // Registriere Klick/Interaktions-Hitbox für Streicheln
+    this.sprite.setInteractive({ useHandCursor: true });
+    this.sprite.on('pointerdown', () => this.pet());
+
+    console.log(`🐾 Begleiter freigeschaltet: ${this.config.name} (${this.config.historicalBreed})`);
+  }
+
+  public update(player: Phaser.GameObjects.Sprite, targets: any[], deltaMs: number): void {
+    if (!this.isUnlocked || !this.sprite) return;
+
+    const dog = this.sprite;
+    const distToPlayer = Phaser.Math.Distance.Between(dog.x, dog.y, player.x, player.y);
+
+    if (this.alertCooldown > 0) this.alertCooldown -= deltaMs;
+
+    // 1. Spürsinn (Secret of Evermore Scent Radar): Prüfe vergrabene Relikte / Schätze in der Nähe
+    if (this.alertCooldown <= 0 && this.state !== 'petting') {
+      for (const t of targets) {
+        if (!t.discovered && (t.kind === 'relic' || t.kind === 'resource')) {
+          const distToTarget = Phaser.Math.Distance.Between(dog.x, dog.y, t.x, t.y);
+          if (distToTarget < 58) {
+            this.triggerAlert(t);
+            return;
+          }
+        }
+      }
+    }
+
+    // 2. Folgen oder Rasten
+    if (this.state === 'petting') return;
+
+    if (distToPlayer > 34) {
+      this.state = 'following';
+      const angle = Phaser.Math.Angle.Between(dog.x, dog.y, player.x, player.y);
+      const speed = distToPlayer > 80 ? 115 : 75; // Schneller aufholen wenn weit weg
+      dog.x += Math.cos(angle) * speed * (deltaMs / 1000);
+      dog.y += Math.sin(angle) * speed * (deltaMs / 1000);
+
+      // Animation & Blickrichtung
+      const deg = Phaser.Math.RadToDeg(angle);
+      if (Math.abs(deg) < 45) {
+        dog.setFlipX(false);
+        dog.play(`${this.config.key}-walk-right`, true);
+      } else if (Math.abs(deg) > 135) {
+        dog.setFlipX(true);
+        dog.play(`${this.config.key}-walk-right`, true);
+      } else if (deg > 45 && deg <= 135) {
+        dog.play(`${this.config.key}-walk-down`, true);
+      } else {
+        dog.play(`${this.config.key}-walk-up`, true);
+      }
+      dog.setDepth(dog.y);
+      this.idleTimer = 0;
+    } else {
+      // In Ruhezone angekommen
+      this.idleTimer += deltaMs;
+      if (this.idleTimer > 2500) {
+        // Nach 2.5 Sekunden Sitzen oder Schnüffeln
+        dog.play(`${this.config.key}-sit`, true);
+      } else {
+        dog.play(`${this.config.key}-idle`, true);
+      }
+    }
+  }
+
+  /**
+   * Spürt ein verborgenes Relikt auf und bellt aufgeregt
+   */
+  private triggerAlert(target: any): void {
+    if (!this.sprite) return;
+    this.state = 'sniffing';
+    this.alertCooldown = 12000; // Erst in 12 Sek wiederholen
+
+    this.sprite.play(`${this.config.key}-sniff`, true);
+    sfx.step(); // Kleiner Aufmerksamkeits-Sound
+
+    // Floating Emote über dem Hund
+    this.showEmote('🐾 Wuff! Hier liegt etwas verborgen!');
+  }
+
+  /**
+   * Streichel-Mechanik (Taste E oder Klick auf den Hund)
+   */
+  public pet(): void {
+    if (!this.sprite || this.state === 'petting') return;
+    this.state = 'petting';
+
+    this.sprite.play(`${this.config.key}-wag`, true);
+    sfx.door(); // Freundlicher Bestätigungston
+
+    this.showEmote('❤️ *Wedel! Freut sich über deine Zuwendung*');
+
+    this.scene.time.delayedCall(2200, () => {
+      this.state = 'following';
+    });
+  }
+
+  private showEmote(text: string): void {
+    if (!this.sprite) return;
+    const el = document.createElement('div');
+    el.className = 'companion-emote-bubble';
+    el.innerHTML = text;
+    document.body.appendChild(el);
+
+    const updatePos = () => {
+      if (!this.sprite) return;
+      const cam = this.scene.cameras.main;
+      const sx = (this.sprite.x - cam.scrollX) * cam.zoom;
+      const sy = (this.sprite.y - cam.scrollY - 24) * cam.zoom;
+      el.style.left = `${sx}px`;
+      el.style.top = `${sy}px`;
+    };
+
+    updatePos();
+    el.style.opacity = '1';
+
+    setTimeout(() => {
+      el.style.opacity = '0';
+      setTimeout(() => el.remove(), 400);
+    }, 2400);
+  }
+}
