@@ -1,0 +1,72 @@
+/**
+ * Haptische Mini-Stationen & Interaktive Puzzles
+ * Standardisierte Vorlagen für epochenspezifische handlungsorientierte Minispiele.
+ */
+
+export type StationType = 'scale' | 'decoder' | 'brush' | 'sluice';
+
+export interface StationDef {
+  id: string;
+  type: StationType;
+  title: string;
+  mentorSpeaker: string;
+  instructionText: string; // Schülergerechte Anleitung
+  historicalContext: string;
+  chapter: number;
+  config: any; // Puzzlespezifische Konfiguration (z. B. Zielgewichte, Runenpaare, Schleusen-Ausrichtung)
+  rewardItem: string;
+  rewardQty: number;
+}
+
+export const SAMPLE_STATIONS: Record<string, StationDef[]> = {
+  aegypten: [
+    {
+      id: 'station_bazaar_scale',
+      type: 'scale',
+      title: 'Die Balkenwaage des Wesirs (Markt von Memphis)',
+      mentorSpeaker: 'Marktmeister Khaemwaset',
+      instructionText: 'Tariere die Waage aus: Ziehe die richtigen Kupfer-Deben Gewichtssteine auf die rechte Schale, bis die Waage im perfekten Gleichgewicht steht!',
+      historicalContext: 'Im Alten Ägypten gab es noch keine geprägten Münzen. Bezahlt wurde nach festen Gewichten von Kupfer oder Silber – der Grundeinheit Deben (ca. 91 Gramm).',
+      chapter: 3,
+      config: {
+        targetWeight: 5, // 5 Deben
+        weightsAvailable: [1, 2, 2, 5],
+        itemOnScale: '1 Sack Emmer-Getreide'
+      },
+      rewardItem: 'copper_deben',
+      rewardQty: 3
+    },
+    {
+      id: 'station_hieroglyph_decoder',
+      type: 'decoder',
+      title: 'Das Papyrus-Rätsel im Haus des Lebens',
+      mentorSpeaker: 'Oberster Schreiber Ahmose',
+      instructionText: 'Entziffer die 4 königlichen Namenskartuschen durch Drehen des Schriftrades!',
+      historicalContext: 'Hieroglyphen wurden mit Binsenrohr und schwarzer Ruß-Tinte auf echtes Papyrus geschrieben. Nur wenige ausgewählte Kinder durften Schreiber werden.',
+      chapter: 5,
+      config: {
+        symbols: ['ra', 'anubis', 'scarab', 'ankh'],
+        solution: ['Sonne', 'Schutz', 'Wiedergeburt', 'Ewiges Leben']
+      },
+      rewardItem: 'papyrus_scroll',
+      rewardQty: 1
+    }
+  ],
+  steinzeit: [
+    {
+      id: 'station_mammoth_brush',
+      type: 'brush',
+      title: 'Die Ausgrabungsschicht am Mammutfund',
+      mentorSpeaker: 'Archäologe Dr. Keller',
+      instructionText: 'Wische mit dem Pinsel vorsichtig den Ufersand weg, um die eiszeitliche Jagdspitze freizulegen!',
+      historicalContext: 'Archäologen nutzen feine Pinsel und Holzkratzer, um jahrtausendealte Knochen- und Steinwerkzeuge nicht zu beschädigen.',
+      chapter: 2,
+      config: {
+        revealThresholdPercent: 85,
+        hiddenArtifactKey: 'flint_spearhead'
+      },
+      rewardItem: 'flint_spearhead',
+      rewardQty: 1
+    }
+  ]
+};

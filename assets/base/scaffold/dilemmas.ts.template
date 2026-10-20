@@ -1,0 +1,85 @@
+/**
+ * Historische Dilemma- & Ratsentscheidungen für Geschichtsspiele
+ * Drop-in Datenstruktur für schülergerechte, handlungsorientierte Entscheidungen.
+ */
+
+export interface DilemmaOption {
+  id: string;
+  title: string;
+  argumentText: string;
+  rewards: Record<string, number>; // Konkrete Rohstoffe (z. B. { wheat: 15, wood: 8 })
+  storyFlag: string;               // Flag für Folgedialoge (z. B. 'ch3_grain_distributed')
+  feedbackText: string;           // Pädagogisches Feedback nach der Entscheidung
+}
+
+export interface DilemmaDef {
+  id: string;
+  chapter: number;
+  councilTitle: string;            // z. B. 'Pharaonen-Rat von Memphis', 'Thing der freien Germanen', 'Römischer Senat'
+  mentorSpeaker: string;           // Name des Mentors/Vorsitzenden
+  illustrationKey: string;         // Referenz auf Grafik/Icon
+  conflictTitle: string;
+  conflictText: string;            // Kindgerecht geschildertes Dilemma (Klasse 5-8)
+  options: DilemmaOption[];
+}
+
+export const SAMPLE_DILEMMAS: Record<string, DilemmaDef[]> = {
+  aegypten: [
+    {
+      id: 'dilemma_ch3_nilschwelle',
+      chapter: 3,
+      councilTitle: 'Pharaonen-Rat am Hofe des Wesirs',
+      mentorSpeaker: 'Wesir Rechmire',
+      illustrationKey: 'council_egypt',
+      conflictTitle: 'Niedrige Nilschwelle: Saatgut für die Bauern oder Vorrat für den Tempel?',
+      conflictText: 'Die diesjährige Nilflut fiel gering aus. Die Speicher des Pharaos sind gut gefüllt, doch den Kleinbauern droht der Hunger und es fehlt Saatgut für die nächste Aussaat. Die Priester des Amun fordern jedoch, den Tempelzehnten unangetastet zu lassen, um den Zorn der Götter nicht zu wecken.',
+      options: [
+        {
+          id: 'opt_farmers',
+          title: 'Saatgut an die Bauern verteilen',
+          argumentText: 'Öffnet die königlichen Speicher! Wenn die Bauern jetzt nicht säen, wird im nächsten Jahr die Not noch größer sein.',
+          rewards: { emmer_wheat: 20, straw: 10 },
+          storyFlag: 'dilemma_ch3_farmers_saved',
+          feedbackText: 'Eine fürsorgliche Entscheidung! Die Bauern danken dir mit frischem Korn und Fleiß beim Pyramidenbau.'
+        },
+        {
+          id: 'opt_compromise',
+          title: 'Kompromiss: Hälfte als Darlehen vergeben',
+          argumentText: 'Ein Teil des Getreides wird als Darlehen für die Aussaat ausgegeben und nach der Ernte mit geringem Zins zurückgezahlt.',
+          rewards: { emmer_wheat: 10, copper_deben: 2 },
+          storyFlag: 'dilemma_ch3_compromise_struck',
+          feedbackText: 'Ein geschickter Ausgleich! Sowohl Priester als auch Bauern respektieren deine kaufmännische Weitsicht.'
+        }
+      ]
+    }
+  ],
+  germanen: [
+    {
+      id: 'dilemma_ch4_thing_schlichtung',
+      chapter: 4,
+      councilTitle: 'Das Thing unter der Heiligen Eiche',
+      mentorSpeaker: 'Gero der Thing-Sprecher',
+      illustrationKey: 'council_germanic',
+      conflictTitle: 'Grenzstreit um die Waldweide: Wergeld oder Schlichtung?',
+      conflictText: 'Zwei Sippen streiten um ein fruchtbares Eichenwäldchen. Die Sippe von Alboin beansprucht die Eichelmast für ihre Schweine, während Hathas Sippe dort Rinder weiden lassen will. Schon wurden Waffen gezogen und ein Zaun niedergerissen. Was urteilt das Thing?',
+      options: [
+        {
+          id: 'opt_split_pasture',
+          title: 'Teilung der Weidezeit (Sommer & Herbst)',
+          argumentText: 'Im Hochsommer weiden Hathas Rinder auf der Lichtung; im Spätherbst gehört der Wald Alboins Schweinen zur Eichelmast.',
+          rewards: { cured_meat: 8, hide: 4 },
+          storyFlag: 'dilemma_ch4_thing_peace',
+          feedbackText: 'Der Thing-Friede ist gewahrt! Beide Sippen reichen sich das Trinkhorn und überreichen dir Felle und Vorräte.'
+        },
+        {
+          id: 'opt_wergeld',
+          title: 'Wergeld-Ausgleich & Sippenausgleich',
+          argumentText: 'Alboin behält den Hain, entschädigt Hatha jedoch mit zwei Ziegen und Bauholz für einen neuen Koppelzaun.',
+          rewards: { timber: 12, goat_milk: 5 },
+          storyFlag: 'dilemma_ch4_wergeld_paid',
+          feedbackText: 'Ein rechtssicheres Urteil nach germanischem Brauch. Der Streit ist ohne Blutvergießen beigelegt.'
+        }
+      ]
+    }
+  ]
+};
