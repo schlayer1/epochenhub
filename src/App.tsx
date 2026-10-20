@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { TimelineView } from './components/TimelineView';
 import { GridView } from './components/GridView';
+import { AtlasView } from './components/AtlasView';
 import { GameModal } from './components/GameModal';
 import { PassportModal } from './components/PassportModal';
 import { QrCodeModal } from './components/QrCodeModal';
@@ -12,7 +13,7 @@ import { EpochGame } from './types/game';
 import { storageService } from './services/storageService';
 
 export const App: React.FC = () => {
-  const [viewMode, setViewMode] = useState<'timeline' | 'grid'>('timeline');
+  const [viewMode, setViewMode] = useState<'timeline' | 'grid' | 'atlas'>('timeline');
   const [isCrtEnabled, setIsCrtEnabled] = useState(false);
   
   // Search & Filter State
@@ -92,21 +93,22 @@ export const App: React.FC = () => {
         onToggleCrt={() => setIsCrtEnabled(prev => !prev)}
       />
 
-      {/* Hero Section with Search, Metrics & Category Pills */}
-      <HeroSection
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-        selectedCategory={selectedCategory}
-        onSelectCategory={setSelectedCategory}
-        selectedGrade={selectedGrade}
-        onSelectGrade={setSelectedGrade}
-        totalChapters={totalChapters}
-        totalGames={EPOCH_GAMES.length}
-      />
+      {/* Hero Section with Search, Metrics & Category Pills (nur in Timeline- & Raster-Modus) */}
+      {viewMode !== 'atlas' && (
+        <HeroSection
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          selectedCategory={selectedCategory}
+          onSelectCategory={setSelectedCategory}
+          selectedGrade={selectedGrade}
+          onSelectGrade={setSelectedGrade}
+          totalChapters={totalChapters}
+          totalGames={EPOCH_GAMES.length}
+        />
+      )}
 
       {/* Main Content Area: Fluid Responsive Container */}
       <main className="flex-1 w-full max-w-[2100px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 py-6 sm:py-8">
-        
         {viewMode === 'timeline' ? (
           <TimelineView
             games={filteredGames}
@@ -114,15 +116,21 @@ export const App: React.FC = () => {
             onOpenDetails={(game) => setSelectedGame(game)}
             onOpenQr={(game) => setQrGame(game)}
           />
-        ) : (
+        ) : viewMode === 'grid' ? (
           <GridView
             games={filteredGames}
             exploredGameIds={exploredGameIds}
             onOpenDetails={(game) => setSelectedGame(game)}
             onOpenQr={(game) => setQrGame(game)}
           />
+        ) : (
+          <AtlasView
+            onLaunchGame={(gameId) => {
+              const game = EPOCH_GAMES.find((g) => g.id === gameId);
+              if (game) setSelectedGame(game);
+            }}
+          />
         )}
-
       </main>
 
       {/* Interactive Epochen-Modal & Hero-Bühne */}

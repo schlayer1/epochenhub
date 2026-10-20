@@ -1,0 +1,869 @@
+{
+  "generatedAt": "2026-10-20T14:55:57.520Z",
+  "totalAssets": 51,
+  "categories": {
+    "fauna": 41,
+    "flora": 7,
+    "props": 3
+  },
+  "assets": [
+    {
+      "id": "cat_black",
+      "cleanName": "cat_black.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/cat_black.png",
+      "width": 128,
+      "height": 288,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "aegypten"
+      ],
+      "titleDe": "Schwarze Katze (Bastet-Kult)",
+      "subtitleDe": "Heiliges Tier und Wächterin der Kornspeicher im Alten Ägypten"
+    },
+    {
+      "id": "cat_grey",
+      "cleanName": "cat_grey.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/cat_grey.png",
+      "width": 128,
+      "height": 256,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "rom",
+        "griechenland"
+      ],
+      "titleDe": "Hauskatze der Antike",
+      "subtitleDe": "Geschätzter Mäusejäger in römischen Villen und griechischen Städten"
+    },
+    {
+      "id": "cat_sand",
+      "cleanName": "cat_sand.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/cat_sand.png",
+      "width": 128,
+      "height": 256,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "aegypten"
+      ],
+      "titleDe": "Nubische Falbkatze",
+      "subtitleDe": "Die wilde Stammform aller domestizierten Hauskatzen am Nil"
+    },
+    {
+      "id": "cat_white",
+      "cleanName": "cat_white.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/cat_white.png",
+      "width": 128,
+      "height": 288,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "aegypten",
+        "rom"
+      ],
+      "titleDe": "Weiße Tempelkatze",
+      "subtitleDe": "Sonnensymbol und Begleiterin im Tempelbezirk von Bubastis"
+    },
+    {
+      "id": "cat_tabby",
+      "cleanName": "cat_tabby.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/cat_tabby.png",
+      "width": 128,
+      "height": 256,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "aegypten",
+        "griechenland",
+        "rom"
+      ],
+      "titleDe": "Gestreifte Dorfkatze",
+      "subtitleDe": "Alltägliche Gefährtin in Wohnhäusern und Marktgassen"
+    },
+    {
+      "id": "cow_brown",
+      "cleanName": "cow_brown.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/cow_brown.png",
+      "width": 128,
+      "height": 160,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "germanen",
+        "rom"
+      ],
+      "titleDe": "Hausrind / Milchvieh",
+      "subtitleDe": "Grundlage der bäuerlichen Wirtschaft und Fleischversorgung"
+    },
+    {
+      "id": "cow_white",
+      "cleanName": "cow_white.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/cow_white.png",
+      "width": 128,
+      "height": 160,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "aegypten",
+        "griechenland"
+      ],
+      "titleDe": "Heilige weiße Kuh (Hathor)",
+      "subtitleDe": "Symbol für mütterliche Fürsorge und Fruchtbarkeit der Götter"
+    },
+    {
+      "id": "calf_brown",
+      "cleanName": "calf_brown.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/calf_brown.png",
+      "width": 128,
+      "height": 160,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "germanen"
+      ],
+      "titleDe": "Braunes Kalb",
+      "subtitleDe": "Jungvieh im germanischen Wohnstallhaus und steinzeitlichen Dorf"
+    },
+    {
+      "id": "calf_white",
+      "cleanName": "calf_white.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/calf_white.png",
+      "width": 128,
+      "height": 160,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "aegypten",
+        "rom"
+      ],
+      "titleDe": "Helles Zuchtkalb",
+      "subtitleDe": "Kostbarer Nachwuchs auf römischen Landgütern (Villa Rustica)"
+    },
+    {
+      "id": "dog_lupo",
+      "cleanName": "dog_lupo.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/dog_lupo.png",
+      "width": 128,
+      "height": 288,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "germanen"
+      ],
+      "titleDe": "Steinzeit-Hund (Lupo)",
+      "subtitleDe": "Der erste treue Jagdbegleiter des Menschen aus dem zahmen Wolf"
+    },
+    {
+      "id": "dog_tesem",
+      "cleanName": "dog_tesem.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/dog_tesem.png",
+      "width": 128,
+      "height": 288,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "aegypten"
+      ],
+      "titleDe": "Tesem-Windhund",
+      "subtitleDe": "Pfeilschneller Jagdhund der Pharaonen und Vorbild für Gott Anubis"
+    },
+    {
+      "id": "dog_molosser",
+      "cleanName": "dog_molosser.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/dog_molosser.png",
+      "width": 128,
+      "height": 288,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "griechenland",
+        "rom"
+      ],
+      "titleDe": "Molosser-Wachhund",
+      "subtitleDe": "Kraftvoller Beschützer römischer Kastelle und Schafherden"
+    },
+    {
+      "id": "dog_shepherd",
+      "cleanName": "dog_shepherd.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/dog_shepherd.png",
+      "width": 128,
+      "height": 288,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "griechenland",
+        "rom"
+      ],
+      "titleDe": "Antiker Hirtenhund",
+      "subtitleDe": "Unverzichtbarer Hüter der Herden gegen Raubtiere im Gebirge"
+    },
+    {
+      "id": "dog_wolfhound",
+      "cleanName": "dog_wolfhound.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/dog_wolfhound.png",
+      "width": 128,
+      "height": 288,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "germanen"
+      ],
+      "titleDe": "Germanischer Bärenhund",
+      "subtitleDe": "Wachhund der Sippe an Wall und Langhaus"
+    },
+    {
+      "id": "duck",
+      "cleanName": "duck.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/duck.png",
+      "width": 64,
+      "height": 224,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "aegypten",
+        "rom"
+      ],
+      "titleDe": "Nil-Stockente",
+      "subtitleDe": "Nahrungsquelle und Symbol der fruchtbaren Papyrus-Sümpfe"
+    },
+    {
+      "id": "goat",
+      "cleanName": "goat.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/goat.png",
+      "width": 128,
+      "height": 160,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "griechenland",
+        "germanen"
+      ],
+      "titleDe": "Hausziege",
+      "subtitleDe": "Die „Kuh des kleinen Mannes“ – widerstandsfähig in kargen Bergen"
+    },
+    {
+      "id": "goat_baby",
+      "cleanName": "goat_baby.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/goat_baby.png",
+      "width": 128,
+      "height": 160,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "griechenland"
+      ],
+      "titleDe": "Zicklein",
+      "subtitleDe": "Frühlingsbote und Opfergabe an Fruchtbarkeitsgottheiten"
+    },
+    {
+      "id": "sheep",
+      "cleanName": "sheep.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/sheep.png",
+      "width": 128,
+      "height": 160,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "griechenland",
+        "rom",
+        "germanen"
+      ],
+      "titleDe": "Wollschaf",
+      "subtitleDe": "Lieferant für wärmende Kleidung, Toga-Stoffe und Weichkäse"
+    },
+    {
+      "id": "sheep_sheared",
+      "cleanName": "sheep_sheared.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/sheep_sheared.png",
+      "width": 128,
+      "height": 160,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "rom",
+        "griechenland"
+      ],
+      "titleDe": "Geschorenes Schaf",
+      "subtitleDe": "Nach der Schafschur – Beginn des Spinnens und Webens"
+    },
+    {
+      "id": "sheep_baby",
+      "cleanName": "sheep_baby.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/sheep_baby.png",
+      "width": 128,
+      "height": 160,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "griechenland",
+        "germanen"
+      ],
+      "titleDe": "Lamm",
+      "subtitleDe": "Häufiges Weidetier in den Gebirgen von Arkadien und Thüringen"
+    },
+    {
+      "id": "horse",
+      "cleanName": "horse.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/horse.png",
+      "width": 224,
+      "height": 128,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "griechenland",
+        "rom",
+        "germanen"
+      ],
+      "titleDe": "Streitross & Reitpferd",
+      "subtitleDe": "Wichtigstes Transport- und Kriegstier antiker Zivilisationen"
+    },
+    {
+      "id": "ostrich",
+      "cleanName": "ostrich.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/ostrich.png",
+      "width": 128,
+      "height": 160,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "aegypten"
+      ],
+      "titleDe": "Afrikanischer Strauß",
+      "subtitleDe": "Lieferant der heiligen Wahrheitsfeder der Göttin Ma'at"
+    },
+    {
+      "id": "ostrich_baby",
+      "cleanName": "ostrich_baby.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/ostrich_baby.png",
+      "width": 128,
+      "height": 160,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "aegypten"
+      ],
+      "titleDe": "Straußenküken",
+      "subtitleDe": "Seltenes Wüstentier am Übergang zur nubischen Steppe"
+    },
+    {
+      "id": "pig",
+      "cleanName": "pig.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/pig.png",
+      "width": 128,
+      "height": 160,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "rom",
+        "germanen"
+      ],
+      "titleDe": "Eichelschwein",
+      "subtitleDe": "Im Eichenwald gemästet – wichtigste Fleischreserve für den Winter"
+    },
+    {
+      "id": "piglet",
+      "cleanName": "piglet.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/piglet.png",
+      "width": 128,
+      "height": 160,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "germanen"
+      ],
+      "titleDe": "Ferkel",
+      "subtitleDe": "Lebhafter Nachwuchs auf dem Hof der Sippe"
+    },
+    {
+      "id": "rabbit",
+      "cleanName": "rabbit.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/rabbit.png",
+      "width": 64,
+      "height": 112,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "germanen",
+        "rom"
+      ],
+      "titleDe": "Wildhase",
+      "subtitleDe": "Schnelle Beute für Schlingenleger und geübte Speerwerfer"
+    },
+    {
+      "id": "rabbit_baby",
+      "cleanName": "rabbit_baby.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/rabbit_baby.png",
+      "width": 64,
+      "height": 112,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": false,
+      "epochs": [
+        "steinzeit"
+      ],
+      "titleDe": "Junger Feldhase",
+      "subtitleDe": "Wiesenbewohner an Siedlungsrändern"
+    },
+    {
+      "id": "turtle_green",
+      "cleanName": "turtle_green.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/turtle_green.png",
+      "width": 128,
+      "height": 288,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "aegypten",
+        "griechenland",
+        "rom"
+      ],
+      "titleDe": "Nil-Wasserschildkröte",
+      "subtitleDe": "Geheimnisvolles Flusstier und Schutzamulett gegen Schlangen"
+    },
+    {
+      "id": "chicken_brown",
+      "cleanName": "chicken_brown.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/chicken_brown.png",
+      "width": 64,
+      "height": 112,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "epochs": [
+        "griechenland",
+        "rom",
+        "germanen"
+      ],
+      "titleDe": "Braunes Haushuhn",
+      "subtitleDe": "Lieferant frischer Eier für die tägliche Mahlzeit"
+    },
+    {
+      "id": "chicken_white",
+      "cleanName": "chicken_white.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/chicken_white.png",
+      "width": 64,
+      "height": 112,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "epochs": [
+        "rom"
+      ],
+      "titleDe": "Heiliges Orakelhuhn",
+      "subtitleDe": "Beobachtung des Pickverhaltens vor wichtigen römischen Senatsbeschlüssen"
+    },
+    {
+      "id": "chicken_dark",
+      "cleanName": "chicken_dark.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/chicken_dark.png",
+      "width": 64,
+      "height": 112,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [
+        "germanen"
+      ],
+      "titleDe": "Dunkles Moorhuhn",
+      "subtitleDe": "Zuchthuhn für raue Klimazonen"
+    },
+    {
+      "id": "chicken_golden",
+      "cleanName": "chicken_golden.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/chicken_golden.png",
+      "width": 64,
+      "height": 112,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "epochs": [
+        "griechenland"
+      ],
+      "titleDe": "Goldenes Götterhuhn",
+      "subtitleDe": "Mythologisches Symbol für unendlichen Wohlstand"
+    },
+    {
+      "id": "chick_brown",
+      "cleanName": "chick_brown.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/chick_brown.png",
+      "width": 64,
+      "height": 112,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [
+        "rom",
+        "germanen"
+      ],
+      "titleDe": "Braunes Küken",
+      "subtitleDe": "Frisch geschlüpftes Nestküken"
+    },
+    {
+      "id": "chick_white",
+      "cleanName": "chick_white.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/chick_white.png",
+      "width": 64,
+      "height": 112,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [
+        "rom"
+      ],
+      "titleDe": "Helles Küken",
+      "subtitleDe": "Hofgeflügel-Nachwuchs"
+    },
+    {
+      "id": "chick_blue",
+      "cleanName": "chick_blue.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/chick_blue.png",
+      "width": 64,
+      "height": 112,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "Seltenes Küken",
+      "subtitleDe": "Deko-Sprite"
+    },
+    {
+      "id": "chick_dark",
+      "cleanName": "chick_dark.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/chick_dark.png",
+      "width": 64,
+      "height": 112,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "Dunkles Küken",
+      "subtitleDe": "Deko-Sprite"
+    },
+    {
+      "id": "parrots",
+      "cleanName": "parrots.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/parrots.png",
+      "width": 264,
+      "height": 288,
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "isDidactic": true,
+      "epochs": [
+        "aegypten",
+        "rom"
+      ],
+      "titleDe": "Bunte Papageien",
+      "subtitleDe": "Exotische Luxustiere aus Afrika und Indien für reiche Römer"
+    },
+    {
+      "id": "island_parrot",
+      "cleanName": "island_parrot.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/island_parrot.png",
+      "width": 128,
+      "height": 160,
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "isDidactic": false,
+      "epochs": [
+        "aegypten"
+      ],
+      "titleDe": "Wüstenpapagei",
+      "subtitleDe": "Farbiger Vogel im Palmenhain"
+    },
+    {
+      "id": "gem_birds",
+      "cleanName": "gem_birds.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/gem_birds.png",
+      "width": 256,
+      "height": 64,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [
+        "steinzeit",
+        "griechenland"
+      ],
+      "titleDe": "Singvögel",
+      "subtitleDe": "Wald- und Hainbewohner"
+    },
+    {
+      "id": "critters",
+      "cleanName": "critters.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/critters.png",
+      "width": 320,
+      "height": 640,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "germanen",
+        "aegypten"
+      ],
+      "titleDe": "Kleine Wildtiere (Eichhörnchen, Frösche, Eulen)",
+      "subtitleDe": "Lebendige Fauna der Wälder, Flussauen und Nachthimmel"
+    },
+    {
+      "id": "fishing_fishes",
+      "cleanName": "fishing_fishes.png",
+      "category": "fauna",
+      "publicUrl": "/assets/shared/fauna/fishing_fishes.png",
+      "width": 311,
+      "height": 234,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "aegypten",
+        "griechenland",
+        "rom",
+        "germanen"
+      ],
+      "titleDe": "Süßwasser-Fische & Nilbarsch",
+      "subtitleDe": "Eiweißreiche Lebensgrundlage aller frühen Hochkulturen an Flüssen und Seen"
+    },
+    {
+      "id": "crops",
+      "cleanName": "crops.png",
+      "category": "flora",
+      "publicUrl": "/assets/shared/flora/crops.png",
+      "width": 256,
+      "height": 832,
+      "frameWidth": 16,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "aegypten",
+        "griechenland",
+        "rom",
+        "germanen"
+      ],
+      "titleDe": "Urgetreide: Emmer, Einkorn & Spelzweizen",
+      "subtitleDe": "Der Meilenstein der Neolithischen Revolution: Vom Sammler zum Ackerbauern"
+    },
+    {
+      "id": "fruit_trees",
+      "cleanName": "fruit_trees.png",
+      "category": "flora",
+      "publicUrl": "/assets/shared/flora/fruit_trees.png",
+      "width": 432,
+      "height": 720,
+      "frameWidth": 48,
+      "frameHeight": 80,
+      "isDidactic": true,
+      "epochs": [
+        "aegypten",
+        "griechenland",
+        "rom"
+      ],
+      "titleDe": "Fruchtbäume: Dattelpalme, Feige & Olivenbaum",
+      "subtitleDe": "Öl, süße Früchte und lebenswichtiger Schattenspender des Mittelmeerraums"
+    },
+    {
+      "id": "forage",
+      "cleanName": "forage.png",
+      "category": "flora",
+      "publicUrl": "/assets/shared/flora/forage.png",
+      "width": 160,
+      "height": 220,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "germanen"
+      ],
+      "titleDe": "Wildfrüchte, Waldkräuter & Wurzeln",
+      "subtitleDe": "Traditionelles Sammelgut vor Beginn des planvollen Ackerbaus"
+    },
+    {
+      "id": "bushes",
+      "cleanName": "bushes.png",
+      "category": "flora",
+      "publicUrl": "/assets/shared/flora/bushes.png",
+      "width": 128,
+      "height": 352,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "germanen"
+      ],
+      "titleDe": "Beerensträucher & Haselhecken",
+      "subtitleDe": "Ergänzende Vitaminnahrung und Holz für Pfeile und Flechtwerkwände"
+    },
+    {
+      "id": "trees",
+      "cleanName": "trees.png",
+      "category": "flora",
+      "publicUrl": "/assets/shared/flora/trees.png",
+      "width": 486,
+      "height": 1280,
+      "frameWidth": 48,
+      "frameHeight": 96,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "germanen"
+      ],
+      "titleDe": "Eichen & Urwälder (Heilige Haine)",
+      "subtitleDe": "Bauholz für Wohnstallhäuser und Kultstätten der germanischen Götter"
+    },
+    {
+      "id": "grass",
+      "cleanName": "grass.png",
+      "category": "flora",
+      "publicUrl": "/assets/shared/flora/grass.png",
+      "width": 66,
+      "height": 240,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "Steppen- & Weidegras",
+      "subtitleDe": "Boden-Deko für Spielwelten"
+    },
+    {
+      "id": "cave_plants",
+      "cleanName": "cave_plants.png",
+      "category": "flora",
+      "publicUrl": "/assets/shared/flora/cave_plants.png",
+      "width": 144,
+      "height": 24,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": false,
+      "epochs": [
+        "steinzeit"
+      ],
+      "titleDe": "Höhlenpilze & Flechten",
+      "subtitleDe": "Schattenpflanzen in Felsspalten"
+    },
+    {
+      "id": "mines_ores",
+      "cleanName": "mines_ores.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/mines_ores.png",
+      "width": 384,
+      "height": 482,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "epochs": [
+        "steinzeit",
+        "germanen"
+      ],
+      "titleDe": "Raseneisenerz, Kupfer & Feuerstein",
+      "subtitleDe": "Mineralische Rohstoffe für die Entwicklung von Waffen und Werkzeugen"
+    },
+    {
+      "id": "player_modern",
+      "cleanName": "player_modern.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/player_modern.png",
+      "width": 1581,
+      "height": 1861,
+      "frameWidth": 16,
+      "frameHeight": 32,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "Spieler-Charakter Base",
+      "subtitleDe": "Animations-Vorlage für Avatare"
+    },
+    {
+      "id": "player_classic",
+      "cleanName": "player_classic.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/player_classic.png",
+      "width": 916,
+      "height": 927,
+      "frameWidth": 16,
+      "frameHeight": 32,
+      "isDidactic": false,
+      "epochs": [],
+      "titleDe": "Klassische Spieler-Base",
+      "subtitleDe": "Animations-Vorlage"
+    }
+  ]
+}

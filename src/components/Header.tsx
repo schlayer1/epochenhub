@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Music, Compass, Award, Tv, LayoutGrid, Milestone } from 'lucide-react';
+import { Volume2, VolumeX, Music, Compass, Award, Tv, LayoutGrid, Milestone, Leaf } from 'lucide-react';
 import { audioService } from '../services/audioService';
 import { storageService } from '../services/storageService';
 import { EPOCH_GAMES, PORTAL_META } from '../config/games.config';
 
 interface HeaderProps {
-  viewMode: 'timeline' | 'grid';
-  onViewModeChange: (mode: 'timeline' | 'grid') => void;
+  viewMode: 'timeline' | 'grid' | 'atlas';
+  onViewModeChange: (mode: 'timeline' | 'grid' | 'atlas') => void;
   onOpenPassport: () => void;
   isCrtEnabled: boolean;
   onToggleCrt: () => void;
@@ -113,6 +113,21 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <LayoutGrid className="w-3.5 h-3.5" />
             <span className="hidden md:inline">Raster</span>
+          </button>
+          <button
+            onClick={() => {
+              audioService.playClickSound();
+              onViewModeChange('atlas');
+            }}
+            className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+              viewMode === 'atlas'
+                ? 'bg-emerald-500 text-slate-950 font-bold shadow-pixel-sm'
+                : 'text-slate-300 hover:text-emerald-300 hover:bg-[#201d33]'
+            }`}
+            title="Interaktiver 16-Bit Natur-Atlas (Flora & Fauna)"
+          >
+            <Leaf className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="hidden md:inline">Natur-Atlas</span>
           </button>
         </div>
 

@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ingest": "node scripts/ingest_inbox.cjs",
+    "catalog": "node scripts/import_and_catalog_spritesheets.cjs",
+    "distribute-assets": "node scripts/distribute_assets.cjs"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",
