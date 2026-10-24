@@ -1,0 +1,197 @@
+================================================================================
+VOLLSTÄNDIGE ÄNDERUNGSHISTORIE & QUALITÄTS-AUDIT (5 SNES RETRO GESCHICHTSSPIELE)
+Heimbürgeschule Kahla – Epochenhub Retro Games
+Referenzarchitektur: snes-history-game/SKILL.md
+================================================================================
+
+ÜBERSICHT DER GEPRÜFTEN UND OPTIMIERTEN SYSTEME & SPIELE:
+1. Spiel 1: Altes Ägypten – Das Geschenk des Nils
+   - Pfad: /Users/nicolekeller/Desktop/Antigravity Projekte/SNES Retro Game Aegypten
+   - Live-URL: https://retrolernspielegypt.vercel.app/
+   - Git-Commit: 9690f7b (gepusht auf origin/main)
+2. Spiel 2: Antikes Griechenland – Von der Polis zur Akropolis
+   - Pfad: /Users/nicolekeller/Desktop/Antigravity Projekte/SNES Retro Game Greek
+   - Live-URL: https://retrolernspielgreece.vercel.app/
+   - Git-Commit: a482f1b (gepusht auf origin/main)
+3. Spiel 3: Altes Rom – Vom Palatin zum Kolosseum
+   - Pfad: /Users/nicolekeller/Desktop/Antigravity Projekte/SNES Retro Game Rome
+   - Live-URL: https://retrospielrome.vercel.app/
+   - Git-Commit: d674db6 (gepusht auf origin/main)
+4. Spiel 4: Die Germanen – Vom Langhaus zum Limes
+   - Pfad: /Users/nicolekeller/Desktop/Antigravity Projekte/SNES Retro Game German Tribe
+   - Live-URL: https://retrolernspielgermanic.vercel.app/
+   - Git-Commit: f6bfcd1 (gepusht auf origin/main)
+5. Spiel 5: Die Wikinger – Vom Fjord nach Vinland
+   - Pfad: /Users/nicolekeller/Desktop/Antigravity Projekte/SNES Retro Game Vikings
+   - Live-URL: https://retrolernspielvikings.vercel.app/
+   - Git-Commit: Gepusht auf origin/main
+6. Zentraler Skill: snes-history-game/SKILL.md
+   - Pfad: /Users/nicolekeller/.gemini/config/skills/snes-history-game/SKILL.md
+
+================================================================================
+TEIL 1: SPIELÜBERGREIFENDE KERN-FIXES (ALLE 5 SPIELE)
+================================================================================
+
+1. Verbindliche 3-Ebenen-Proportionshierarchie (Spielfigur 16x32 px = Maßstab):
+   - Ebene 1 (Monumente, Gebäude, Hallen, Tempel, Langschiffe): 80–160 px (3x–5x Figur).
+   - Ebene 2 (Marktstände, Brunnen, Öfen, Altäre, Zelte, Statuen): 30–65 px (1x–2x Figur).
+   - Ebene 3 (Kleinstobjekte, Körbe, Amphoren, Fässer, Holzstapel): 14–22 px (0.4x–0.6x Figur).
+   - Alle statischen UND alle per Taste [B] gebauten Gebäude nutzen nun einheitlich
+     .setOrigin(0.5, 0.9) und die exakte Ebene-1/2-Skalierung (keine unskalierten
+     1.0-Riesen-Props oder verschobenen (0.5, 0.5)-Ursprünge mehr).
+
+2. Freischaltung & Interaktivität des Tierbegleiters (Companion.ts) ab Kapitel 1:
+   - In allen 5 Spielen ist der treue Begleiter (Anubis, Argos, Cerberus, Bran, Fenrir)
+     sofort ab Kapitel 1 (unlockedChapter: 1) aktiv und sichtbar.
+   - Streicheln funktioniert nun sowohl per Mausklick als auch über die Taste [E]
+     (Single-Proximity-Label "[E] Treuen Begleiter kraulen" bei < 44px Abstand).
+   - Akustisches Feedback beim Kraulen (sfx.pet() / sound.playPet()), Toast-Meldung
+     und aufsteigendes Pixel-Herzchen (❤️).
+   - Korrigierte DOM-Positionierung der Emote-Blase über canvas.getBoundingClientRect()
+     und cam.worldView (verhindert Versatz bei Phaser Scale.FIT).
+   - Robuster Spürsinn-Radar (< 110px) für unentdeckte Relikte/Quellen mit Fallback
+     auf flache (t.x, t.y) sowie verschachtelte (t.sprite.x, t.sprite.y) Koordinaten.
+
+3. Kinematische 16-Bit Kapitel-Banner (ChapterBanner.ts) & Kapitel-Index-Fix:
+   - Wiederverwendung des bestehenden #chapter-banner-overlay DOM-Elements in index.html
+     (verhindert doppelte DOM-Container mit identischer ID).
+   - Automatische Bereinigung doppelter Präfixe (^Kapitel\s*\d+\s*:\s*), sodass niemals
+     "KAPITEL 1: KAPITEL 1: ..." erscheint.
+   - Behebung des 1-basierten Off-by-One-Fehlers beim Kapitelwechsel: Statt CHAPTERS[state.chapter]
+     wird überall CHAPTERS.find(c => c.id === state.chapter) || CHAPTERS[state.chapter - 1]
+     genutzt.
+
+4. Automatisierter 95%-Full-Sprite AABB-Überlappungs-Linter (check_layout_overlaps.cjs):
+   - In jedem der 5 Spiele wurde scripts/check_layout_overlaps.cjs implementiert und
+     direkt in "npm run build" integriert.
+   - Prüft die echten PNG-Abmessungen aller Gebäude, Props, Bäume, Felsen, Mentoren,
+     Sammel-Hotspots, Relikte, Bauprojekte und Wildtiere mit 95% ihrer skalierten
+     Bounding-Box und bestätigt 0 Überlappungen in allen 5 Spielen.
+
+5. Interaktive Obstbäume (tree_apple / fruit_trees):
+   - In allen Spielen wurden erntbare Obstbäume ([E] Äpfel/Früchte pflücken) mit
+     Nachwachs-Timer und Heil-/Proviant-Funktion ergänzt.
+
+================================================================================
+TEIL 2: DETAIL-CHANGELOG PRO SPIEL
+================================================================================
+
+--------------------------------------------------------------------------------
+SPIEL 1: ALTES ÄGYPTEN (SNES Retro Game Aegypten) – Commit 9690f7b
+--------------------------------------------------------------------------------
+- Asset- & Spritesheet-Reparaturen:
+  * npc_guard.png & npc_mummy.png: Von fehlerhafter 16x16-Frame-Konfiguration auf
+    saubere 16x32-Charakter-Spritesheets umgestellt (keine halbierten Figuren mehr).
+  * Ungültige Atlas-Frames (zoo_b02, crane_beam_wood) entfernt, die grüne Phaser-
+    Fallback-Boxen (__MISSING) erzeugten.
+- Fauna & Roaming-Labels (Wildlife.ts & WorldScene.ts):
+  * syncLabel-Callback für alle 8 wandernden Nil- und Wüstentiere (Krokodil, Nilpferd,
+    Ibis, Kamel, Ziege, Esel, Rind, Gazelle) angebunden, damit Interaktions-Labels
+    mit dem Tier mitwandern und nicht am Spawn-Punkt kleben bleiben.
+  * Räumliche Distanzprüfung (< 48px) für das Füttern/Zähmen von Tieren ergänzt.
+- Begleiter & UI:
+  * Tesem-Hund "Anubis" ab Kapitel 1 freigeschaltet, [E]-Kraulen + sfx.pet() ergänzt.
+  * Single-Proximity-DOM-Label (< 44px) strikt durchgesetzt.
+- Layout & Proportionen:
+  * 3-Ebenen-Skalierung für Pyramiden, Tempel, Obelisken, Lehmhütten, Marktstände und
+    Amphoren durchgesetzt.
+  * 96 platzierte Objekte per check_layout_overlaps.cjs geprüft -> 0 Überlappungen.
+
+--------------------------------------------------------------------------------
+SPIEL 2: ANTIKES GRIECHENLAND (SNES Retro Game Greek) – Commit a482f1b
+--------------------------------------------------------------------------------
+- Dynamische Bauwerke & Proportionen (WorldScene.ts):
+  * renderBuiltGreekBuilding korrigiert: Nutzt nun .setOrigin(0.5, 0.9) und eine
+    dedizierte 3-Tier-Skalierungstabelle (Parthenon, Theater, Gymnasium, Stoa, Triere)
+    statt unskaliertem .setOrigin(0.5, 0.5).
+- Begleiter & Kapitel-Banner:
+  * Molosser-Hund "Argos" ab Kapitel 1 aktiv, [E]-Interaktion + Sound + Emote-Fix.
+  * ChapterBanner Off-by-One-Bug bei Kapitelaufstieg behoben.
+- Layout-Entflechtung (check_layout_overlaps.cjs):
+  * 9 Überlappungen zwischen gebauten Gebäuden, Olivenbäumen, Mentoren und Props auf
+    der Agora, Akropolis und im Hafen von Piräus aufgelöst.
+  * 77 platzierte Objekte geprüft -> 0 Überlappungen.
+
+--------------------------------------------------------------------------------
+SPIEL 3: ALTES ROM (SNES Retro Game Rome) – Commit d674db6
+--------------------------------------------------------------------------------
+- Bild-Bereinigung (8 abgeschnittene/zusammengesetzte PNGs in public/assets/rome/):
+  * villa_rustica.png, roman_amphora_group.png, column_corinthian.png,
+    roman_cart_goods.png, roman_milestone.png, statue_gladiator.png,
+    fountain_marble_large.png und ara_pacis_altar.png per Connected-Component-Analyse
+    von abgeschnittenen Nachbarkachel-Rändern befreit.
+  * Opakes lupa_wolf_sprite-Rechteck entfernt.
+- Fehlende world_atlas-Frames behoben (WorldScene.ts):
+  * 9 nicht existierende Frame-Namen (reed_1 -> grass_1, water_rock_1 -> rock_small_a,
+    tree_1 -> tree_oak_1, bush_1 -> bush_a, log_h -> logs_a) ersetzt -> 0 fehlende Texturen.
+- Proportionen & Katakomben (WorldScene.ts & CatacombScene.ts):
+  * 3-Ebenen-Skalierung für Kolosseum, Pantheon, Triumphbogen, Aquädukt, Marktstände,
+    Statuen und Kleinst-Props (Amphoren, Körbe, Kohlenbecken) in Oberwelt & Katakomben.
+  * Wachhund "Cerberus" ab Kapitel 1 freigeschaltet, [E]-Kraulen + Apfelbäume ergänzt.
+  * 133 platzierte Objekte geprüft -> 0 Überlappungen.
+
+--------------------------------------------------------------------------------
+SPIEL 4: DIE GERMANEN (SNES Retro Game German Tribe) – Commit f6bfcd1
+--------------------------------------------------------------------------------
+- Bild-Bereinigung (14 Composite-/Multi-Item-PNGs in public/assets/props/):
+  * langhaus_gable_hall.png (auf sauberes 68x58 Fachwerk-Langhaus gesetzt),
+    rennofen_clay_smelter.png, charcoal_meiler_smoke.png, wood_log_pile.png,
+    limes_palisade_barrier.png, water_barrels_wood.png, herbs_medicinal_table.png,
+    limes_watchtower_wood.png, anvil_and_forge.png, roman_trader_canopy.png,
+    roman_forum_market.png, roman_praetorium_red.png, legion_aquila_vexillum.png
+    und scutum_shield_line.png auf Einzel-Sprites gecroppt.
+- Sichtbares Flusswasser & Limes-Furt (WorldScene.ts):
+  * Da Overworld.png an [16,16,16,16] Sand statt Wasser enthielt, wurde fließendes
+    blaues Flusswasser mit Wellen-Highlights und Sandufer direkt in
+    bakeGermanicTerrainTexture eingebacken und die Holzbohlen-Furt auf 0.18 skaliert.
+- Gameplay-, UI- & Begleiter-Fixes:
+  * Wolfshund "Bran" ab Kapitel 1 aktiv, [E]-Kraulen + playPet() + Apfelbaum ergänzt.
+  * Sichtbares Rendering für alle 8 errichteten GERMAN_BUILDINGS (Taste [B]) ergänzt.
+  * ID-Abgleich für relic_kalkriese_maske in UIScene.ts repariert.
+  * 98 platzierte Objekte geprüft -> 0 Überlappungen.
+
+--------------------------------------------------------------------------------
+SPIEL 5: DIE WIKINGER (SNES Retro Game Vikings)
+--------------------------------------------------------------------------------
+- Bild-Bereinigung (15 Composite-/Multi-Item-PNGs in public/assets/props/):
+  * viking_langhaus_large.png (192x192 Doppelhaus -> 96x191 Einzel-Met-Halle)
+  * viking_longhouse_thatched.png (192x192 Doppelhaus -> 96x189 Einzel-Langhaus)
+  * viking_drakkar_full.png (192x144 Schiff + Mast darunter -> 186x96 Einzel-Drakkar)
+  * viking_knarr_trading.png (192x144 4 Schiffsteile -> 96x86 Einzel-Knarr)
+  * viking_ship_blue_sail.png (linker Nachbar-Sprite-Rand entfernt -> 184x189)
+  * viking_wooden_dock.png (192x96 L-Steg + Querbalken -> 128x65 gerader Holzsteg)
+  * viking_fishnet_drying.png (96x96 Netz + Schild + Fels -> 54x92 Fischernetz)
+  * viking_blot_fire_altar.png (96x96 Feuerschale + 2. Schale darunter -> 89x71)
+  * viking_god_totem_odin.png (96x192 Totem + Zusatzkopf -> 32x155 Einzel-Totem)
+  * viking_god_totem_wolf.png (96x192 Totem + Zusatzkopf -> 44x155 Einzel-Totem)
+  * monastery_stone_arch.png (96x144 Bogen + Buch/Kerzen -> 96x97 Steinbogen)
+  * paris_stone_tower.png (96x192 Mauer + Turm -> 96x96 Steinturm)
+  * siege_catapult_wood.png (96x96 2x2-Grid -> 44x41 Einzel-Katapult)
+  * battlefield_wooden_stakes.png (96x96 2x2-Grid -> 45x47 Einzel-Palisade)
+- Sichtbares Fjord- & Seine-Wasser (WorldScene.ts):
+  * Tiefblaues Fjordwasser (x < 17, y < 38) und der südliche Flusslauf (x=34..40, y=54..76)
+    mit diagonalen Wellen-Glanzlinien und Sandstrand direkt in bakeVikingTerrainTexture
+    eingebacken.
+- Begleiter, Proportionen & Layout-Entflechtung:
+  * Fjordhund "Fenrir" ab Kapitel 1 aktiv, [E]-Kraulen + playPet() + Apfelbaum ergänzt.
+  * 3-Tier-Skalierung für alle Bauten, Schiffe, Runensteine, Altäre und Hafen-Props.
+  * Duplikat-Hütte in Jorvik (Kapitel 7) sowie Pferde-/Heuschober-Überlappung in
+    Wildlife.ts behoben.
+  * 117 platzierte Objekte (inkl. Fauna-Spawns) geprüft -> 0 Überlappungen.
+
+================================================================================
+TEIL 3: ERWEITERUNG DES ZENTRALEN SKILLS (snes-history-game/SKILL.md)
+================================================================================
+1. Sektion 1.13 (Companion.ts): Verbindliche Freischaltung in Kapitel 1, [E]-Tastatur-
+   und Maus-Streicheln mit Sound, getBoundingClientRect()-Emote-Positionierung und
+   robuster Spürsinn-Koordinaten-Fallback (t.x ?? t.sprite?.x).
+2. Sektion 1.17 (ChapterBanner.ts): Wiederverwendung von #chapter-banner-overlay,
+   Regex-Bereinigung redundanter "Kapitel X:"-Präfixe und 1-basierter Kapitel-Lookup.
+3. Sektion 2.5.1 (Proportions- & Asset-Hygiene): Verbot von Composite-Sprites und
+   abgeschnittenen Nachbarkachel-Rändern, Pflicht-Validierung aller world_atlas-Frames,
+   interaktive Obstbäume (tree_apple) und eingebackenes Fluss-/Fjordwasser im Terrain.
+4. Sektion 3.5 (WildlifeManager.ts): Mitwandernde Label-Synchronisation (syncLabel)
+   und räumliche Distanzprüfung (< 48px) beim Füttern/Zähmen.
+5. Sektion 6.2.1 (check_layout_overlaps.cjs): Strikter 95%-Full-Sprite AABB-Linter
+   als verpflichtendes Build-Gate inklusive Fauna-Spawn-Prüfung.
+================================================================================

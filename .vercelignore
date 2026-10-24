@@ -1,0 +1,24 @@
+# Dependencies & Caches
+node_modules
+.npm
+.cache
+
+# Scaffold & Template Assets (Only needed locally for game creation)
+assets/
+raw_assets/
+*.rar
+*.zip
+
+# Dev & Documentation
+scratch/
+verify_output/
+*.pdf
+!public/**/*.pdf
+*.txt
+!public/**/*.txt
+
+# Git & System
+.git
+.github
+.DS_Store
+*.log
