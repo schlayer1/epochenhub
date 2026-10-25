@@ -1,72 +1,99 @@
 /**
- * Haptische Mini-Stationen & Interaktive Puzzles
- * Standardisierte Vorlagen für epochenspezifische handlungsorientierte Minispiele.
+ * 12-Archetypen Didaktik-Pool für Haptische Mitmach-Stationen & Interaktive Minispiele
+ * Heimbürgeschule Kahla – Epochenhub Retro Games
+ * 
+ * Jedes Spiel wählt genau 5 passende Stationen aus diesem 12er-Pool,
+ * um maximale Abwechslung für Schüler bei mehreren Epochenspielen zu garantieren!
  */
 
-export type StationType = 'scale' | 'decoder' | 'brush' | 'sluice';
+export type StationType =
+  | 'mortar_crafting'     // 1. Mischen & Mahlen (Kräutermörser, Farben, Salben, Mehl)
+  | 'forge_rhythm'        // 2. Schmieden & Hämmern (Rhythmisches Hämmern am Amboss, Kupfer treiben)
+  | 'sorting_balance'     // 3. Zuordnen & Kategorisieren (Zehntabgaben, Erntegüter, Werkzeuge)
+  | 'scale_weighing'      // 4. Balkenwaage & Handeln (Kupfer-Deben, Silberdenare, Gewichte austarieren)
+  | 'sealing_diplomacy'   // 5. Urkunden & Siegeln (Siegelwachs schmelzen, Petschaft aufdrücken)
+  | 'crop_rotation'       // 6. Zyklus & Landwirtschaft (Dreifelderwirtschaft, Nil-Überflutung, Saat/Ernte)
+  | 'excavation_brush'    // 7. Archäologische Ausgrabung (Pinselabstrich bei Bodenschichten)
+  | 'arch_construction'  // 8. Baukunst & Statik (Schlussstein setzen, Rundbogen/Fachwerk bauen)
+  | 'chronology_timeline' // 9. Zeitstrahl-Schieber (Prozess- und Geschichtsschritte ordnen)
+  | 'symbol_decoder'      // 10. Schrift & Entzifferung (Hieroglyphen, Runen, Latein decodieren)
+  | 'tribunal_vote'       // 11. Historischer Rat & Urteil (Thing-, Senats- oder Zunftabstimmung)
+  | 'astronomy_dial';     // 12. Gestirne & Kalender (Sonnenuhr, Nebra-Himmelscheibe ausrichten)
 
 export interface StationDef {
   id: string;
   type: StationType;
   title: string;
+  subtitle?: string;
   mentorSpeaker: string;
-  instructionText: string; // Schülergerechte Anleitung
+  instructionText: string;
   historicalContext: string;
   chapter: number;
-  config: any; // Puzzlespezifische Konfiguration (z. B. Zielgewichte, Runenpaare, Schleusen-Ausrichtung)
+  config: Record<string, any>;
   rewardItem: string;
   rewardQty: number;
+  rewardPoints: number;
 }
 
-export const SAMPLE_STATIONS: Record<string, StationDef[]> = {
-  aegypten: [
-    {
-      id: 'station_bazaar_scale',
-      type: 'scale',
-      title: 'Die Balkenwaage des Wesirs (Markt von Memphis)',
-      mentorSpeaker: 'Marktmeister Khaemwaset',
-      instructionText: 'Tariere die Waage aus: Ziehe die richtigen Kupfer-Deben Gewichtssteine auf die rechte Schale, bis die Waage im perfekten Gleichgewicht steht!',
-      historicalContext: 'Im Alten Ägypten gab es noch keine geprägten Münzen. Bezahlt wurde nach festen Gewichten von Kupfer oder Silber – der Grundeinheit Deben (ca. 91 Gramm).',
-      chapter: 3,
-      config: {
-        targetWeight: 5, // 5 Deben
-        weightsAvailable: [1, 2, 2, 5],
-        itemOnScale: '1 Sack Emmer-Getreide'
-      },
-      rewardItem: 'copper_deben',
-      rewardQty: 3
-    },
-    {
-      id: 'station_hieroglyph_decoder',
-      type: 'decoder',
-      title: 'Das Papyrus-Rätsel im Haus des Lebens',
-      mentorSpeaker: 'Oberster Schreiber Ahmose',
-      instructionText: 'Entziffer die 4 königlichen Namenskartuschen durch Drehen des Schriftrades!',
-      historicalContext: 'Hieroglyphen wurden mit Binsenrohr und schwarzer Ruß-Tinte auf echtes Papyrus geschrieben. Nur wenige ausgewählte Kinder durften Schreiber werden.',
-      chapter: 5,
-      config: {
-        symbols: ['ra', 'anubis', 'scarab', 'ankh'],
-        solution: ['Sonne', 'Schutz', 'Wiedergeburt', 'Ewiges Leben']
-      },
-      rewardItem: 'papyrus_scroll',
-      rewardQty: 1
-    }
-  ],
-  steinzeit: [
-    {
-      id: 'station_mammoth_brush',
-      type: 'brush',
-      title: 'Die Ausgrabungsschicht am Mammutfund',
-      mentorSpeaker: 'Archäologe Dr. Keller',
-      instructionText: 'Wische mit dem Pinsel vorsichtig den Ufersand weg, um die eiszeitliche Jagdspitze freizulegen!',
-      historicalContext: 'Archäologen nutzen feine Pinsel und Holzkratzer, um jahrtausendealte Knochen- und Steinwerkzeuge nicht zu beschädigen.',
-      chapter: 2,
-      config: {
-        revealThresholdPercent: 85,
-        hiddenArtifactKey: 'flint_spearhead'
-      },
-      rewardItem: 'flint_spearhead',
-      rewardQty: 1
-    }
-  ]
+export const STATION_ARCHETYPES_CATALOG: Record<StationType, { name: string; description: string; sampleEpoch: string }> = {
+  mortar_crafting: {
+    name: 'Mischen, Mahlen & Rezeptur',
+    description: 'Schüler geben 3 historische Zutaten nacheinander in den Mörser und vollziehen chemisch-haptische Prozesse nach.',
+    sampleEpoch: 'Mittelalter (Kräutermörser) / Steinzeit (Farben aus Ocker & Tierfett) / Ägypten (Balsamierung)',
+  },
+  forge_rhythm: {
+    name: 'Rhythmus, Schmieden & Verformung',
+    description: 'Glühendes Metall im Takt des Hammers bearbeiten, wenn der Timing-Marker im grünen Bereich ist.',
+    sampleEpoch: 'Mittelalter (Waffenschmiede) / Germanen (Schwertschmiede) / Steinzeit (Kupferkalt-Treiben)',
+  },
+  sorting_balance: {
+    name: 'Zuordnen & Kategorisieren',
+    description: 'Abgaben, Werkzeuge oder Quellen nach Stand, Qualität oder Bestimmungsort in Körbe einsortieren.',
+    sampleEpoch: 'Mittelalter (Zehntabgaben für Grundherr/Kirche/Bauer) / Rom (Patrizier vs. Plebejer Güter)',
+  },
+  scale_weighing: {
+    name: 'Balkenwaage & Handeln',
+    description: 'Gewichtssteine auf eine Balkenwaage ziehen, bis das Gleichgewicht exakt austariert ist.',
+    sampleEpoch: 'Ägypten (Kupfer-Deben) / Rom (As-Münzen wiegen) / Wikinger (Hacksilber)',
+  },
+  sealing_diplomacy: {
+    name: 'Urkunden, Siegel & Verträge',
+    description: 'Rechtsdokumente auf Pergament prüfen, heißes Wachs gießen und das Amtssiegel aufdrücken.',
+    sampleEpoch: 'Mittelalter (Lehnsurkunde siegeln) / Napoleon (Code Civil ratifizieren) / Rom (Senatsbeschluss)',
+  },
+  crop_rotation: {
+    name: 'Zyklus & Fruchtfolge',
+    description: 'Drei Felder zyklisch rotieren: Brache (Erholung), Winterfrucht (Roggen), Sommerfrucht (Hafer).',
+    sampleEpoch: 'Mittelalter (Dreifelderwirtschaft) / Ägypten (Achet/Peret/Schemu) / Steinzeit (Brandrodung)',
+  },
+  excavation_brush: {
+    name: 'Archäologische Ausgrabung',
+    description: 'Mit dem Pinsel vorsichtig Sedimentschichten freilegen, um historische Leitfunde unbeschädigt zu bergen.',
+    sampleEpoch: 'Steinzeit (Ötzis Kupferbeil) / Ägypten (Tutenchamun-Grab) / Urgeschichte (Fossilien)',
+  },
+  arch_construction: {
+    name: 'Baukunst & Statik',
+    description: 'Konstruktionssteine eines Bauwerks in korrekter statischer Reihenfolge einsetzen (z. B. Schlussstein).',
+    sampleEpoch: 'Rom (Aquädukt-Rundbogen) / Gotik (Spitzbogen-Rippe) / Ägypten (Pyramiden-Kragstein)',
+  },
+  chronology_timeline: {
+    name: 'Zeitstrahl-Schieber',
+    description: 'Historische Ereignisse oder Handwerksschritte chronologisch von links nach rechts in die Zeitleiste schieben.',
+    sampleEpoch: 'Napoleon (Aufstieg bis Waterloo) / 1. Weltkrieg (Juli-Krise 1914) / Steinzeit (Epochenfolge)',
+  },
+  symbol_decoder: {
+    name: 'Schrift & Entzifferung',
+    description: 'Alte Schriften durch Drehen von Chiffrierscheiben oder Bildkarten entziffern.',
+    sampleEpoch: 'Ägypten (Hieroglyphen) / Germanen & Wikinger (Runen) / Rom (Lateinische Inschriften)',
+  },
+  tribunal_vote: {
+    name: 'Historischer Rat & Schiedsgericht',
+    description: 'Als Ratsmitglied oder Richter die Argumente abwägen und weiße/schwarze Stimmsteine abgeben.',
+    sampleEpoch: 'Germanen (Thing-Versammlung) / Griechenland (Scherbengericht) / Mittelalter (Schöffengericht)',
+  },
+  astronomy_dial: {
+    name: 'Gestirne & Kalender',
+    description: 'Sonnenuhr, Sternenhimmel oder Himmelscheibe ausrichten, um den Tag der Sommersonnenwende zu bestimmen.',
+    sampleEpoch: 'Steinzeit (Himmelscheibe von Nebra) / Ägypten (Sirius-Aufgang) / Babylon (Mondkalender)',
+  },
 };
