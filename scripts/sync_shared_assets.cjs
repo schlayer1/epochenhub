@@ -37,9 +37,47 @@ function detectEpoch(targetPath) {
   if (folderName.includes('rome') || folderName.includes('rom')) return 'rom';
   if (folderName.includes('german')) return 'germanen';
   if (folderName.includes('viking') || folderName.includes('wikinger')) return 'wikinger';
+  if (folderName.includes('mittelalter') || folderName.includes('medfeudal') || folderName.includes('feudal') || folderName.includes('medieval')) return 'mittelalter';
   if (folderName.includes('snes retro game') || folderName.includes('steinzeit')) return 'steinzeit';
 
   return 'all';
+}
+
+function isAssetMatchingEpoch(asset, epoch) {
+  if (epoch === 'all') return true;
+
+  // 1. Explizite Epoch-Tags
+  if (asset.epochs && Array.isArray(asset.epochs)) {
+    if (asset.epochs.includes(epoch)) return true;
+    if (asset.epochs.length === 0) return true;
+  }
+
+  // 2. Didaktische Topics-Tags
+  if (asset.topics && Array.isArray(asset.topics)) {
+    if (asset.topics.includes(epoch)) return true;
+    if (epoch === 'mittelalter') {
+      const medievalKeywords = ['mittelalter', 'rittertum', 'burgen', 'bauerntum', 'frondienst', 'agrarrevolution', 'mittelalterliche_justiz'];
+      if (asset.topics.some(t => medievalKeywords.includes(t))) return true;
+    }
+  }
+
+  // 3. Quellpaket-Präfixe für Epochen
+  if (epoch === 'mittelalter') {
+    if (asset.id.startsWith('keep_') || asset.id.startsWith('farm_') || asset.id.startsWith('interior_')) {
+      return true;
+    }
+  }
+
+  // 4. Universelle Fauna- und Flora-Bestände
+  const universalAnimals = ['cow_brown', 'calf_brown', 'chicken_brown', 'duck', 'pig', 'sheep', 'horse', 'critters', 'fishing_fishes', 'goat', 'rabbit'];
+  if (asset.category === 'fauna' && universalAnimals.some(u => asset.id.includes(u))) {
+    return true;
+  }
+  if (asset.category === 'flora' && (asset.id.includes('crops') || asset.id.includes('bushes') || asset.id.includes('trees') || asset.id.includes('forage'))) {
+    return true;
+  }
+
+  return false;
 }
 
 function runSync() {
@@ -61,22 +99,17 @@ function runSync() {
     process.exit(1);
   }
 
-  const targetFauna = path.join(targetPublic, 'fauna');
-  const targetFlora = path.join(targetPublic, 'flora');
-  const targetProps = path.join(targetPublic, 'props');
-  const targetTilesets = path.join(targetPublic, 'tilesets');
-
-  if (!fs.existsSync(targetFauna)) fs.mkdirSync(targetFauna, { recursive: true });
-  if (!fs.existsSync(targetFlora)) fs.mkdirSync(targetFlora, { recursive: true });
-  if (!fs.existsSync(targetProps)) fs.mkdirSync(targetProps, { recursive: true });
-  if (!fs.existsSync(targetTilesets)) fs.mkdirSync(targetTilesets, { recursive: true });
+  const categories = ['fauna', 'flora', 'props', 'tilesets', 'characters', 'animations', 'scenes'];
+  for (const cat of categories) {
+    const dir = path.join(targetPublic, cat);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  }
 
   let copiedCount = 0;
   const phaserSnippets = [];
 
   for (const asset of manifest.assets) {
-    const isMatchingEpoch = epoch === 'all' || asset.epochs.includes(epoch) || asset.epochs.length === 0;
-    if (!isMatchingEpoch) continue;
+    if (!isAssetMatchingEpoch(asset, epoch)) continue;
 
     const srcFile = path.join(SHARED_DIR, asset.category, asset.cleanName);
     const destDir = path.join(targetPublic, asset.category);
@@ -96,7 +129,7 @@ function runSync() {
   }
 
   console.log(`\n✅ ${copiedCount} Spritesheets erfolgreich nach 'public/assets/' synchronisiert!`);
-  console.log(`Fauna & Flora stehen dem Spiel nun lokal zur Verfügung.`);
+  console.log(`Fauna, Flora, Props, Charaktere & Animationen stehen dem Spiel nun lokal zur Verfügung.`);
 }
 
 runSync();

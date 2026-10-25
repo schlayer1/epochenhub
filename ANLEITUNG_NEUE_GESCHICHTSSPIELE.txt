@@ -28,6 +28,15 @@ Optionale Zusatzwünsche (kannst du anhängen, musst du aber nicht):
 - Spezifische historische Persönlichkeiten als Mentoren (z. B. "Mentor: Hildegard von Bingen").
 - Besondere Leitfunde oder Handwerksstationen.
 - Besondere regionale Bezüge (z. B. Thüringer Burgen, Saale, Leuchtenburg).
+- Liste ausgewählter Wunsch-Assets aus dem "Retro Asset Studio"-Korb (z. B. per Button "Prompt für KI kopieren").
+
+HINWEIS (ERINNERUNGS-AUTOMATIK):
+Hast du im Initial-Prompt noch keine Assets vorgegeben, fragt die KI vor dem Start
+von Phase 1 genau EINMAL verbindlich nach:
+"Möchtest du bestimmte Kacheln/Sprites aus dem Retro Asset Studio vorgeben, oder soll
+ich die Kulissen autonom wählen?"
+So kannst du es niemals vergessen! Antwortest du mit "Autonom" oder deinen Korb-Assets,
+startet das Spiel sofort.
 
 --------------------------------------------------------------------------------
 2. WELCHE ZUARBEIT ES VON DIR BENÖTIGT
