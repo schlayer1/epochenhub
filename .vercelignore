@@ -4,18 +4,25 @@ node_modules
 .cache
 
 # Scaffold & Template Assets (Only needed locally for game creation)
-assets/
-raw_assets/
+/assets/
+/assets_library/
+/assets_inbox/
+/raw_assets/
 *.rar
 *.zip
 
 # Dev & Documentation
-scratch/
-verify_output/
+/scratch/
+/verify_output/
 *.pdf
 !public/**/*.pdf
 *.txt
 !public/**/*.txt
+
+# Explicit Whitelist: All assets in public MUST be deployed
+!public/
+!public/**
+!public/assets/**
 
 # Git & System
 .git
