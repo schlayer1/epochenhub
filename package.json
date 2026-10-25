@@ -10,7 +10,8 @@
     "ingest": "node scripts/ingest_inbox.cjs",
     "ingest-master": "node scripts/ingest_master_library.cjs",
     "catalog": "node scripts/import_and_catalog_spritesheets.cjs",
-    "distribute-assets": "node scripts/distribute_assets.cjs"
+    "distribute-assets": "node scripts/distribute_assets.cjs",
+    "cleanup-deployments": "node scripts/cleanup_vercel_deployments.cjs"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",
