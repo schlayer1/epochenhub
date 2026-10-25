@@ -246,6 +246,46 @@ export const EPOCH_GAMES: EpochGame[] = [
         badge: 'Arbeitsblatt'
       }
     ]
+  },
+  {
+    id: 'das-mittelalter-feudalsystem',
+    title: 'Ritter, Burg & Dorf – Das Feudalsystem',
+    shortTitle: 'Das Mittelalter',
+    subtitle: 'Grundherrschaft, Lehnswesen & Rittertum',
+    epoch: 'Europäisches Mittelalter',
+    epochCategory: 'mittelalter',
+    period: 'ca. 1050 – 1250 n. Chr.',
+    yearStart: 1050,
+    yearEnd: 1250,
+    grade: 'Klasse 6 / 7',
+    chaptersCount: 8,
+    duration: 'ca. 45–60 Min.',
+    liveUrl: 'https://retrolernspielmedfeudal.vercel.app/',
+    coverImage: '/assets/covers/medieval_feudal_cover.png',
+    spriteImage: '/assets/sprites/medieval_hero.png',
+    theme: {
+      primary: '#78350f',
+      accent: '#d97706',
+      badgeBg: 'bg-amber-950/90 text-amber-300 border-amber-700',
+      border: 'border-amber-600',
+      glowClass: 'hover:shadow-[0_0_25px_rgba(217,119,6,0.35)]',
+    },
+    guidingQuestion: 'Wie prägte das Beziehungsgeflecht aus Grundherrschaft, Lehnswesen und den drei Ständen das Leben im Hochmittelalter?',
+    didacticFocus: [
+      'Grundherrschaft & Hörigkeit: Salland, Frondienst und der Zehnte im dörflichen Alltag.',
+      'Agrarrevolution & Dreifelderwirtschaft: Wendepflug, Kummet und Dreifelder-Fruchtwechsel.',
+      'Die feudale Lehnspyramide: Gegenseitige Treueide, Lehnsgerichtsbarkeit und Heeresfolge.',
+      'Die Dreiständelehre: Oratores (Betende), Bellatores (Kämpfende) und Laboratores (Arbeitende).'
+    ],
+    tags: ['Mittelalter', 'Feudalismus', 'Ritter', 'Grundherrschaft', 'Lehnswesen', 'Kloster', 'Dreifelderwirtschaft'],
+    companionMaterials: [
+      {
+        title: 'A4-Hefterblatt zur Grundherrschaft & Lehnspyramide',
+        type: 'pdf',
+        url: '#',
+        badge: 'Klasse 6/7'
+      }
+    ]
   }
 ];
 
