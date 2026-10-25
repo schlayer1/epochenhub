@@ -8,6 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "ingest": "node scripts/ingest_inbox.cjs",
+    "ingest-master": "node scripts/ingest_master_library.cjs",
     "catalog": "node scripts/import_and_catalog_spritesheets.cjs",
     "distribute-assets": "node scripts/distribute_assets.cjs"
   },

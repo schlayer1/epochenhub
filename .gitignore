@@ -13,6 +13,9 @@ dist-ssr
 *.local
 scratch/
 verify_output/
+assets_library/
+assets_inbox/*
+!assets_inbox/README.md
 
 # Editor directories and files
 .vscode/*

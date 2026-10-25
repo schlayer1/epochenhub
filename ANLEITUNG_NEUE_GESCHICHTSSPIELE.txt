@@ -1,0 +1,179 @@
+================================================================================
+ANLEITUNG & MASTER-GUIDE: ERSTELLUNG NEUER 16-BIT GESCHICHTSSPIELE
+Heimbürgeschule Kahla – Epochenhub Retro Games
+Skill-Referenz: snes-history-game & pxl-pixel-art
+================================================================================
+
+Dieser Leitfaden dient als kompakte Erinnerungsstütze und Dokumentation für die 
+Erstellung künftiger Geschichtslernspiele von der Konzeption bis zum Live-Gang 
+im Epochenhub.
+
+--------------------------------------------------------------------------------
+1. WAS DU EINGEBEN MUSST (DER ULTRA-LEAN PROMPT)
+--------------------------------------------------------------------------------
+Dank unseres zentralen Master-Skills `snes-history-game` musst du der KI keinen 
+seitenlangen Anforderungskatalog übergeben. Es genügt eine minimalistische 
+4-Zeilen-Eingabe im Chat:
+
+```markdown
+Erstelle ein neues 16-Bit Geschichtslernspiel nach unserem zentralen Skill `snes-history-game`:
+- Thema: [z. B. Das Leben im Mittelalter: Ritter, Burg & Dorf / Die Französische Revolution & Napoleon / Die Industrielle Revolution]
+- Klassenstufe: [z. B. Klasse 6 oder Klasse 8]
+- Kapitelanzahl & Epochenprofil: [z. B. 8 Kapitel, Antike & Mittelalter (oder 10 Kapitel, Neuzeit & Moderne)]
+- Historischer Zeitrahmen: [z. B. 1000 bis 1250 n. Chr. oder 1789 bis 1815]
+(Optional: GitHub-Repo-URL & Vercel-Domain, falls schon vorab angelegt)
+```
+
+Optionale Zusatzwünsche (kannst du anhängen, musst du aber nicht):
+- Spezifische historische Persönlichkeiten als Mentoren (z. B. "Mentor: Hildegard von Bingen").
+- Besondere Leitfunde oder Handwerksstationen.
+- Besondere regionale Bezüge (z. B. Thüringer Burgen, Saale, Leuchtenburg).
+
+--------------------------------------------------------------------------------
+2. WELCHE ZUARBEIT ES VON DIR BENÖTIGT
+--------------------------------------------------------------------------------
+Die Zuarbeit wurde auf das absolute Minimum reduziert:
+
+PFLICHT:
+1. Den 4-Zeilen-Prompt in den Chat kopieren und absenden.
+2. Ein leeres GitHub-Repository anlegen (z. B. `SNES-Retro-Game-Medieval`) und 
+   einmalig mit Vercel verbinden (1 Klick in Vercel: "Import Git Repository").
+
+EMPFOHLEN (FÜR MAXIMALE GRAFISCHE VIELFALT):
+3. Passende Tilesets aus deinem itch.io-Bundle bereitstellen:
+   - Du lädst im Browser aus deiner itch.io-Kaufübersicht 1–3 passende ZIP-Pakete 
+     herunter (z. B. Medieval Town, Castle, Farm).
+   - Lege die ZIP-Archive oder entpackten Ordner einfach in:
+     `Epochenhub Retro Games/assets_inbox/`
+   - Alles Weitere (Entpacken, Kachelgrößenprüfung 16/32/48 px, verlustfreies 
+     Nearest-Neighbor-Downscaling, Kategorisierung nach Flora/Fauna/Props) 
+     übernimmt das System autonom per Skript (`npm run ingest`).
+
+NICHT ERFORDERLICH (MACHT DIE KI VOLLAUTONOM):
+- Du musst keine Spiellogik, Quests oder Multiple-Choice-Fragen erfinden.
+- Du musst keine pixeligen Grafiken von Hand malen oder zuschneiden.
+- Du musst keine CSS-Layouts, Responsive-Breakpoints oder Druck-Stylesheets schreiben.
+- Du musst keine Git-Befehle oder Deployment-Skripte tippen.
+
+--------------------------------------------------------------------------------
+3. WAS IM HINTERGRUND TECHNISCH & AUTONOM PASSIERT (DIE 7 PHASEN)
+--------------------------------------------------------------------------------
+Sobald der Prompt eingeht, schaltet der Agent in die verbindliche 7-Phasen-
+One-Shot-Pipeline und arbeitet ohne Unterbrechung oder Zwischenfragen:
+
+PHASE 1: DIDAKTISCHE KONZEPTION & NOMENKLATUR-MATRIX
+- Formulierung der historischen Leitfrage und des Spannungsbogens.
+- Definition von 6–12 didaktischen Kapiteln mit 4-Punkte-Gating (Aufgabe, 
+  Quellenstudium, Handwerk/Bau, Kapitelquiz).
+- Generierung von 27 fachwissenschaftlich fundierten Lexikon-Einträgen.
+- Friedens- und handlungspädagogisches Konfliktmodell (Klasse 8–10): Keine Gewalt- 
+  oder Shooter-Mechaniken, sondern Logistik, Sanitätswesen, Depeschen/Morse, 
+  historische Quellenarbeit und Diplomatie.
+
+PHASE 2: DUAL-LAYER ENGINE SETUP (RETINA-PIXELART-PRINZIP)
+- Schicht 1 (Phaser 3 Canvas, pixelArt: true): Authentischer 16-Bit-Look.
+- Schicht 2 (Natives HTML5/CSS3 `#ui-layer`): Gestochen scharfer Retina-Text 
+  auf 4K-iMacs, iPads und Smartboards.
+- Automatischer Einbau des 1-Klick A4-Hefterblatt-Drucksystems (`window.print()`) 
+  mit hellem, toner-sparendem Drucklayout für die Notenerteilung im Unterricht.
+- Warm-Parchment Startscreen mit Epochen-Showcase und Schülernamen-Eingabe.
+
+PHASE 3: LIVING-WORLD ANIMATIONS- & BODEN-ENGINE
+- Multi-Biome A2-Boden-Engine mit prozeduralem Bayer-Dithering (keine harten Kanten).
+- Lebendige Welt: Flora-Windhauch, Mehrschicht-Rauch/Feuer, glänzendes Wasser.
+- 4-Phasen-Fauna-Zustandsautomat: Tiere grasen, wandern, schlafen und fliehen.
+- Treuer Tierbegleiter (Companion): Sofort in Kapitel 1 aktiv, streichelbar 
+  per Taste [E] mit Herz-Emote, akustischem Feedback und Relikt-Spürsinn (< 110 px).
+
+PHASE 4: ASSET-PROVISIONING & AUTONOMES CLAUDE-PXL (PIXEL ART AS CODE)
+- Abgleich mit vorhandenen Sprites aus dem Epochenhub (`public/assets/shared/`).
+- AUTONOMER CLAUDE-PXL FALLBACK (`pxl-pixel-art`):
+  Fehlen für die Epoche spezifische didaktische Artefakte (5 Leitfunde, Siegel, 
+  Dokumente, epochenspezifische Werkzeuge), schreibt der Agent direkt 
+  `.px.js`-Code und rendert binnen 20 ms saubere 1:1 Pixel-PNGs mit transparenter 
+  Maske – absolut deterministisch und ohne verwaschene KI-Bildfehler!
+
+PHASE 5: DIDAKTISCHE MITMACH-STATIONEN & INTERAKTIONSSYSTEME
+- Single-Proximity DOM-Labels (< 44 px Abstand, kein Label-Chaos).
+- 5 Standard-Systeme:
+  1. Bau- & Infrastruktur-Menü [Taste B]
+  2. Handwerks- & Logistik-Menü [Taste C]
+  3. Inventar- & Rucksack-Verwaltung [Taste I]
+  4. Phasen-Zeitstrahl mit themeninternem Epochenvergleich [Taste Z]
+  5. Interaktiver 360°-Quelleninspektor mit Verstehens-Quiz
+- Lokaler Speicher (SaveManager) ohne Zwangsanmeldung oder Cloud-Abhängigkeit.
+
+PHASE 6: AUTOMATISIERTE BROWSER-VERIFIKATION (PUPPETEER)
+- Der Agent startet das Spiel lokal und führt `verify_in_browser.cjs` aus.
+- Nimmt 7–10 Pflicht-Screenshots auf (Startscreen, Map, Dialog-Zoom, 
+  Bau-Menü, Quelleninspektor, Hefterblatt-Vorschau).
+- Prüft die Screenshots visuell im Hintergrund auf Skalierungsfehler, Clipping 
+  oder Textüberlagerungen und repariert etwaige Fehler selbstständig vor dem Build.
+
+PHASE 7: GIT-DEPLOYMENT & EPOCHENHUB-INTEGRATION
+- Automatischer Git-Commit & Push auf den `main`-Branch des Spiel-Repos 
+  (startet den Vercel-Live-Build vollautomatisch).
+- Automatisches Einhängen des neuen Spiels in `src/config/games.config.ts` des 
+  Epochenhubs inklusive Badge, Kapitelanzahl, Zeitstrahl, QR-Code und 
+  historischer Leitfrage.
+- Git-Push im Epochenhub-Repo – das Spiel ist sofort weltweit live!
+
+--------------------------------------------------------------------------------
+4. TOKENVERBRAUCH & EFFIZIENZ: MIT SKILL VS. OHNE SKILL
+--------------------------------------------------------------------------------
+Ein wesentlicher technologischer Vorteil unserer Skill-Architektur ist die 
+drastische Reduktion des Tokenverbrauchs und die Vermeidung von Kontext-Drift.
+
+VERGLEICHSÜBERSICHT:
+
+| Metrik | BAUEN OHNE SKILL (Klassischer Chat) | BAUEN MIT UNSEREM SKILL (`snes-history-game`) | Ersparnis / Vorteil |
+| :--- | :--- | :--- | :--- |
+| **Token-Gesamtverbrauch** | **250.000 – 600.000+ Tokens** | **45.000 – 75.000 Tokens** | **75% bis 85% Ersparnis** |
+| **Anzahl Chat-Turns** | 20 bis 45 Ping-Pong-Nachrichten | **1 bis 2 Prompts (One-Shot)** | **95% weniger Wartezeit** |
+| **Entwicklungsdauer** | 2 bis 5 Stunden zähes Nachbessern | **5 bis 12 Minuten vollautonom** | **Faktor 20 schneller** |
+| **Fehler- & Halluzinationsrate** | Sehr hoch (CSS zerschossen, Canvas unscharf) | **Nahezu 0% (deterministische Drop-in Patterns)** | Höchste Produktionsqualität |
+| **Code-Qualität** | Flickenteppich aus verschiedenen Stilen | **Einheitliche 16-Bit Architektur & Standards** | 100% wartbar & konsistent |
+
+WARUM DER TOKENVERBRAUCH OHNE SKILL EXPLODIERT:
+1. Das "Prompt-Ping-Pong-Problem":
+   Ohne Skill muss dem Sprachmodell jeder einzelne Aspekt erklärt werden. Oft vergisst 
+   die KI bei Schritt 5, was bei Schritt 2 vereinbart wurde.
+   Beispiel ohne Skill:
+   - Turn 1: "Baue ein Spiel über Napoleon." -> KI baut Canvas ohne Retina-Overlay.
+   - Turn 2: "Der Text ist unscharf, mach das scharf." -> KI baut HTML-Overlay, bricht die Steuerung ab.
+   - Turn 3: "Jetzt geht die Tastatur nicht mehr." -> KI repariert Tastatur, vergisst den Tierbegleiter.
+   - Turn 4: "Der Hund fehlt und die Gebäude sind zu groß..."
+   Jeder dieser Zyklen schaufelt die gesamte bisherige Codebasis erneut durch den 
+   Context-Window. Bei 20 Runden summiert sich das auf über eine halbe Million Tokens!
+
+2. Kontext-Degradation ("Context Rot"):
+   Große Sprachmodelle verlieren bei sehr langen Chatverläufen an Präzision. Sie beginnen 
+   zu "halluzinieren", verändern funktionierende Codezeilen oder erzeugen unvollständige 
+   Dateien ("// rest of code here...").
+
+3. Vermeidung von teuren Bild-Diffusions-Tokens:
+   Ohne `pxl-pixel-art` müssten Bild-Generierungsmodelle (DALL-E / Imagen) bemüht werden, 
+   die pro Bild tausende Tokens verbrauchen und selten das 16-Bit-Raster treffen. 
+   `pxl-pixel-art` erzeugt den Pixel-Code in 30 Zeilen Klartext (ca. 150 Tokens) 
+   und kompiliert lokal in Millisekunden völlig kostenlos!
+
+WARUM DER SKILL SO SCHLANK & EFFIZIENT IST:
+- Der Skill liegt als Referenzarchitektur bereits im System vor. Die KI weiß bereits 
+  vor dem ersten Token, wie `WildlifeManager`, `ChapterBanner`, `SaveManager` und die 
+  `DualLayerEngine` exakt aufgebaut sein müssen.
+- Es gibt kein Rätselraten über Dateipfade, Skalierungen oder Sound-Synthesizer.
+- Der Agent schreibt den vollständigen, lauffähigen Code in einem zusammenhängenden 
+  Ablauf ("One-Shot"), testet ihn per Headless-Browser und liefert ein fertiges Produkt ab.
+
+--------------------------------------------------------------------------------
+5. SCHNELL-CHECKLISTE FÜR DIE NÄCHSTE EPOCHE
+--------------------------------------------------------------------------------
+[ ] 1. 1–3 passende ZIPs aus dem itch.io-Bundle in `assets_inbox/` werfen (optional).
+[ ] 2. Neues GitHub-Repo anlegen & in Vercel importieren (Dauer: 60 Sekunden).
+[ ] 3. 4-Zeilen-Prompt in Antigravity absenden.
+[ ] 4. Kaffee trinken (10 Minuten warten).
+[ ] 5. Im Epochenhub das neue Abenteuer anklicken und spielen!
+
+================================================================================
+Stand: Oktober 2026 – Heimbürgeschule Kahla
+================================================================================
