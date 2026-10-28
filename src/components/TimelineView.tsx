@@ -59,7 +59,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
             const isExplored = exploredGameIds.includes(game.id);
 
             return (
-              <div key={game.id} className="relative flex flex-col">
+              <div key={game.id} className="relative flex flex-col h-full">
                 
                 {/* Station Step Indicator */}
                 <div className="flex items-center gap-2 mb-2 px-1">

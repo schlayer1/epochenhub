@@ -19,7 +19,7 @@ export const GameCard: React.FC<GameCardProps> = ({
   return (
     <div
       onMouseEnter={() => audioService.playHoverSound()}
-      className={`group relative bg-[#151322] rounded-2xl border-2 border-[#2b2544] hover:border-amber-500/80 transition-all duration-300 flex flex-col overflow-hidden shadow-pixel hover:shadow-pixel-lg ${game.theme.glowClass}`}
+      className={`group relative bg-[#151322] rounded-2xl border-2 border-[#2b2544] hover:border-amber-500/80 transition-all duration-300 flex flex-col justify-between h-full overflow-hidden shadow-pixel hover:shadow-pixel-lg ${game.theme.glowClass}`}
     >
       {/* Top Media / Cover Banner */}
       <div 
@@ -82,7 +82,7 @@ export const GameCard: React.FC<GameCardProps> = ({
         
         <div className="space-y-2">
           {/* Subtitle / Epoch Epithet */}
-          <p className="text-[11px] sm:text-xs font-medium text-amber-400 tracking-wider uppercase font-pixel">
+          <p className="text-[11px] sm:text-xs font-medium text-amber-400 tracking-wider uppercase font-pixel min-h-[1.5rem] flex items-center">
             {game.subtitle}
           </p>
 
@@ -92,13 +92,13 @@ export const GameCard: React.FC<GameCardProps> = ({
               audioService.playPortalChime();
               onOpenDetails(game);
             }}
-            className="text-base sm:text-lg font-bold text-white group-hover:text-amber-300 transition-colors cursor-pointer line-clamp-1"
+            className="text-base sm:text-lg font-bold text-white group-hover:text-amber-300 transition-colors cursor-pointer line-clamp-1 h-7 flex items-center"
           >
             {game.title}
           </h3>
 
           {/* Guiding Question Teaser */}
-          <p className="text-xs sm:text-sm text-slate-300 italic line-clamp-2 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-300 italic line-clamp-2 leading-relaxed min-h-[2.5rem] sm:min-h-[2.75rem] flex items-center">
             „{game.guidingQuestion}“
           </p>
         </div>

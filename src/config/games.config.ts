@@ -181,7 +181,7 @@ export const EPOCH_GAMES: EpochGame[] = [
     duration: 'ca. 60–75 Min.',
     liveUrl: 'https://retrolernspielgermanic.vercel.app',
     coverImage: '/assets/covers/german_cover.png',
-    spriteImage: '/assets/sprites/german_hero.png',
+    spriteImage: '/assets/sprites/german_avatar.png',
     theme: {
       primary: '#15803d',
       accent: '#d97706',
@@ -221,7 +221,7 @@ export const EPOCH_GAMES: EpochGame[] = [
     duration: 'ca. 75–90 Min.',
     liveUrl: 'https://retrolernspielvikings.vercel.app',
     coverImage: '/assets/covers/vikings_cover.png',
-    spriteImage: '/assets/sprites/vikings_hero.png',
+    spriteImage: '/assets/sprites/vikings_avatar.png',
     theme: {
       primary: '#0284c7',
       accent: '#d97706',
@@ -251,7 +251,7 @@ export const EPOCH_GAMES: EpochGame[] = [
     id: 'das-mittelalter-feudalsystem',
     title: 'Ritter, Burg & Dorf – Das Feudalsystem',
     shortTitle: 'Das Mittelalter',
-    subtitle: 'Grundherrschaft, Lehnswesen & Rittertum',
+    subtitle: 'Feudalsystem & Rittertum',
     epoch: 'Europäisches Mittelalter',
     epochCategory: 'mittelalter',
     period: 'ca. 1050 – 1250 n. Chr.',
@@ -262,7 +262,7 @@ export const EPOCH_GAMES: EpochGame[] = [
     duration: 'ca. 45–60 Min.',
     liveUrl: 'https://retrolernspielmedfeudal.vercel.app/',
     coverImage: '/assets/covers/medieval_feudal_cover.png',
-    spriteImage: '/assets/sprites/medieval_hero.png',
+    spriteImage: '/assets/sprites/medieval_avatar.png',
     theme: {
       primary: '#78350f',
       accent: '#d97706',
