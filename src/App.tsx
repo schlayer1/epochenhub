@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { TimelineView } from './components/TimelineView';
@@ -14,7 +14,24 @@ import { EpochGame } from './types/game';
 import { storageService } from './services/storageService';
 
 export const App: React.FC = () => {
-  const [viewMode, setViewMode] = useState<'timeline' | 'grid' | 'atlas'>('timeline');
+  const [viewMode, setViewMode] = useState<'timeline' | 'grid' | 'atlas'>(() => {
+    const hash = window.location.hash.toLowerCase();
+    const search = new URLSearchParams(window.location.search).get('view')?.toLowerCase();
+    if (hash.includes('atlas') || search === 'atlas') return 'atlas';
+    if (hash.includes('grid') || search === 'grid') return 'grid';
+    return 'timeline';
+  });
+
+  useEffect(() => {
+    const onHashChange = () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash.includes('atlas')) setViewMode('atlas');
+      else if (hash.includes('grid')) setViewMode('grid');
+      else if (hash.includes('timeline')) setViewMode('timeline');
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
   const [isCrtEnabled, setIsCrtEnabled] = useState(false);
   
   // Search & Filter State
