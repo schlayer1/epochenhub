@@ -1,0 +1,310 @@
+import Phaser from 'phaser';
+
+export interface TargetInteriorConfig {
+  buildingId: string;
+  name: string;
+  district: 'sacral' | 'craft_market' | 'farm_harbor' | 'plateau_cliffs';
+  mentorInside: string;
+  mentorRole?: string;
+  mentorAvatar?: string;
+  purpose: string;
+  stationType?: string;
+  tilesetType: 'wood_tavern' | 'stone_keep' | 'temple_marble' | 'clay_hut' | 'cave_cavern';
+}
+
+interface InteriorInitData {
+  config: TargetInteriorConfig;
+  returnX: number;
+  returnY: number;
+  playerName?: string;
+  playerGender?: 'male' | 'female';
+}
+
+const ROOM_W = 26;
+const ROOM_H = 18;
+const TILE = 16;
+
+export class InteriorScene extends Phaser.Scene {
+  private cfg!: TargetInteriorConfig;
+  private returnX = 0;
+  private returnY = 0;
+  private player!: Phaser.Physics.Arcade.Sprite;
+  private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
+  private wasd!: {
+    W: Phaser.Input.Keyboard.Key;
+    A: Phaser.Input.Keyboard.Key;
+    S: Phaser.Input.Keyboard.Key;
+    D: Phaser.Input.Keyboard.Key;
+    E: Phaser.Input.Keyboard.Key;
+  };
+  private obstacles!: Phaser.Physics.Arcade.StaticGroup;
+  private mentorSprite?: Phaser.GameObjects.Sprite;
+  private exitMat?: Phaser.GameObjects.Zone;
+  private labelLayer?: HTMLElement;
+  private activeLabelEl?: HTMLElement;
+  private lightCircle?: Phaser.GameObjects.Arc;
+  private fireSprite?: Phaser.GameObjects.Sprite;
+
+  constructor() {
+    super('Interior');
+  }
+
+  init(data: InteriorInitData): void {
+    this.cfg = data.config;
+    this.returnX = data.returnX;
+    this.returnY = data.returnY;
+  }
+
+  create(): void {
+    this.obstacles = this.physics.add.staticGroup();
+
+    // 1. Retina-DOM-Label-Layer initialisieren
+    const existingLayer = document.getElementById('interior-labels');
+    this.labelLayer = existingLayer ?? document.createElement('div');
+    this.labelLayer.id = 'interior-labels';
+    if (!existingLayer) document.body.appendChild(this.labelLayer);
+    this.labelLayer.innerHTML = '';
+    this.labelLayer.style.display = 'block';
+
+    // 2. Raum-Architektur aufbauen
+    this.buildRoomArchitecture();
+
+    // 3. Spielfigur platzieren (beim Eingang an der Südwand)
+    const startX = (ROOM_W * TILE) / 2;
+    const startY = (ROOM_H - 3) * TILE;
+    const texKey = this.textures.exists('player') ? 'player' : 'character';
+    this.player = this.physics.add.sprite(startX, startY, texKey, 0);
+    this.player.setOrigin(0.5, 0.9);
+    this.player.body!.setSize(10, 8).setOffset(3, 22);
+    this.player.setCollideWorldBounds(true);
+    this.physics.world.setBounds(0, 0, ROOM_W * TILE, ROOM_H * TILE);
+    this.physics.add.collider(this.player, this.obstacles);
+
+    // 4. Mentor im Raum platzieren
+    this.spawnMentor();
+
+    // 5. Lebendige Einrichtungs- & Lichtquellen
+    this.setupLivingInterior();
+
+    // 6. Ausgangsmatte anlegen
+    this.setupExitMat(startX, (ROOM_H - 1.5) * TILE);
+
+    // 7. Kamera einrichten
+    this.cameras.main.setBounds(0, 0, ROOM_W * TILE, ROOM_H * TILE);
+    this.cameras.main.startFollow(this.player, true, 0.2, 0.2);
+    this.cameras.main.setRoundPixels(true);
+    this.cameras.main.fadeIn(300, 0, 0, 0);
+
+    // 8. Tastenbelegung
+    this.cursors = this.input.keyboard!.createCursorKeys();
+    this.wasd = this.input.keyboard!.addKeys('W,A,S,D,E') as typeof this.wasd;
+
+    // Toast-Meldung
+    const win = window as any;
+    if (win.gameState?.emit) {
+      win.gameState.emit('toast', `Du betrittst: ${this.cfg.name}`);
+    }
+  }
+
+  update(): void {
+    if (!this.player || !this.player.body) return;
+
+    // Spieler-Steuerung
+    const speed = 85;
+    let vx = 0;
+    let vy = 0;
+
+    if (this.cursors.left.isDown || this.wasd.A.isDown) vx = -speed;
+    else if (this.cursors.right.isDown || this.wasd.D.isDown) vx = speed;
+
+    if (this.cursors.up.isDown || this.wasd.W.isDown) vy = -speed;
+    else if (this.cursors.down.isDown || this.wasd.S.isDown) vy = speed;
+
+    if (vx !== 0 && vy !== 0) {
+      vx *= 0.7071;
+      vy *= 0.7071;
+    }
+    this.player.setVelocity(vx, vy);
+
+    // Y-Sorting der Spielfigur
+    this.player.setDepth(this.player.y);
+
+    // Proximity-Prüfung zu Mentor und Ausgangsmatte
+    this.checkProximities();
+  }
+
+  private buildRoomArchitecture(): void {
+    const rt = this.add
+      .renderTexture(0, 0, ROOM_W * TILE, ROOM_H * TILE)
+      .setOrigin(0)
+      .setDepth(0);
+
+    const isStone = this.cfg.tilesetType === 'stone_keep' || this.cfg.tilesetType === 'temple_marble' || this.cfg.tilesetType === 'cave_cavern';
+
+    // 1. Bodenkacheln zeichnen
+    for (let ty = 0; ty < ROOM_H; ty++) {
+      for (let tx = 0; tx < ROOM_W; tx++) {
+        const hash = Math.sin(tx * 12.9898 + ty * 78.233) * 43758.5453;
+        const v = Math.floor((hash - Math.floor(hash)) * 4);
+        const col = isStone
+          ? (v === 0 ? 0x27272a : v === 1 ? 0x3f3f46 : 0x18181b)
+          : (v === 0 ? 0x582f0e : v === 1 ? 0x7f4f24 : 0x4a2810);
+        rt.fill(col, 1, tx * TILE, ty * TILE, TILE, TILE);
+      }
+    }
+
+    // 2. Feste Wand-Kollisionszonen (Nord, West, Ost, Süd mit Türlücke)
+    const addWall = (x: number, y: number, w: number, h: number) => {
+      const z = this.add.zone(x, y, w, h).setOrigin(0);
+      this.physics.add.existing(z, true);
+      this.obstacles.add(z);
+    };
+
+    addWall(0, 0, ROOM_W * TILE, 40); // Nordwand
+    addWall(0, 0, 16, ROOM_H * TILE); // Westwand
+    addWall((ROOM_W - 1) * TILE, 0, 16, ROOM_H * TILE); // Ostwand
+    addWall(0, (ROOM_H - 1) * TILE, 11 * TILE, 16); // Südwand links
+    addWall(15 * TILE, (ROOM_H - 1) * TILE, 11 * TILE, 16); // Südwand rechts
+  }
+
+  private spawnMentor(): void {
+    const mentorX = (ROOM_W * TILE) / 2 + 32;
+    const mentorY = 64;
+    const texKey = this.textures.exists('characters') ? 'characters' : 'character';
+    this.mentorSprite = this.physics.add.sprite(mentorX, mentorY, texKey, 0);
+    this.mentorSprite.setOrigin(0.5, 0.9).setDepth(mentorY);
+    (this.mentorSprite.body as Phaser.Physics.Arcade.Body).setImmovable(true);
+    this.obstacles.add(this.mentorSprite);
+
+    // Sanfte NPC-Atmung
+    this.tweens.add({
+      targets: this.mentorSprite,
+      scaleY: 1.03,
+      duration: 1800,
+      yoyo: true,
+      repeat: -1,
+      ease: 'Sine.easeInOut',
+    });
+  }
+
+  private setupLivingInterior(): void {
+    const fireX = (ROOM_W * TILE) / 2 - 40;
+    const fireY = 56;
+
+    // Warmes Kamin- oder Fackellicht (ADD-Blend)
+    this.lightCircle = this.add.circle(fireX, fireY, 52, 0xf59e0b, 0.22);
+    this.lightCircle.setBlendMode(Phaser.BlendModes.ADD).setDepth(fireY - 1);
+
+    this.tweens.add({
+      targets: this.lightCircle,
+      scale: 1.08,
+      alpha: 0.28,
+      duration: 140,
+      yoyo: true,
+      repeat: -1,
+    });
+
+    // Fackel / Feuer-Partikel
+    if (this.textures.exists('interior_hearth_fire_strip')) {
+      this.fireSprite = this.add.sprite(fireX, fireY, 'interior_hearth_fire_strip').setDepth(fireY);
+    }
+  }
+
+  private setupExitMat(x: number, y: number): void {
+    this.exitMat = this.add.zone(x, y, 48, 24).setOrigin(0.5);
+    this.physics.add.existing(this.exitMat, true);
+
+    // Visuelle Türmatte
+    const matRect = this.add.rectangle(x, y, 36, 12, 0xd97706, 0.55).setDepth(1);
+    this.tweens.add({
+      targets: matRect,
+      alpha: 0.85,
+      duration: 900,
+      yoyo: true,
+      repeat: -1,
+    });
+  }
+
+  private checkProximities(): void {
+    const distToExit = this.exitMat ? Phaser.Math.Distance.Between(this.player.x, this.player.y, this.exitMat.x, this.exitMat.y) : 999;
+    const distToMentor = this.mentorSprite ? Phaser.Math.Distance.Between(this.player.x, this.player.y, this.mentorSprite.x, this.mentorSprite.y) : 999;
+
+    if (distToExit < 32) {
+      this.showLabel('🚪 [E] Gebäude verlassen');
+      if (Phaser.Input.Keyboard.JustDown(this.wasd.E) || Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
+        this.exitToOverworld();
+      }
+    } else if (distToMentor < 40) {
+      this.showLabel(`💬 [E] Mit ${this.cfg.mentorInside} sprechen`);
+      if (Phaser.Input.Keyboard.JustDown(this.wasd.E) || Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
+        this.interactWithMentor();
+      }
+    } else {
+      this.hideLabel();
+    }
+  }
+
+  private showLabel(text: string): void {
+    if (!this.labelLayer) return;
+    if (!this.activeLabelEl) {
+      this.activeLabelEl = document.createElement('div');
+      this.activeLabelEl.className = 'world-dom-label';
+      this.activeLabelEl.style.position = 'fixed';
+      this.activeLabelEl.style.bottom = '48px';
+      this.activeLabelEl.style.left = '50%';
+      this.activeLabelEl.style.transform = 'translateX(-50%)';
+      this.activeLabelEl.style.background = 'rgba(20, 14, 8, 0.92)';
+      this.activeLabelEl.style.border = '1.5px solid #d97706';
+      this.activeLabelEl.style.color = '#fef3c7';
+      this.activeLabelEl.style.padding = '5px 12px';
+      this.activeLabelEl.style.borderRadius = '9999px';
+      this.activeLabelEl.style.fontSize = '12px';
+      this.activeLabelEl.style.fontWeight = 'bold';
+      this.activeLabelEl.style.pointerEvents = 'none';
+      this.activeLabelEl.style.zIndex = '35';
+      this.labelLayer.appendChild(this.activeLabelEl);
+    }
+    this.activeLabelEl.textContent = text;
+    this.activeLabelEl.style.display = 'block';
+  }
+
+  private hideLabel(): void {
+    if (this.activeLabelEl) {
+      this.activeLabelEl.style.display = 'none';
+    }
+  }
+
+  private interactWithMentor(): void {
+    const win = window as any;
+    if (this.cfg.stationType && win.__openStationModal) {
+      win.__openStationModal(this.cfg.stationType);
+    } else if (win.__openMentorDialog) {
+      win.__openMentorDialog({
+        mentor: {
+          name: this.cfg.mentorInside,
+          role: this.cfg.mentorRole || 'Gelehrter / Meister',
+          dialog: [`Willkommen in ${this.cfg.name}! ${this.cfg.purpose}`],
+          quiz: [],
+        },
+      });
+    }
+  }
+
+  private exitToOverworld(): void {
+    this.hideLabel();
+    if (this.labelLayer) this.labelLayer.style.display = 'none';
+
+    this.cameras.main.fadeOut(250, 0, 0, 0);
+    this.cameras.main.once('camerafadeoutcomplete', () => {
+      this.scene.stop('Interior');
+      const worldScene = this.scene.get('World') as any;
+      if (worldScene) {
+        if (worldScene.player) {
+          worldScene.player.setPosition(this.returnX, this.returnY);
+        }
+        this.scene.resume('World');
+        worldScene.cameras.main.fadeIn(250, 0, 0, 0);
+      }
+    });
+  }
+}

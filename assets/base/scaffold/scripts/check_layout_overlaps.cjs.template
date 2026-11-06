@@ -182,10 +182,18 @@ if (!fs.existsSync(path.join(ROOT, 'src/audio/sound.ts'))) {
   qualityErrors.push('src/audio/sound.ts is missing (4-surface footstep & UI sound synthesizer required)!');
 }
 
+// G. Interior Scene & Key Building Integrity Check
+if (fs.existsSync(path.join(ROOT, 'src/scenes/InteriorScene.ts'))) {
+  const interiorCode = fs.readFileSync(path.join(ROOT, 'src/scenes/InteriorScene.ts'), 'utf8');
+  if (!interiorCode.includes('exitToOverworld') || !interiorCode.includes('exitMat')) {
+    qualityErrors.push('src/scenes/InteriorScene.ts lacks a verified exitMat / exitToOverworld return mechanism!');
+  }
+}
+
 if (qualityErrors.length > 0) {
   console.error('\n❌ COMPREHENSIVE QUALITY GATE FAILURES:');
   qualityErrors.forEach((err) => console.error(`  - ${err}`));
   process.exit(1);
 } else {
-  console.log('✅ Comprehensive Quality Standards Verified (A2 Terrain, Flora, Atlas Decor, 5 Stations, 5 Relics, 20+ Terms, Audio & A4 Print Sheet).');
+  console.log('✅ Comprehensive Quality Standards Verified (A2 Terrain, Flora, Atlas Decor, 5 Stations, 5 Relics, 20+ Terms, Audio, Interior Scene & A4 Print Sheet).');
 }

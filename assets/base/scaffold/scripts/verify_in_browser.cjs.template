@@ -264,6 +264,36 @@ async function main() {
     });
     await sleep(400);
 
+    // -------------------------------------------------------------------------
+    // 11. Enterable Interior Scene (Key Building & Warm Atmosphere)
+    // -------------------------------------------------------------------------
+    console.log('11. Capturing Enterable Interior Scene...');
+    await page.evaluate(() => {
+      const win = window;
+      if (win.__enterSampleInterior) {
+        win.__enterSampleInterior();
+      } else {
+        const g = win.game;
+        const ws = g?.scene?.getScene('World');
+        if (ws && typeof ws.enterInterior === 'function') {
+          const interiorCfg = win.__TARGET_INTERIOR || {
+            buildingId: 'rathaus_archiv',
+            name: 'Kanzlei & Stiftsarchiv',
+            district: 'craft_market',
+            mentorInside: 'Stadtschreiber Johannes',
+            purpose: 'Bergung der Stadtrechtsurkunde',
+            tilesetType: 'stone_keep',
+          };
+          ws.enterInterior(interiorCfg, ws.player ? ws.player.x : 200, ws.player ? ws.player.y : 200);
+        }
+      }
+    });
+    await sleep(800);
+    await page.screenshot({
+      path: path.join(ARTIFACT_DIR, 'verify_11_interior_scene.png'),
+    });
+    console.log('✅ verify_11_interior_scene.png captured');
+
     console.log('\n--- VERIFICATION SUMMARY ---');
     console.log(`Page Errors: ${errors.length}`);
     if (errors.length > 0) console.error(errors);
@@ -273,7 +303,7 @@ async function main() {
     if (errors.length > 0 || failedUrls.length > 0) {
       process.exitCode = 1;
     } else {
-      console.log('🎉 All 10 browser verification checks passed with 0 errors!');
+      console.log('🎉 All 11 browser verification checks passed with 0 errors!');
     }
   } catch (err) {
     console.error('Fatal test error:', err);
