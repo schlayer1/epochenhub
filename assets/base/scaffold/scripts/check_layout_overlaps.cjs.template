@@ -161,12 +161,12 @@ try {
   qualityErrors.push(`Failed to read src/data/relics.ts: ${e.message}`);
 }
 
-// D. Progressive Historical Lexicon Check (min. 20 terms)
+// D. Progressive Historical Lexicon Check (exactly 27 terms)
 try {
   const lexiconCode = fs.readFileSync(path.join(ROOT, 'src/data/lexicon.ts'), 'utf8');
   const termMatches = lexiconCode.match(/term:\s*['"][^'"]+['"]/g) || [];
-  if (termMatches.length < 20) {
-    qualityErrors.push(`src/data/lexicon.ts contains only ${termMatches.length} terms (minimum required: 20)!`);
+  if (termMatches.length < 27) {
+    qualityErrors.push(`src/data/lexicon.ts contains only ${termMatches.length} terms (strictly 27 required by skill standard)!`);
   }
 } catch (e) {
   qualityErrors.push(`Failed to read src/data/lexicon.ts: ${e.message}`);
@@ -200,5 +200,5 @@ if (qualityErrors.length > 0) {
   qualityErrors.forEach((err) => console.error(`  - ${err}`));
   process.exit(1);
 } else {
-  console.log('✅ Comprehensive Quality Standards Verified (A2 Terrain, Flora, Atlas Decor, 5 Stations, 5 Relics, 20+ Terms, Audio, Interior Scene & A4 Print Sheet).');
+  console.log('✅ Comprehensive Quality Standards Verified (A2 Terrain, Flora, Atlas Decor, 5 Stations, 5 Relics, 27 Terms, Audio, Interior Scene & A4 Print Sheet).');
 }
