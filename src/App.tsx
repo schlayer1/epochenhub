@@ -70,6 +70,9 @@ export const App: React.FC = () => {
       if (selectedGrade === '6' && !game.grade.includes('6')) {
         return false;
       }
+      if (selectedGrade === '7' && !game.grade.includes('7') && !game.grade.includes('8')) {
+        return false;
+      }
 
       // Search Query
       if (searchQuery.trim()) {

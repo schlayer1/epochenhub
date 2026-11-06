@@ -286,6 +286,46 @@ export const EPOCH_GAMES: EpochGame[] = [
         badge: 'Klasse 6/7'
       }
     ]
+  },
+  {
+    id: 'die-reformation-glaube-macht-medien',
+    title: 'Die Reformation: Glaube, Macht & die Medienrevolution',
+    shortTitle: 'Die Reformation',
+    subtitle: 'Glaube, Macht & Buchdruck (1517–1555)',
+    epoch: 'Neuzeit & Reformation',
+    epochCategory: 'neuzeit',
+    period: '1517 – 1555 n. Chr.',
+    yearStart: 1517,
+    yearEnd: 1555,
+    grade: 'Klasse 7 / 8',
+    chaptersCount: 8,
+    duration: 'ca. 50–70 Min.',
+    liveUrl: 'https://retrolernspielreformation.vercel.app/',
+    coverImage: '/assets/covers/reformation_cover.png',
+    spriteImage: '/assets/sprites/reformation_avatar.png',
+    theme: {
+      primary: '#991b1b',
+      accent: '#f59e0b',
+      badgeBg: 'bg-red-950/90 text-amber-300 border-red-700',
+      border: 'border-red-600',
+      glowClass: 'hover:shadow-[0_0_25px_rgba(245,158,11,0.35)]',
+    },
+    guidingQuestion: 'Wie verwandelten Gutenbergs Buchdruck und Martin Luthers 95 Thesen das mittelalterliche Weltbild und die Glaubenswelt Europas?',
+    didacticFocus: [
+      'Ablasshandel & Medienrevolution: Johann Tetzel, der Thesenanschlag 1517 zu Wittenberg und Flugschriften-Schnelldruck.',
+      'Kaiser, Papst & Reichsstände: Disputation mit Kardinal Cajetan (1518) und Standhaftigkeit auf dem Reichstag zu Worms (1521).',
+      'Bibelübersetzung & Sprachschöpfung: Junker Jörg auf der Wartburg und das Septembertestament (Dem Volk aufs Maul schauen).',
+      'Gesellschaftlicher Umbruch & Friedensordnung: Thomas Müntzer, der Bauernkrieg 1525 und der Augsburger Religionsfrieden 1555 (Cuius regio, eius religio).'
+    ],
+    tags: ['Reformation', 'Martin Luther', 'Buchdruck', 'Wittenberg', 'Wartburg', 'Ablasshandel', 'Bibelübersetzung', 'Augsburger Religionsfrieden'],
+    companionMaterials: [
+      {
+        title: 'Didaktisches A4-Hefterblatt zur Reformation & Buchdruck-Medienrevolution',
+        type: 'pdf',
+        url: '#',
+        badge: 'Klasse 7/8'
+      }
+    ]
   }
 ];
 

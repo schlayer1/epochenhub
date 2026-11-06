@@ -61,7 +61,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
           <div className="flex items-center gap-2 bg-[#171426] border border-[#2b2544] px-3.5 py-1.5 rounded-lg text-slate-300">
             <Clock className="w-4 h-4 text-emerald-400" />
-            <span><strong className="text-white">40.000 v. Chr.</strong> bis <strong className="text-white">476 n. Chr.</strong></span>
+            <span><strong className="text-white">40.000 v. Chr.</strong> bis <strong className="text-white">1555 n. Chr.</strong></span>
           </div>
         </div>
 
@@ -108,9 +108,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               }}
               className="bg-[#171426] text-slate-300 text-xs border border-[#2b2544] px-3 py-1.5 rounded-lg outline-none cursor-pointer hover:border-amber-500/50 transition-colors"
             >
-              <option value="all">Alle Klassen (5 & 6)</option>
+              <option value="all">Alle Klassen (5–8)</option>
               <option value="5">Klasse 5/6</option>
-              <option value="6">Klasse 6 (Rom)</option>
+              <option value="6">Klasse 6/7</option>
+              <option value="7">Klasse 7/8 (Reformation)</option>
             </select>
           </div>
 
