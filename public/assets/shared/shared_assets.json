@@ -1,11 +1,11 @@
 {
   "generatedAt": "2026-10-25T19:38:07.855Z",
-  "totalAssets": 1188,
+  "totalAssets": 1255,
   "categories": {
     "fauna": 120,
     "flora": 13,
-    "props": 128,
-    "tilesets": 78,
+    "props": 171,
+    "tilesets": 102,
     "animations": 477,
     "characters": 357,
     "scenes": 15
@@ -27582,6 +27582,1681 @@
       ],
       "titleDe": "VIKING TILESET",
       "subtitleDe": "TILESETS-Set aus viking_fjord (256x2864px)"
+    },
+    {
+      "id": "ancient_egyptian_city_auto_tile_a4_walls_1",
+      "cleanName": "ancient_egyptian_city_auto_tile_a4_walls_1.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/ancient_egyptian_city_auto_tile_a4_walls_1.png",
+      "width": 768,
+      "height": 720,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Egyptian City",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Aegypten / Nil",
+        "Altes Ägypten (Altes bis Neues Reich)"
+      ],
+      "titleDe": "Altes Ägypten: Pharaonenstadt & Tempelbezirk: Auto-tile-A4-Walls-1.png",
+      "subtitleDe": "TILESETS-Set (768x720px) aus Altes Ägypten: Pharaonenstadt & Tempelbezirk"
+    },
+    {
+      "id": "ancient_egyptian_city_auto_tile_a4_walls_2",
+      "cleanName": "ancient_egyptian_city_auto_tile_a4_walls_2.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/ancient_egyptian_city_auto_tile_a4_walls_2.png",
+      "width": 768,
+      "height": 720,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Egyptian City",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Aegypten / Nil",
+        "Altes Ägypten (Altes bis Neues Reich)"
+      ],
+      "titleDe": "Altes Ägypten: Pharaonenstadt & Tempelbezirk: Auto-tile-A4-walls-2.png",
+      "subtitleDe": "TILESETS-Set (768x720px) aus Altes Ägypten: Pharaonenstadt & Tempelbezirk"
+    },
+    {
+      "id": "ancient_egyptian_city_tile_a2__2_",
+      "cleanName": "ancient_egyptian_city_tile_a2__2_.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/ancient_egyptian_city_tile_a2__2_.png",
+      "width": 768,
+      "height": 576,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Egyptian City",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Aegypten / Nil",
+        "Altes Ägypten (Altes bis Neues Reich)"
+      ],
+      "titleDe": "Altes Ägypten: Pharaonenstadt & Tempelbezirk: Tile_A2 (2).png",
+      "subtitleDe": "TILESETS-Set (768x576px) aus Altes Ägypten: Pharaonenstadt & Tempelbezirk"
+    },
+    {
+      "id": "ancient_egyptian_city_tile_a2_1__2_",
+      "cleanName": "ancient_egyptian_city_tile_a2_1__2_.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/ancient_egyptian_city_tile_a2_1__2_.png",
+      "width": 768,
+      "height": 576,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Egyptian City",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Aegypten / Nil",
+        "Altes Ägypten (Altes bis Neues Reich)"
+      ],
+      "titleDe": "Altes Ägypten: Pharaonenstadt & Tempelbezirk: Tile_A2-1 (2).png",
+      "subtitleDe": "TILESETS-Set (768x576px) aus Altes Ägypten: Pharaonenstadt & Tempelbezirk"
+    },
+    {
+      "id": "ancient_egyptian_city_tile_b_01",
+      "cleanName": "ancient_egyptian_city_tile_b_01.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/ancient_egyptian_city_tile_b_01.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Egyptian City",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Aegypten / Nil",
+        "Altes Ägypten (Altes bis Neues Reich)"
+      ],
+      "titleDe": "Altes Ägypten: Pharaonenstadt & Tempelbezirk: tile-B-01.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Altes Ägypten: Pharaonenstadt & Tempelbezirk"
+    },
+    {
+      "id": "ancient_egyptian_city_tile_b_02",
+      "cleanName": "ancient_egyptian_city_tile_b_02.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/ancient_egyptian_city_tile_b_02.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Egyptian City",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Aegypten / Nil",
+        "Altes Ägypten (Altes bis Neues Reich)"
+      ],
+      "titleDe": "Altes Ägypten: Pharaonenstadt & Tempelbezirk: tile-B-02.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Altes Ägypten: Pharaonenstadt & Tempelbezirk"
+    },
+    {
+      "id": "ancient_egyptian_city_tile_b_03",
+      "cleanName": "ancient_egyptian_city_tile_b_03.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/ancient_egyptian_city_tile_b_03.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Egyptian City",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Aegypten / Nil",
+        "Altes Ägypten (Altes bis Neues Reich)"
+      ],
+      "titleDe": "Altes Ägypten: Pharaonenstadt & Tempelbezirk: tile-B-03.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Altes Ägypten: Pharaonenstadt & Tempelbezirk"
+    },
+    {
+      "id": "ancient_egyptian_city_tile_b_04",
+      "cleanName": "ancient_egyptian_city_tile_b_04.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/ancient_egyptian_city_tile_b_04.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Egyptian City",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Aegypten / Nil",
+        "Altes Ägypten (Altes bis Neues Reich)"
+      ],
+      "titleDe": "Altes Ägypten: Pharaonenstadt & Tempelbezirk: tile-B-04.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Altes Ägypten: Pharaonenstadt & Tempelbezirk"
+    },
+    {
+      "id": "ancient_egyptian_city_tile_b_05",
+      "cleanName": "ancient_egyptian_city_tile_b_05.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/ancient_egyptian_city_tile_b_05.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Egyptian City",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Aegypten / Nil",
+        "Altes Ägypten (Altes bis Neues Reich)"
+      ],
+      "titleDe": "Altes Ägypten: Pharaonenstadt & Tempelbezirk: tile-B-05.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Altes Ägypten: Pharaonenstadt & Tempelbezirk"
+    },
+    {
+      "id": "ancient_chinese_porcelain_kiln_auto_tile_a4_walls_1",
+      "cleanName": "ancient_chinese_porcelain_kiln_auto_tile_a4_walls_1.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/ancient_chinese_porcelain_kiln_auto_tile_a4_walls_1.png",
+      "width": 768,
+      "height": 720,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Chinese Porcelain Kiln",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Ostasien / China (Tang- & Song-Dynastie)",
+        "Kaiserliches China & Handwerk"
+      ],
+      "titleDe": "Kaiserliches China & Seidenstraße: Porzellanbrennöfen: Auto-tile-A4-Walls-1.png",
+      "subtitleDe": "TILESETS-Set (768x720px) aus Kaiserliches China & Seidenstraße: Porzellanbrennöfen"
+    },
+    {
+      "id": "ancient_chinese_porcelain_kiln_auto_tile_a4_walls_2",
+      "cleanName": "ancient_chinese_porcelain_kiln_auto_tile_a4_walls_2.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/ancient_chinese_porcelain_kiln_auto_tile_a4_walls_2.png",
+      "width": 768,
+      "height": 720,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Chinese Porcelain Kiln",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Ostasien / China (Tang- & Song-Dynastie)",
+        "Kaiserliches China & Handwerk"
+      ],
+      "titleDe": "Kaiserliches China & Seidenstraße: Porzellanbrennöfen: Auto-tile-A4-walls-2.png",
+      "subtitleDe": "TILESETS-Set (768x720px) aus Kaiserliches China & Seidenstraße: Porzellanbrennöfen"
+    },
+    {
+      "id": "ancient_chinese_porcelain_kiln_auto_tile_a4_walls_3",
+      "cleanName": "ancient_chinese_porcelain_kiln_auto_tile_a4_walls_3.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/ancient_chinese_porcelain_kiln_auto_tile_a4_walls_3.png",
+      "width": 768,
+      "height": 720,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Chinese Porcelain Kiln",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Ostasien / China (Tang- & Song-Dynastie)",
+        "Kaiserliches China & Handwerk"
+      ],
+      "titleDe": "Kaiserliches China & Seidenstraße: Porzellanbrennöfen: Auto-tile-A4-walls-3.png",
+      "subtitleDe": "TILESETS-Set (768x720px) aus Kaiserliches China & Seidenstraße: Porzellanbrennöfen"
+    },
+    {
+      "id": "ancient_chinese_porcelain_kiln_auto_tile_a4_walls_5",
+      "cleanName": "ancient_chinese_porcelain_kiln_auto_tile_a4_walls_5.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/ancient_chinese_porcelain_kiln_auto_tile_a4_walls_5.png",
+      "width": 768,
+      "height": 720,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Chinese Porcelain Kiln",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Ostasien / China (Tang- & Song-Dynastie)",
+        "Kaiserliches China & Handwerk"
+      ],
+      "titleDe": "Kaiserliches China & Seidenstraße: Porzellanbrennöfen: Auto-tile-A4-walls-5.png",
+      "subtitleDe": "TILESETS-Set (768x720px) aus Kaiserliches China & Seidenstraße: Porzellanbrennöfen"
+    },
+    {
+      "id": "ancient_chinese_porcelain_kiln_tile_a2__2_",
+      "cleanName": "ancient_chinese_porcelain_kiln_tile_a2__2_.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/ancient_chinese_porcelain_kiln_tile_a2__2_.png",
+      "width": 768,
+      "height": 576,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Chinese Porcelain Kiln",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Ostasien / China (Tang- & Song-Dynastie)",
+        "Kaiserliches China & Handwerk"
+      ],
+      "titleDe": "Kaiserliches China & Seidenstraße: Porzellanbrennöfen: Tile_A2 (2).png",
+      "subtitleDe": "TILESETS-Set (768x576px) aus Kaiserliches China & Seidenstraße: Porzellanbrennöfen"
+    },
+    {
+      "id": "ancient_chinese_porcelain_kiln_tile_a2_1__2_",
+      "cleanName": "ancient_chinese_porcelain_kiln_tile_a2_1__2_.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/ancient_chinese_porcelain_kiln_tile_a2_1__2_.png",
+      "width": 768,
+      "height": 576,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Chinese Porcelain Kiln",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Ostasien / China (Tang- & Song-Dynastie)",
+        "Kaiserliches China & Handwerk"
+      ],
+      "titleDe": "Kaiserliches China & Seidenstraße: Porzellanbrennöfen: Tile_A2-1 (2).png",
+      "subtitleDe": "TILESETS-Set (768x576px) aus Kaiserliches China & Seidenstraße: Porzellanbrennöfen"
+    },
+    {
+      "id": "ancient_chinese_porcelain_kiln_tile_a2_2",
+      "cleanName": "ancient_chinese_porcelain_kiln_tile_a2_2.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/ancient_chinese_porcelain_kiln_tile_a2_2.png",
+      "width": 768,
+      "height": 576,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Chinese Porcelain Kiln",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Ostasien / China (Tang- & Song-Dynastie)",
+        "Kaiserliches China & Handwerk"
+      ],
+      "titleDe": "Kaiserliches China & Seidenstraße: Porzellanbrennöfen: Tile_A2-2.png",
+      "subtitleDe": "TILESETS-Set (768x576px) aus Kaiserliches China & Seidenstraße: Porzellanbrennöfen"
+    },
+    {
+      "id": "ancient_chinese_porcelain_kiln_tile_a2_3",
+      "cleanName": "ancient_chinese_porcelain_kiln_tile_a2_3.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/ancient_chinese_porcelain_kiln_tile_a2_3.png",
+      "width": 768,
+      "height": 576,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Chinese Porcelain Kiln",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Ostasien / China (Tang- & Song-Dynastie)",
+        "Kaiserliches China & Handwerk"
+      ],
+      "titleDe": "Kaiserliches China & Seidenstraße: Porzellanbrennöfen: Tile_A2-3.png",
+      "subtitleDe": "TILESETS-Set (768x576px) aus Kaiserliches China & Seidenstraße: Porzellanbrennöfen"
+    },
+    {
+      "id": "ancient_chinese_porcelain_kiln_tile_b_01",
+      "cleanName": "ancient_chinese_porcelain_kiln_tile_b_01.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/ancient_chinese_porcelain_kiln_tile_b_01.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Chinese Porcelain Kiln",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Ostasien / China (Tang- & Song-Dynastie)",
+        "Kaiserliches China & Handwerk"
+      ],
+      "titleDe": "Kaiserliches China & Seidenstraße: Porzellanbrennöfen: tile-B-01.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Kaiserliches China & Seidenstraße: Porzellanbrennöfen"
+    },
+    {
+      "id": "ancient_chinese_porcelain_kiln_tile_b_02",
+      "cleanName": "ancient_chinese_porcelain_kiln_tile_b_02.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/ancient_chinese_porcelain_kiln_tile_b_02.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Chinese Porcelain Kiln",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Ostasien / China (Tang- & Song-Dynastie)",
+        "Kaiserliches China & Handwerk"
+      ],
+      "titleDe": "Kaiserliches China & Seidenstraße: Porzellanbrennöfen: tile-B-02.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Kaiserliches China & Seidenstraße: Porzellanbrennöfen"
+    },
+    {
+      "id": "ancient_chinese_porcelain_kiln_tile_b_03",
+      "cleanName": "ancient_chinese_porcelain_kiln_tile_b_03.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/ancient_chinese_porcelain_kiln_tile_b_03.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Chinese Porcelain Kiln",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Ostasien / China (Tang- & Song-Dynastie)",
+        "Kaiserliches China & Handwerk"
+      ],
+      "titleDe": "Kaiserliches China & Seidenstraße: Porzellanbrennöfen: tile-B-03.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Kaiserliches China & Seidenstraße: Porzellanbrennöfen"
+    },
+    {
+      "id": "ancient_chinese_porcelain_kiln_tile_b_04",
+      "cleanName": "ancient_chinese_porcelain_kiln_tile_b_04.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/ancient_chinese_porcelain_kiln_tile_b_04.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Chinese Porcelain Kiln",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Ostasien / China (Tang- & Song-Dynastie)",
+        "Kaiserliches China & Handwerk"
+      ],
+      "titleDe": "Kaiserliches China & Seidenstraße: Porzellanbrennöfen: tile-B-04.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Kaiserliches China & Seidenstraße: Porzellanbrennöfen"
+    },
+    {
+      "id": "ancient_chinese_porcelain_kiln_tile_b_05",
+      "cleanName": "ancient_chinese_porcelain_kiln_tile_b_05.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/ancient_chinese_porcelain_kiln_tile_b_05.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Ancient Chinese Porcelain Kiln",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Ostasien / China (Tang- & Song-Dynastie)",
+        "Kaiserliches China & Handwerk"
+      ],
+      "titleDe": "Kaiserliches China & Seidenstraße: Porzellanbrennöfen: tile-B-05.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Kaiserliches China & Seidenstraße: Porzellanbrennöfen"
+    },
+    {
+      "id": "desert_natural_environment_tile_b_01",
+      "cleanName": "desert_natural_environment_tile_b_01.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_natural_environment_tile_b_01.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Desert Natural Environment",
+      "epochs": [
+        "universal_geografie"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Nordafrika & Vorderasien",
+        "Wüstenlandschaft & Oasenwirtschaft"
+      ],
+      "titleDe": "Wüstenökologie: Felsmassive, Dünen & Oasen: tile-B-01.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Wüstenökologie: Felsmassive, Dünen & Oasen"
+    },
+    {
+      "id": "desert_natural_environment_tile_b_02",
+      "cleanName": "desert_natural_environment_tile_b_02.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_natural_environment_tile_b_02.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Desert Natural Environment",
+      "epochs": [
+        "universal_geografie"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Nordafrika & Vorderasien",
+        "Wüstenlandschaft & Oasenwirtschaft"
+      ],
+      "titleDe": "Wüstenökologie: Felsmassive, Dünen & Oasen: tile-B-02.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Wüstenökologie: Felsmassive, Dünen & Oasen"
+    },
+    {
+      "id": "desert_natural_environment_tile_b_03",
+      "cleanName": "desert_natural_environment_tile_b_03.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_natural_environment_tile_b_03.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Desert Natural Environment",
+      "epochs": [
+        "universal_geografie"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Nordafrika & Vorderasien",
+        "Wüstenlandschaft & Oasenwirtschaft"
+      ],
+      "titleDe": "Wüstenökologie: Felsmassive, Dünen & Oasen: tile-B-03.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Wüstenökologie: Felsmassive, Dünen & Oasen"
+    },
+    {
+      "id": "desert_natural_environment_tile_b_06",
+      "cleanName": "desert_natural_environment_tile_b_06.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_natural_environment_tile_b_06.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Desert Natural Environment",
+      "epochs": [
+        "universal_geografie"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Nordafrika & Vorderasien",
+        "Wüstenlandschaft & Oasenwirtschaft"
+      ],
+      "titleDe": "Wüstenökologie: Felsmassive, Dünen & Oasen: tile-B-06.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Wüstenökologie: Felsmassive, Dünen & Oasen"
+    },
+    {
+      "id": "desert_ruins_auto_tile_a4_walls_1",
+      "cleanName": "desert_ruins_auto_tile_a4_walls_1.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/desert_ruins_auto_tile_a4_walls_1.png",
+      "width": 768,
+      "height": 720,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Desert Ruins",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Vorderasien / Sahara / Orient",
+        "Antike Hochkulturen (Babylon, Palmyra, Nubien)"
+      ],
+      "titleDe": "Antike Wüstenruinen & Versunkene Tempel: Auto-tile-A4-Walls-1.png",
+      "subtitleDe": "TILESETS-Set (768x720px) aus Antike Wüstenruinen & Versunkene Tempel"
+    },
+    {
+      "id": "desert_ruins_auto_tile_a4_walls_2",
+      "cleanName": "desert_ruins_auto_tile_a4_walls_2.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/desert_ruins_auto_tile_a4_walls_2.png",
+      "width": 768,
+      "height": 720,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Desert Ruins",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Vorderasien / Sahara / Orient",
+        "Antike Hochkulturen (Babylon, Palmyra, Nubien)"
+      ],
+      "titleDe": "Antike Wüstenruinen & Versunkene Tempel: Auto-tile-A4-walls-2.png",
+      "subtitleDe": "TILESETS-Set (768x720px) aus Antike Wüstenruinen & Versunkene Tempel"
+    },
+    {
+      "id": "desert_ruins_tile_a2_1__2_",
+      "cleanName": "desert_ruins_tile_a2_1__2_.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/desert_ruins_tile_a2_1__2_.png",
+      "width": 768,
+      "height": 576,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Desert Ruins",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Vorderasien / Sahara / Orient",
+        "Antike Hochkulturen (Babylon, Palmyra, Nubien)"
+      ],
+      "titleDe": "Antike Wüstenruinen & Versunkene Tempel: Tile_A2-1 (2).png",
+      "subtitleDe": "TILESETS-Set (768x576px) aus Antike Wüstenruinen & Versunkene Tempel"
+    },
+    {
+      "id": "desert_ruins_tile_b_01",
+      "cleanName": "desert_ruins_tile_b_01.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_ruins_tile_b_01.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Desert Ruins",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Vorderasien / Sahara / Orient",
+        "Antike Hochkulturen (Babylon, Palmyra, Nubien)"
+      ],
+      "titleDe": "Antike Wüstenruinen & Versunkene Tempel: tile-B-01.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Antike Wüstenruinen & Versunkene Tempel"
+    },
+    {
+      "id": "desert_ruins_tile_b_02",
+      "cleanName": "desert_ruins_tile_b_02.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_ruins_tile_b_02.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Desert Ruins",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Vorderasien / Sahara / Orient",
+        "Antike Hochkulturen (Babylon, Palmyra, Nubien)"
+      ],
+      "titleDe": "Antike Wüstenruinen & Versunkene Tempel: tile-B-02.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Antike Wüstenruinen & Versunkene Tempel"
+    },
+    {
+      "id": "desert_ruins_tile_b_03",
+      "cleanName": "desert_ruins_tile_b_03.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_ruins_tile_b_03.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Desert Ruins",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Vorderasien / Sahara / Orient",
+        "Antike Hochkulturen (Babylon, Palmyra, Nubien)"
+      ],
+      "titleDe": "Antike Wüstenruinen & Versunkene Tempel: tile-B-03.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Antike Wüstenruinen & Versunkene Tempel"
+    },
+    {
+      "id": "desert_ruins_tile_b_04",
+      "cleanName": "desert_ruins_tile_b_04.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_ruins_tile_b_04.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Desert Ruins",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Vorderasien / Sahara / Orient",
+        "Antike Hochkulturen (Babylon, Palmyra, Nubien)"
+      ],
+      "titleDe": "Antike Wüstenruinen & Versunkene Tempel: tile-B-04.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Antike Wüstenruinen & Versunkene Tempel"
+    },
+    {
+      "id": "desert_ruins_tile_b_05",
+      "cleanName": "desert_ruins_tile_b_05.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_ruins_tile_b_05.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Desert Ruins",
+      "epochs": [
+        "antike"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Vorderasien / Sahara / Orient",
+        "Antike Hochkulturen (Babylon, Palmyra, Nubien)"
+      ],
+      "titleDe": "Antike Wüstenruinen & Versunkene Tempel: tile-B-05.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Antike Wüstenruinen & Versunkene Tempel"
+    },
+    {
+      "id": "maya_temple_city_auto_tile_a4_walls_1",
+      "cleanName": "maya_temple_city_auto_tile_a4_walls_1.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/maya_temple_city_auto_tile_a4_walls_1.png",
+      "width": 768,
+      "height": 720,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Maya Temple City",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Mittelamerika (Yucatán / Guatemala)",
+        "Maya-Klassik (Tikal, Palenque, Chichén Itzá)"
+      ],
+      "titleDe": "Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole: Auto-tile-A4-Walls-1.png",
+      "subtitleDe": "TILESETS-Set (768x720px) aus Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole"
+    },
+    {
+      "id": "maya_temple_city_auto_tile_a4_walls_2",
+      "cleanName": "maya_temple_city_auto_tile_a4_walls_2.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/maya_temple_city_auto_tile_a4_walls_2.png",
+      "width": 768,
+      "height": 720,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Maya Temple City",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Mittelamerika (Yucatán / Guatemala)",
+        "Maya-Klassik (Tikal, Palenque, Chichén Itzá)"
+      ],
+      "titleDe": "Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole: Auto-tile-A4-walls-2.png",
+      "subtitleDe": "TILESETS-Set (768x720px) aus Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole"
+    },
+    {
+      "id": "maya_temple_city_tile_a2_1__2_",
+      "cleanName": "maya_temple_city_tile_a2_1__2_.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/maya_temple_city_tile_a2_1__2_.png",
+      "width": 768,
+      "height": 576,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Maya Temple City",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Mittelamerika (Yucatán / Guatemala)",
+        "Maya-Klassik (Tikal, Palenque, Chichén Itzá)"
+      ],
+      "titleDe": "Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole: Tile_A2-1 (2).png",
+      "subtitleDe": "TILESETS-Set (768x576px) aus Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole"
+    },
+    {
+      "id": "maya_temple_city_tile_b_01",
+      "cleanName": "maya_temple_city_tile_b_01.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/maya_temple_city_tile_b_01.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Maya Temple City",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Mittelamerika (Yucatán / Guatemala)",
+        "Maya-Klassik (Tikal, Palenque, Chichén Itzá)"
+      ],
+      "titleDe": "Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole: tile-B-01.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole"
+    },
+    {
+      "id": "maya_temple_city_tile_b_02",
+      "cleanName": "maya_temple_city_tile_b_02.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/maya_temple_city_tile_b_02.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Maya Temple City",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Mittelamerika (Yucatán / Guatemala)",
+        "Maya-Klassik (Tikal, Palenque, Chichén Itzá)"
+      ],
+      "titleDe": "Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole: tile-B-02.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole"
+    },
+    {
+      "id": "maya_temple_city_tile_b_03",
+      "cleanName": "maya_temple_city_tile_b_03.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/maya_temple_city_tile_b_03.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Maya Temple City",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Mittelamerika (Yucatán / Guatemala)",
+        "Maya-Klassik (Tikal, Palenque, Chichén Itzá)"
+      ],
+      "titleDe": "Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole: tile-B-03.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole"
+    },
+    {
+      "id": "maya_temple_city_tile_b_04",
+      "cleanName": "maya_temple_city_tile_b_04.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/maya_temple_city_tile_b_04.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Maya Temple City",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Mittelamerika (Yucatán / Guatemala)",
+        "Maya-Klassik (Tikal, Palenque, Chichén Itzá)"
+      ],
+      "titleDe": "Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole: tile-B-04.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole"
+    },
+    {
+      "id": "maya_temple_city_tile_b_05",
+      "cleanName": "maya_temple_city_tile_b_05.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/maya_temple_city_tile_b_05.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Maya Temple City",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Mittelamerika (Yucatán / Guatemala)",
+        "Maya-Klassik (Tikal, Palenque, Chichén Itzá)"
+      ],
+      "titleDe": "Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole: tile-B-05.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Mesoamerika: Maya-Stufenpyramiden & Dschungelmetropole"
+    },
+    {
+      "id": "medieval_coastal_fishing_village_port_tile_b_01",
+      "cleanName": "medieval_coastal_fishing_village_port_tile_b_01.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/medieval_coastal_fishing_village_port_tile_b_01.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Medieval Coastal Fishing Village Port",
+      "epochs": [
+        "mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Nord- & Ostsee / Atlantikküste (Hanse)",
+        "Mittelalterliche Küstenfischerei & Seefahrt"
+      ],
+      "titleDe": "Mittelalterliches Fischerdorf & Küstenhafen: tile-B-01.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Mittelalterliches Fischerdorf & Küstenhafen"
+    },
+    {
+      "id": "medieval_coastal_fishing_village_port_tile_b_02",
+      "cleanName": "medieval_coastal_fishing_village_port_tile_b_02.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/medieval_coastal_fishing_village_port_tile_b_02.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Medieval Coastal Fishing Village Port",
+      "epochs": [
+        "mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Nord- & Ostsee / Atlantikküste (Hanse)",
+        "Mittelalterliche Küstenfischerei & Seefahrt"
+      ],
+      "titleDe": "Mittelalterliches Fischerdorf & Küstenhafen: tile-B-02.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Mittelalterliches Fischerdorf & Küstenhafen"
+    },
+    {
+      "id": "medieval_coastal_fishing_village_port_tile_b_04",
+      "cleanName": "medieval_coastal_fishing_village_port_tile_b_04.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/medieval_coastal_fishing_village_port_tile_b_04.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Medieval Coastal Fishing Village Port",
+      "epochs": [
+        "mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Nord- & Ostsee / Atlantikküste (Hanse)",
+        "Mittelalterliche Küstenfischerei & Seefahrt"
+      ],
+      "titleDe": "Mittelalterliches Fischerdorf & Küstenhafen: tile-B-04.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Mittelalterliches Fischerdorf & Küstenhafen"
+    },
+    {
+      "id": "medieval_coastal_fishing_village_port_tile_b_05",
+      "cleanName": "medieval_coastal_fishing_village_port_tile_b_05.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/medieval_coastal_fishing_village_port_tile_b_05.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Medieval Coastal Fishing Village Port",
+      "epochs": [
+        "mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Nord- & Ostsee / Atlantikküste (Hanse)",
+        "Mittelalterliche Küstenfischerei & Seefahrt"
+      ],
+      "titleDe": "Mittelalterliches Fischerdorf & Küstenhafen: tile-B-05.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Mittelalterliches Fischerdorf & Küstenhafen"
+    },
+    {
+      "id": "medieval_dungeon_auto_tile_a4_walls_1",
+      "cleanName": "medieval_dungeon_auto_tile_a4_walls_1.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/medieval_dungeon_auto_tile_a4_walls_1.png",
+      "width": 768,
+      "height": 720,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Medieval Dungeon-1",
+      "epochs": [
+        "mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Europa (Burgen & Festungen)",
+        "Mittelalterliche Justiz, Wehrbau & Katakomben"
+      ],
+      "titleDe": "Mittelalterliches Burgverlies, Kerker & Katakomben: Auto-tile-A4-Walls-1.png",
+      "subtitleDe": "TILESETS-Set (768x720px) aus Mittelalterliches Burgverlies, Kerker & Katakomben"
+    },
+    {
+      "id": "medieval_dungeon_auto_tile_a4_walls_2",
+      "cleanName": "medieval_dungeon_auto_tile_a4_walls_2.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/medieval_dungeon_auto_tile_a4_walls_2.png",
+      "width": 768,
+      "height": 720,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Medieval Dungeon-1",
+      "epochs": [
+        "mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Europa (Burgen & Festungen)",
+        "Mittelalterliche Justiz, Wehrbau & Katakomben"
+      ],
+      "titleDe": "Mittelalterliches Burgverlies, Kerker & Katakomben: Auto-tile-A4-walls-2.png",
+      "subtitleDe": "TILESETS-Set (768x720px) aus Mittelalterliches Burgverlies, Kerker & Katakomben"
+    },
+    {
+      "id": "medieval_dungeon_tile_a2_1__2_",
+      "cleanName": "medieval_dungeon_tile_a2_1__2_.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/medieval_dungeon_tile_a2_1__2_.png",
+      "width": 768,
+      "height": 576,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Medieval Dungeon-1",
+      "epochs": [
+        "mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Europa (Burgen & Festungen)",
+        "Mittelalterliche Justiz, Wehrbau & Katakomben"
+      ],
+      "titleDe": "Mittelalterliches Burgverlies, Kerker & Katakomben: Tile_A2-1 (2).png",
+      "subtitleDe": "TILESETS-Set (768x576px) aus Mittelalterliches Burgverlies, Kerker & Katakomben"
+    },
+    {
+      "id": "medieval_dungeon_tile_b_01",
+      "cleanName": "medieval_dungeon_tile_b_01.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/medieval_dungeon_tile_b_01.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Medieval Dungeon-1",
+      "epochs": [
+        "mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Europa (Burgen & Festungen)",
+        "Mittelalterliche Justiz, Wehrbau & Katakomben"
+      ],
+      "titleDe": "Mittelalterliches Burgverlies, Kerker & Katakomben: tile-B-01.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Mittelalterliches Burgverlies, Kerker & Katakomben"
+    },
+    {
+      "id": "medieval_dungeon_tile_b_02",
+      "cleanName": "medieval_dungeon_tile_b_02.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/medieval_dungeon_tile_b_02.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Medieval Dungeon-1",
+      "epochs": [
+        "mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Europa (Burgen & Festungen)",
+        "Mittelalterliche Justiz, Wehrbau & Katakomben"
+      ],
+      "titleDe": "Mittelalterliches Burgverlies, Kerker & Katakomben: tile-B-02.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Mittelalterliches Burgverlies, Kerker & Katakomben"
+    },
+    {
+      "id": "medieval_dungeon_tile_b_03",
+      "cleanName": "medieval_dungeon_tile_b_03.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/medieval_dungeon_tile_b_03.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Medieval Dungeon-1",
+      "epochs": [
+        "mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Europa (Burgen & Festungen)",
+        "Mittelalterliche Justiz, Wehrbau & Katakomben"
+      ],
+      "titleDe": "Mittelalterliches Burgverlies, Kerker & Katakomben: tile-B-03.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Mittelalterliches Burgverlies, Kerker & Katakomben"
+    },
+    {
+      "id": "medieval_dungeon_tile_b_04",
+      "cleanName": "medieval_dungeon_tile_b_04.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/medieval_dungeon_tile_b_04.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Medieval Dungeon-1",
+      "epochs": [
+        "mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Europa (Burgen & Festungen)",
+        "Mittelalterliche Justiz, Wehrbau & Katakomben"
+      ],
+      "titleDe": "Mittelalterliches Burgverlies, Kerker & Katakomben: tile-B-04.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Mittelalterliches Burgverlies, Kerker & Katakomben"
+    },
+    {
+      "id": "medieval_dungeon_tile_b_05",
+      "cleanName": "medieval_dungeon_tile_b_05.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/medieval_dungeon_tile_b_05.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Medieval Dungeon-1",
+      "epochs": [
+        "mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Europa (Burgen & Festungen)",
+        "Mittelalterliche Justiz, Wehrbau & Katakomben"
+      ],
+      "titleDe": "Mittelalterliches Burgverlies, Kerker & Katakomben: tile-B-05.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Mittelalterliches Burgverlies, Kerker & Katakomben"
+    },
+    {
+      "id": "silk_road_caravanserai_auto_tile_a4_walls_1",
+      "cleanName": "silk_road_caravanserai_auto_tile_a4_walls_1.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/silk_road_caravanserai_auto_tile_a4_walls_1.png",
+      "width": 768,
+      "height": 720,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Silk Road Caravanserai",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Zentralasien / Persien / Naher Osten",
+        "Welthandel, Seidenstraße & Beduinen"
+      ],
+      "titleDe": "Seidenstraße: Karawanserei & Oasen-Handelsposten: Auto-tile-A4-Walls-1.png",
+      "subtitleDe": "TILESETS-Set (768x720px) aus Seidenstraße: Karawanserei & Oasen-Handelsposten"
+    },
+    {
+      "id": "silk_road_caravanserai_auto_tile_a4_walls_2",
+      "cleanName": "silk_road_caravanserai_auto_tile_a4_walls_2.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/silk_road_caravanserai_auto_tile_a4_walls_2.png",
+      "width": 768,
+      "height": 720,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Silk Road Caravanserai",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Zentralasien / Persien / Naher Osten",
+        "Welthandel, Seidenstraße & Beduinen"
+      ],
+      "titleDe": "Seidenstraße: Karawanserei & Oasen-Handelsposten: Auto-tile-A4-walls-2.png",
+      "subtitleDe": "TILESETS-Set (768x720px) aus Seidenstraße: Karawanserei & Oasen-Handelsposten"
+    },
+    {
+      "id": "silk_road_caravanserai_tile_a2_1__2_",
+      "cleanName": "silk_road_caravanserai_tile_a2_1__2_.png",
+      "category": "tilesets",
+      "publicUrl": "/assets/shared/tilesets/silk_road_caravanserai_tile_a2_1__2_.png",
+      "width": 768,
+      "height": 576,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Silk Road Caravanserai",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Zentralasien / Persien / Naher Osten",
+        "Welthandel, Seidenstraße & Beduinen"
+      ],
+      "titleDe": "Seidenstraße: Karawanserei & Oasen-Handelsposten: Tile_A2-1 (2).png",
+      "subtitleDe": "TILESETS-Set (768x576px) aus Seidenstraße: Karawanserei & Oasen-Handelsposten"
+    },
+    {
+      "id": "silk_road_caravanserai_tile_b_01",
+      "cleanName": "silk_road_caravanserai_tile_b_01.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/silk_road_caravanserai_tile_b_01.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Silk Road Caravanserai",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Zentralasien / Persien / Naher Osten",
+        "Welthandel, Seidenstraße & Beduinen"
+      ],
+      "titleDe": "Seidenstraße: Karawanserei & Oasen-Handelsposten: tile-B-01.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Seidenstraße: Karawanserei & Oasen-Handelsposten"
+    },
+    {
+      "id": "silk_road_caravanserai_tile_b_02",
+      "cleanName": "silk_road_caravanserai_tile_b_02.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/silk_road_caravanserai_tile_b_02.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Silk Road Caravanserai",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Zentralasien / Persien / Naher Osten",
+        "Welthandel, Seidenstraße & Beduinen"
+      ],
+      "titleDe": "Seidenstraße: Karawanserei & Oasen-Handelsposten: tile-B-02.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Seidenstraße: Karawanserei & Oasen-Handelsposten"
+    },
+    {
+      "id": "silk_road_caravanserai_tile_b_03",
+      "cleanName": "silk_road_caravanserai_tile_b_03.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/silk_road_caravanserai_tile_b_03.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Silk Road Caravanserai",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Zentralasien / Persien / Naher Osten",
+        "Welthandel, Seidenstraße & Beduinen"
+      ],
+      "titleDe": "Seidenstraße: Karawanserei & Oasen-Handelsposten: tile-B-03.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Seidenstraße: Karawanserei & Oasen-Handelsposten"
+    },
+    {
+      "id": "silk_road_caravanserai_tile_b_04",
+      "cleanName": "silk_road_caravanserai_tile_b_04.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/silk_road_caravanserai_tile_b_04.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Silk Road Caravanserai",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Zentralasien / Persien / Naher Osten",
+        "Welthandel, Seidenstraße & Beduinen"
+      ],
+      "titleDe": "Seidenstraße: Karawanserei & Oasen-Handelsposten: tile-B-04.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Seidenstraße: Karawanserei & Oasen-Handelsposten"
+    },
+    {
+      "id": "silk_road_caravanserai_tile_b_05",
+      "cleanName": "silk_road_caravanserai_tile_b_05.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/silk_road_caravanserai_tile_b_05.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "Silk Road Caravanserai",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Zentralasien / Persien / Naher Osten",
+        "Welthandel, Seidenstraße & Beduinen"
+      ],
+      "titleDe": "Seidenstraße: Karawanserei & Oasen-Handelsposten: tile-B-05.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Seidenstraße: Karawanserei & Oasen-Handelsposten"
+    },
+    {
+      "id": "desert_town_expanded_tile_b_01",
+      "cleanName": "desert_town_expanded_tile_b_01.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_town_expanded_tile_b_01.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "desert town",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Arabische Halbinsel / Nordafrika",
+        "Islamische Blütezeit & Orientalische Städte"
+      ],
+      "titleDe": "Orientalische Basarstadt & Lehmarchitektur: tile-B-01.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Orientalische Basarstadt & Lehmarchitektur"
+    },
+    {
+      "id": "desert_town_expanded_tile_b_02",
+      "cleanName": "desert_town_expanded_tile_b_02.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_town_expanded_tile_b_02.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "desert town",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Arabische Halbinsel / Nordafrika",
+        "Islamische Blütezeit & Orientalische Städte"
+      ],
+      "titleDe": "Orientalische Basarstadt & Lehmarchitektur: tile-B-02.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Orientalische Basarstadt & Lehmarchitektur"
+    },
+    {
+      "id": "desert_town_expanded_tile_b_03",
+      "cleanName": "desert_town_expanded_tile_b_03.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_town_expanded_tile_b_03.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "desert town",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Arabische Halbinsel / Nordafrika",
+        "Islamische Blütezeit & Orientalische Städte"
+      ],
+      "titleDe": "Orientalische Basarstadt & Lehmarchitektur: tile-B-03.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Orientalische Basarstadt & Lehmarchitektur"
+    },
+    {
+      "id": "desert_town_expanded_tile_b_04",
+      "cleanName": "desert_town_expanded_tile_b_04.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_town_expanded_tile_b_04.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "desert town",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Arabische Halbinsel / Nordafrika",
+        "Islamische Blütezeit & Orientalische Städte"
+      ],
+      "titleDe": "Orientalische Basarstadt & Lehmarchitektur: tile-B-04.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Orientalische Basarstadt & Lehmarchitektur"
+    },
+    {
+      "id": "desert_town_expanded_tile_b_05",
+      "cleanName": "desert_town_expanded_tile_b_05.png",
+      "category": "props",
+      "publicUrl": "/assets/shared/props/desert_town_expanded_tile_b_05.png",
+      "width": 768,
+      "height": 768,
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "isDidactic": true,
+      "sourcePack": "desert town",
+      "epochs": [
+        "antike_mittelalter"
+      ],
+      "subjects": [
+        "geschichte",
+        "geografie"
+      ],
+      "topics": [
+        "Arabische Halbinsel / Nordafrika",
+        "Islamische Blütezeit & Orientalische Städte"
+      ],
+      "titleDe": "Orientalische Basarstadt & Lehmarchitektur: tile-B-05.png",
+      "subtitleDe": "PROPS-Set (768x768px) aus Orientalische Basarstadt & Lehmarchitektur"
     }
   ]
 }

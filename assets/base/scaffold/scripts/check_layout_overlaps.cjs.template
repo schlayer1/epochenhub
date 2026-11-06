@@ -190,6 +190,11 @@ if (fs.existsSync(path.join(ROOT, 'src/scenes/InteriorScene.ts'))) {
   }
 }
 
+// H. 3D Plateau & Cliff Elevation Check
+if (!worldSceneCode.includes('buildPlateauCliffs') && !worldSceneCode.includes('cliffs_nature') && !worldSceneCode.includes('cliffs_desert')) {
+  qualityErrors.push('WorldScene.ts lacks 3D plateau & cliff elevation (missing buildPlateauCliffs() with visible stairs/ramps onto +1 level)!');
+}
+
 if (qualityErrors.length > 0) {
   console.error('\n❌ COMPREHENSIVE QUALITY GATE FAILURES:');
   qualityErrors.forEach((err) => console.error(`  - ${err}`));
