@@ -63,7 +63,7 @@ function isAssetMatchingEpoch(asset, epoch) {
 
   // 3. Quellpaket-Präfixe für Epochen
   if (epoch === 'mittelalter') {
-    if (asset.id.startsWith('keep_') || asset.id.startsWith('farm_') || asset.id.startsWith('interior_')) {
+    if (asset.id.startsWith('keep_') || asset.id.startsWith('farm_')) {
       return true;
     }
   }
@@ -74,6 +74,24 @@ function isAssetMatchingEpoch(asset, epoch) {
     return true;
   }
   if (asset.category === 'flora' && (asset.id.includes('crops') || asset.id.includes('bushes') || asset.id.includes('trees') || asset.id.includes('forage'))) {
+    return true;
+  }
+
+  // 5. Universelle Boden-, Wand- und Interieur-Tilesets
+  const universalTilesets = [
+    'walls_and_floors', 'flooring', 'farmhouse', 'cabins', 'island_cave',
+    'wall_diggable', 'docks_pier', 'keep_royal_keep_tiles', 'keep_walls', 'dirt_hoed'
+  ];
+  if (asset.category === 'tilesets' && universalTilesets.some(t => asset.id.includes(t))) {
+    return true;
+  }
+
+  // 6. Universelle Interieur-Möbel, Props und Living-World Animationen
+  if (asset.id.startsWith('interior_')) {
+    return true;
+  }
+  const universalProps = ['prop_bed', 'prop_chest', 'prop_table', 'prop_barrel', 'prop_sack', 'furniture', 'dungeon_furniture', 'home_household'];
+  if (asset.category === 'props' && universalProps.some(p => asset.id.includes(p))) {
     return true;
   }
 
