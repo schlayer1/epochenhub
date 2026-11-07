@@ -250,6 +250,28 @@ if (!uiSceneCode.includes("'Z'") && !uiSceneCode.includes('"Z"') && !uiSceneCode
   qualityErrors.push('Game lacks epoch phase timeline compare modal (Key Z / TimelineModal missing)!');
 }
 
+// R. Dynamic Chapter Music Check (MusicManager & Chapter BGM)
+if (!fs.existsSync(path.join(ROOT, 'src/audio/MusicManager.ts'))) {
+  qualityErrors.push('src/audio/MusicManager.ts is missing (dynamic chapter BGM crossfader required)!');
+} else {
+  const musicCode = fs.readFileSync(path.join(ROOT, 'src/audio/MusicManager.ts'), 'utf8');
+  if (!musicCode.includes('playChapterMusic')) {
+    qualityErrors.push('src/audio/MusicManager.ts lacks playChapterMusic() method for chapter transitions!');
+  }
+}
+if (!worldSceneCode.includes('playChapterMusic') && !worldSceneCode.includes('music.play')) {
+  qualityErrors.push('WorldScene.ts does not trigger chapter music on transition (missing music.playChapterMusic)!');
+}
+
+// S. Strict Chapter Schema & Music Metadata Check
+const chapterMatches = chaptersCode.match(/id:\s*(\d+)/g) || [];
+if (chapterMatches.length < 6 || chapterMatches.length > 12) {
+  qualityErrors.push(`src/data/chapters.ts defines ${chapterMatches.length} chapters (strictly 6 to 12 chapters required)!`);
+}
+if (!chaptersCode.includes('music') && !chaptersCode.includes('trackId') && !chaptersCode.includes('bgm')) {
+  qualityErrors.push('src/data/chapters.ts chapters lack dedicated chapter-music declarations (missing music: { trackId, title, mood, prompt })!');
+}
+
 if (qualityErrors.length > 0) {
   console.error('\n❌ COMPREHENSIVE QUALITY GATE FAILURES:');
   qualityErrors.forEach((err) => console.error(`  - ${err}`));
@@ -263,5 +285,6 @@ if (qualityErrors.length > 0) {
   console.log('   ✓ Quest Compass & 1.32x Camera Dialog Zoom');
   console.log('   ✓ Kinematic Chapter Banner & 7-Tile Pause Dashboard');
   console.log('   ✓ 4-Surface Footsteps, Companion Dog & Interior Scene');
+  console.log('   ✓ Dynamic Chapter Music Engine & Google Lyria Metadata');
   console.log('   ✓ A4 Didactic Student Print Sheet');
 }

@@ -1,0 +1,156 @@
+export interface ChapterMusicDef {
+  trackId: string;
+  title: string;
+  mood: string;
+  prompt: string;
+}
+
+export class MusicManager {
+  private currentAudio: HTMLAudioElement | null = null;
+  private currentTrackId: string | null = null;
+  private targetVolume: number = 0.35;
+  private isMuted: boolean = false;
+  private fadeTimer: number | null = null;
+  private unlocked: boolean = false;
+  private fallbackTrack: string = 'bgm_warmth';
+
+  constructor() {
+    if (typeof window !== 'undefined') {
+      const savedMute = localStorage.getItem('snes_history_music_muted');
+      if (savedMute !== null) this.isMuted = savedMute === 'true';
+
+      const savedVol = localStorage.getItem('snes_history_music_vol');
+      if (savedVol !== null) {
+        const v = Number(savedVol);
+        if (!isNaN(v) && v >= 0 && v <= 1) this.targetVolume = v;
+      }
+
+      this.setupUnlockListeners();
+    }
+  }
+
+  private setupUnlockListeners(): void {
+    const unlock = () => {
+      this.unlocked = true;
+      if (this.currentAudio && !this.isMuted && this.currentAudio.paused) {
+        this.currentAudio.play().catch(() => {});
+      }
+      window.removeEventListener('pointerdown', unlock);
+      window.removeEventListener('keydown', unlock);
+      window.removeEventListener('touchstart', unlock);
+    };
+    window.addEventListener('pointerdown', unlock, { once: false, passive: true });
+    window.addEventListener('keydown', unlock, { once: false, passive: true });
+    window.addEventListener('touchstart', unlock, { once: false, passive: true });
+  }
+
+  public setFallbackTrack(trackKey: string): void {
+    this.fallbackTrack = trackKey;
+  }
+
+  public playChapterMusic(trackId: string, fadeDurationMs = 1500): void {
+    if (this.currentTrackId === trackId && this.currentAudio) {
+      if (this.unlocked && !this.isMuted && this.currentAudio.paused) {
+        this.currentAudio.play().catch(() => {});
+      }
+      return;
+    }
+
+    // Primär kapitelindividuellen Track laden, bei Fehlen Fallback
+    const primaryPath = `assets/audio/bgm/${trackId}.mp3`;
+    const fallbackPath = `assets/audio/bgm/${this.fallbackTrack}.mp3`;
+
+    const nextAudio = new Audio(primaryPath);
+    nextAudio.loop = true;
+    nextAudio.volume = 0;
+
+    // Fehler-Fallback auf den Epochen-Standardtrack
+    nextAudio.onerror = () => {
+      if (nextAudio.src.includes(primaryPath)) {
+        console.warn(`[MusicManager] Chapter track ${primaryPath} not found. Falling back to ${fallbackPath}`);
+        nextAudio.src = fallbackPath;
+        if (this.unlocked && !this.isMuted) {
+          nextAudio.play().catch(() => {});
+        }
+      }
+    };
+
+    const oldAudio = this.currentAudio;
+    this.currentAudio = nextAudio;
+    this.currentTrackId = trackId;
+
+    if (this.unlocked && !this.isMuted) {
+      nextAudio.play().catch(() => {});
+    }
+
+    // Sanfte Überblendung (Crossfade)
+    if (this.fadeTimer) {
+      window.clearInterval(this.fadeTimer);
+      this.fadeTimer = null;
+    }
+
+    const steps = 25;
+    const stepTime = Math.max(16, Math.floor(fadeDurationMs / steps));
+    const target = this.isMuted ? 0 : this.targetVolume;
+    let step = 0;
+
+    this.fadeTimer = window.setInterval(() => {
+      step++;
+      const progress = step / steps;
+
+      if (oldAudio) {
+        oldAudio.volume = Math.max(0, (1 - progress) * target);
+      }
+      if (nextAudio) {
+        nextAudio.volume = Math.min(target, progress * target);
+      }
+
+      if (step >= steps) {
+        if (this.fadeTimer) {
+          window.clearInterval(this.fadeTimer);
+          this.fadeTimer = null;
+        }
+        if (oldAudio) {
+          oldAudio.pause();
+          oldAudio.src = '';
+        }
+      }
+    }, stepTime);
+  }
+
+  public toggleMute(): boolean {
+    this.isMuted = !this.isMuted;
+    try {
+      localStorage.setItem('snes_history_music_muted', String(this.isMuted));
+    } catch {}
+
+    if (this.currentAudio) {
+      this.currentAudio.volume = this.isMuted ? 0 : this.targetVolume;
+      if (!this.isMuted && this.currentAudio.paused) {
+        this.currentAudio.play().catch(() => {});
+      }
+    }
+    return this.isMuted;
+  }
+
+  public setVolume(vol: number): void {
+    this.targetVolume = Math.max(0, Math.min(1, vol));
+    try {
+      localStorage.setItem('snes_history_music_vol', String(this.targetVolume));
+    } catch {}
+
+    if (this.currentAudio && !this.isMuted) {
+      this.currentAudio.volume = this.targetVolume;
+    }
+  }
+
+  public isMutedState(): boolean {
+    return this.isMuted;
+  }
+
+  public getCurrentTrack(): string | null {
+    return this.currentTrackId;
+  }
+}
+
+export const music = new MusicManager();
