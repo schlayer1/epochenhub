@@ -1,0 +1,72 @@
+export interface CompassTarget {
+  name: string;
+  x: number;
+  y: number;
+}
+
+export class Compass {
+  private element: HTMLElement | null = null;
+  private lastText: string = '';
+
+  constructor() {
+    this.element = document.getElementById('hud-compass') || document.querySelector('.hud-compass');
+  }
+
+  public update(playerX: number, playerY: number, target: CompassTarget | null): void {
+    if (!this.element) {
+      this.element = document.getElementById('hud-compass') || document.querySelector('.hud-compass');
+      if (!this.element) return;
+    }
+
+    if (!target) {
+      if (this.lastText !== '') {
+        this.element.style.display = 'none';
+        this.lastText = '';
+      }
+      return;
+    }
+
+    const dx = target.x - playerX;
+    const dy = target.y - playerY;
+    const distPx = Math.hypot(dx, dy);
+    const meters = Math.max(1, Math.round(distPx / 16)); // 1 Kachel = ca. 1 Meter
+
+    const angle = Math.atan2(dy, dx) * (180 / Math.PI); // -180..180
+    let dirStr = '→ Osten';
+    if (angle >= -112.5 && angle < -67.5) dirStr = '↑ Norden';
+    else if (angle >= -67.5 && angle < -22.5) dirStr = '↗ Nordosten';
+    else if (angle >= -22.5 && angle < 22.5) dirStr = '→ Osten';
+    else if (angle >= 22.5 && angle < 67.5) dirStr = '↘ Südosten';
+    else if (angle >= 67.5 && angle < 112.5) dirStr = '↓ Süden';
+    else if (angle >= 112.5 && angle < 157.5) dirStr = '↙ Südwesten';
+    else if (angle >= -157.5 && angle < -112.5) dirStr = '↖ Nordwesten';
+    else dirStr = '← Westen';
+
+    const text = distPx < 32 
+      ? `🧭 ${target.name}: Direkt vor dir!` 
+      : `🧭 ${target.name}: ${dirStr} (${meters} m)`;
+
+    if (text !== this.lastText) {
+      this.element.style.display = 'block';
+      this.element.textContent = text;
+      this.lastText = text;
+    }
+  }
+
+  public setCustomText(text: string): void {
+    if (!this.element) {
+      this.element = document.getElementById('hud-compass') || document.querySelector('.hud-compass');
+      if (!this.element) return;
+    }
+    this.element.style.display = 'block';
+    this.element.textContent = text;
+    this.lastText = text;
+  }
+
+  public hide(): void {
+    if (this.element) {
+      this.element.style.display = 'none';
+      this.lastText = '';
+    }
+  }
+}

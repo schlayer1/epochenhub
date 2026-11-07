@@ -1,0 +1,115 @@
+export interface RelicInspectionData {
+  id: string;
+  title: string;
+  epoch: string;
+  dating: string;
+  location: string;
+  description: string;
+  scientificReport: string;
+  merksatz: string;
+  frontIcon?: string;
+  backIcon?: string;
+}
+
+export class ArtifactInspectorModal {
+  private overlay: HTMLElement | null = null;
+  private isFlipped: boolean = false;
+  private currentData: RelicInspectionData | null = null;
+
+  public open(data: RelicInspectionData, onClose?: () => void): void {
+    this.currentData = data;
+    this.isFlipped = false;
+    this.createOrUpdateDOM(onClose);
+  }
+
+  private createOrUpdateDOM(onClose?: () => void): void {
+    if (!this.overlay) {
+      this.overlay = document.createElement('div');
+      this.overlay.id = 'artifact-inspector-modal';
+      this.overlay.style.cssText = `
+        position: fixed; inset: 0; background: rgba(10, 8, 14, 0.85);
+        backdrop-filter: blur(4px); z-index: 40; display: flex;
+        align-items: center; justify-content: center; padding: 16px;
+      `;
+      document.body.appendChild(this.overlay);
+    }
+
+    if (!this.currentData) return;
+    const d = this.currentData;
+
+    this.overlay.innerHTML = `
+      <div style="background: #1e1b26; border: 2px solid #b45309; border-radius: 8px; max-width: 580px; width: 100%; color: #fef3c7; box-shadow: 0 10px 25px rgba(0,0,0,0.8); overflow: hidden; display: flex; flex-direction: column;">
+        <div style="background: #2a2438; padding: 12px 16px; border-bottom: 1px solid #78350f; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 11px; text-transform: uppercase; color: #fbbf24; letter-spacing: 1px;">360° Primärquellen-Inspektor</div>
+            <h3 style="margin: 2px 0 0; font-size: 18px; color: #fff;">${d.title}</h3>
+          </div>
+          <button id="inspector-close-btn" style="background: #3b2d4a; border: 1px solid #92400e; color: #fde68a; padding: 4px 10px; border-radius: 4px; cursor: pointer;">✕ Schließen</button>
+        </div>
+
+        <div style="padding: 16px; display: flex; gap: 16px; align-items: center; background: #16131d; border-bottom: 1px solid #2d263b;">
+          <div id="inspector-card-container" style="perspective: 600px; width: 110px; height: 110px; flex-shrink: 0; cursor: pointer;">
+            <div id="inspector-flip-card" style="width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); ${this.isFlipped ? 'transform: rotateY(180deg);' : ''}">
+              <div style="position: absolute; inset: 0; backface-visibility: hidden; background: #272133; border: 2px solid #d97706; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <span style="font-size: 42px;">${d.frontIcon || '🏺'}</span>
+                <span style="font-size: 10px; color: #f59e0b; margin-top: 4px;">Vorderseite</span>
+              </div>
+              <div style="position: absolute; inset: 0; backface-visibility: hidden; transform: rotateY(180deg); background: #331f24; border: 2px solid #ef4444; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <span style="font-size: 42px;">${d.backIcon || '📜'}</span>
+                <span style="font-size: 10px; color: #f87171; margin-top: 4px;">Rückseite</span>
+              </div>
+            </div>
+          </div>
+          <div style="flex: 1; font-size: 13px; line-height: 1.4;">
+            <div style="color: #cbd5e1; margin-bottom: 4px;"><strong>Datierung:</strong> ${d.dating} · <strong>Fundort:</strong> ${d.location}</div>
+            <div style="color: #94a3b8; font-size: 12px; margin-bottom: 8px;">${d.description}</div>
+            <button id="inspector-flip-btn" style="background: #b45309; border: 1px solid #f59e0b; color: #fff; padding: 5px 12px; border-radius: 4px; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+              🔄 Fundstück wenden (360°)
+            </button>
+          </div>
+        </div>
+
+        <div style="padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+          <div>
+            <div style="font-size: 11px; text-transform: uppercase; color: #93c5fd; font-weight: bold; margin-bottom: 4px;">Wissenschaftlicher Befund & Merkmale</div>
+            <div style="font-size: 13px; color: #e2e8f0; line-height: 1.5; background: #231f2e; padding: 10px; border-radius: 6px; border: 1px solid #332b42;">
+              ${d.scientificReport}
+            </div>
+          </div>
+
+          <div style="background: #14301d; border: 1px solid #16a34a; border-radius: 6px; padding: 10px 12px;">
+            <div style="font-size: 11px; text-transform: uppercase; color: #86efac; font-weight: bold; margin-bottom: 2px;">📌 Didaktischer Merksatz für das Geschichtsheft</div>
+            <div style="font-size: 13px; color: #f0fdf4; line-height: 1.4;">
+              ${d.merksatz}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    this.overlay.style.display = 'flex';
+
+    // Event Listeners
+    const flipCard = () => {
+      this.isFlipped = !this.isFlipped;
+      const cardEl = this.overlay?.querySelector('#inspector-flip-card') as HTMLElement | null;
+      if (cardEl) {
+        cardEl.style.transform = this.isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+      }
+    };
+
+    this.overlay.querySelector('#inspector-card-container')?.addEventListener('click', flipCard);
+    this.overlay.querySelector('#inspector-flip-btn')?.addEventListener('click', flipCard);
+
+    const closeHandler = () => {
+      if (this.overlay) this.overlay.style.display = 'none';
+      if (onClose) onClose();
+    };
+
+    this.overlay.querySelector('#inspector-close-btn')?.addEventListener('click', closeHandler);
+  }
+
+  public close(): void {
+    if (this.overlay) this.overlay.style.display = 'none';
+  }
+}

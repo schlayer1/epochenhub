@@ -89,13 +89,19 @@ async function main() {
     await page.click('#btn-start-game');
     await sleep(800);
 
-    // Open Mentor Dialog for Chapter 1 (Meier Heinrich)
-    await page.evaluate(() => {
+    // Open Mentor Dialog for Chapter 1
+    const dialogOpened = await page.evaluate(() => {
       const win = window;
-      if (win.__openMentorDialog && win.__MEDIEVAL_CHAPTERS) {
-        win.__openMentorDialog(win.__MEDIEVAL_CHAPTERS[0]);
+      const chList = win.__CHAPTERS || win.__MEDIEVAL_CHAPTERS || (win.__GAME__?.registry?.get('chapters'));
+      if (typeof win.__openMentorDialog === 'function' && chList && chList.length > 0) {
+        win.__openMentorDialog(chList[0]);
+        return true;
       }
+      return false;
     });
+    if (!dialogOpened) {
+      errors.push('CRITICAL: Failed to open Chapter 1 Mentor Dialog (__openMentorDialog or chapters missing)!');
+    }
     await sleep(800);
     await page.screenshot({
       path: path.join(ARTIFACT_DIR, 'verify_3_ch1_dialog.png'),
@@ -105,9 +111,18 @@ async function main() {
     // -------------------------------------------------------------------------
     // 4. Overworld Exploration (Falko Companion Dog, HUD, Compass, Village)
     // -------------------------------------------------------------------------
-    console.log('4. Capturing Overworld Exploration with Falko Companion...');
+    console.log('4. Capturing Overworld Exploration with Companion & Compass...');
     await page.keyboard.press('Escape');
     await sleep(500);
+
+    // Verify Quest Compass in DOM
+    const compassVisible = await page.evaluate(() => {
+      const el = document.querySelector('#hud-compass') || document.querySelector('.hud-compass');
+      return !!el && el.textContent.trim().length > 0;
+    });
+    if (!compassVisible) {
+      errors.push('CRITICAL: #hud-compass is missing or empty on the Overworld HUD!');
+    }
 
     // Move player slightly so companion dog turns and aligns
     await page.evaluate(() => {
@@ -131,9 +146,9 @@ async function main() {
     console.log('✅ verify_4_ch1_overworld.png captured');
 
     // -------------------------------------------------------------------------
-    // 5. Water & Infrastructure (Mühlenbach, Wassermühle, Steinbrücke, A2 Dithering)
+    // 5. Water & Infrastructure (River/Coast, Bridge/Docks, A2 Dithering)
     // -------------------------------------------------------------------------
-    console.log('5. Capturing Water & Infrastructure (Mühlenbach & Wassermühle)...');
+    console.log('5. Capturing Water & Infrastructure...');
     await page.evaluate(() => {
       const win = window;
       const game = win.__GAME__;
@@ -158,12 +173,17 @@ async function main() {
     // 6. Pause Dashboard (7-Tile Chronisten-Zentrale)
     // -------------------------------------------------------------------------
     console.log('6. Capturing 7-Tile Pause Dashboard...');
-    await page.evaluate(() => {
+    const pauseOpened = await page.evaluate(() => {
       const win = window;
-      if (win.__toggleModal) {
+      if (typeof win.__toggleModal === 'function') {
         win.__toggleModal('P');
+        return true;
       }
+      return false;
     });
+    if (!pauseOpened) {
+      errors.push('CRITICAL: Failed to open Pause Dashboard (__toggleModal("P") missing)!');
+    }
     await sleep(700);
     await page.screenshot({
       path: path.join(ARTIFACT_DIR, 'verify_6_pause_dashboard.png'),
@@ -202,12 +222,17 @@ async function main() {
     // 8. Progressive 2-Column Fachlexikon Modal
     // -------------------------------------------------------------------------
     console.log('8. Capturing Progressive 2-Column Lexicon Modal...');
-    await page.evaluate(() => {
+    const lexiconOpened = await page.evaluate(() => {
       const win = window;
       if (win.__toggleModal) {
         win.__toggleModal('L');
+        return true;
       }
+      return false;
     });
+    if (!lexiconOpened) {
+      errors.push('CRITICAL: Failed to open Lexicon Modal (__toggleModal("L") missing)!');
+    }
     await sleep(700);
     await page.screenshot({
       path: path.join(ARTIFACT_DIR, 'verify_8_lexicon_modal.png'),
@@ -221,15 +246,22 @@ async function main() {
     await sleep(400);
 
     // -------------------------------------------------------------------------
-    // 9. Interactive Didactic Station (Kräutermörser)
+    // 9. Interactive Didactic Station
     // -------------------------------------------------------------------------
-    console.log('9. Capturing Interactive Didactic Station (Kräutermörser)...');
-    await page.evaluate(() => {
+    console.log('9. Capturing Interactive Didactic Station...');
+    const stationOpened = await page.evaluate(() => {
       const win = window;
-      if (win.__openStation) {
-        win.__openStation('station_kraeuter');
+      const stations = win.__STATIONS || win.__MEDIEVAL_STATIONS;
+      const stationId = stations && stations[0]?.id ? stations[0].id : 'station_1';
+      if (typeof win.__openStation === 'function') {
+        win.__openStation(stationId);
+        return true;
       }
+      return false;
     });
+    if (!stationOpened) {
+      errors.push('CRITICAL: Failed to open Didactic Station Modal (__openStation missing)!');
+    }
     await sleep(700);
     await page.screenshot({
       path: path.join(ARTIFACT_DIR, 'verify_9_interactive_station.png'),
@@ -243,15 +275,22 @@ async function main() {
     await sleep(400);
 
     // -------------------------------------------------------------------------
-    // 10. 360° Relic & Primary Source Inspector (Lehnsurkunde / Pflugmesser)
+    // 10. 360° Relic & Primary Source Inspector
     // -------------------------------------------------------------------------
     console.log('10. Capturing 360° Primary Source Inspector...');
-    await page.evaluate(() => {
+    const inspectorOpened = await page.evaluate(() => {
       const win = window;
-      if (win.__openArtifactInspector && win.__MEDIEVAL_RELICS) {
-        win.__openArtifactInspector(win.__MEDIEVAL_RELICS[2]); // Lehnsurkunde
+      const relics = win.__RELICS || win.__MEDIEVAL_RELICS;
+      const relicObj = relics && relics.length > 0 ? relics[0] : null;
+      if (typeof win.__openArtifactInspector === 'function' && relicObj) {
+        win.__openArtifactInspector(relicObj);
+        return true;
       }
+      return false;
     });
+    if (!inspectorOpened) {
+      errors.push('CRITICAL: Failed to open 360° Artifact Inspector (__openArtifactInspector missing)!');
+    }
     await sleep(700);
     await page.screenshot({
       path: path.join(ARTIFACT_DIR, 'verify_10_artifact_inspector.png'),

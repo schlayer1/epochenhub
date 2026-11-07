@@ -36,7 +36,19 @@
   </head>
   <body>
     <div id="game-container"></div>
-    <div id="ui-layer"></div>
+    <div id="ambient-speech-layer"></div>
+    <div id="ui-layer">
+      <div class="hud-top">
+        <div class="hud-quest-box" id="hud-quest-box" title="Tippen für Details">
+          <div class="hud-chapter-title" id="hud-title"></div>
+          <div class="hud-quest-text" id="hud-quest"></div>
+          <div class="hud-compass" id="hud-compass">🧭 Ziel wird geladen...</div>
+        </div>
+      </div>
+    </div>
+    <div id="chapter-banner-overlay" style="display:none"></div>
+    <div id="start-screen-overlay"></div>
+    <div id="pause-modal" style="display:none"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

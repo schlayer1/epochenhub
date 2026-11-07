@@ -195,10 +195,73 @@ if (!worldSceneCode.includes('buildPlateauCliffs') && !worldSceneCode.includes('
   qualityErrors.push('WorldScene.ts lacks 3D plateau & cliff elevation (missing buildPlateauCliffs() with visible stairs/ramps onto +1 level)!');
 }
 
+// I. Quest Compass Check (Orientation & Distance Radar)
+const uiScenePath = path.join(ROOT, 'src/scenes/UIScene.ts');
+const uiSceneCode = fs.existsSync(uiScenePath) ? fs.readFileSync(uiScenePath, 'utf8') : '';
+const indexHtmlCode = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+
+if (!worldSceneCode.includes('updateCompass') && !worldSceneCode.includes('updateQuestCompass') && !worldSceneCode.includes('compassText')) {
+  qualityErrors.push('WorldScene.ts lacks Quest-Compass updating logic (missing updateCompass() / updateQuestCompass())!');
+}
+if (!uiSceneCode.includes('hud-compass') && !indexHtmlCode.includes('hud-compass')) {
+  qualityErrors.push('HUD lacks #hud-compass element in UIScene.ts or index.html (compass radar UI missing)!');
+}
+
+// J. Camera Dialog Zoom Check (Cinematic 1.32x zoom on mentor)
+if (!worldSceneCode.includes('1.32') && !worldSceneCode.includes('focusOnDialog') && !worldSceneCode.includes('zoomTo')) {
+  qualityErrors.push('WorldScene.ts lacks 1.32x dynamic Camera Dialog Zoom (missing focusOnDialog / zoomTo(1.32))!');
+}
+
+// K. Kinematic Chapter Banner Check
+if (!worldSceneCode.includes('ChapterBanner')) {
+  qualityErrors.push('WorldScene.ts does not import or trigger ChapterBanner upon chapter transition!');
+}
+
+// L. 7-Tile Pause Dashboard Check
+if (!uiSceneCode.includes('distanceMeters') && !worldSceneCode.includes('distanceMeters')) {
+  qualityErrors.push('Pause Dashboard / Player movement lacks odometer distance tracking (missing distanceMeters)!');
+}
+if (!uiSceneCode.includes('pause') && !fs.existsSync(path.join(ROOT, 'src/ui/PauseModal.ts'))) {
+  qualityErrors.push('Game lacks 7-Tile Pause Dashboard (missing PauseModal.ts or pause handling in UIScene.ts)!');
+}
+
+// M. 4-Surface Footstep Audio Check
+if (!worldSceneCode.includes('step(') && !worldSceneCode.includes('playFootstep')) {
+  qualityErrors.push('WorldScene.ts lacks 4-surface footstep audio calls (missing sound.step / playFootstep on movement)!');
+}
+
+// N. Secret-of-Evermore Companion Check
+if (!worldSceneCode.includes('Companion') && !worldSceneCode.includes('companionManager') && !worldSceneCode.includes('dog_')) {
+  qualityErrors.push('WorldScene.ts lacks Secret-of-Evermore Companion instantiation (missing Companion.ts integration)!');
+}
+
+// O. 360° Archaeological Relic Inspector Check
+if (!fs.existsSync(path.join(ROOT, 'src/ui/ArtifactInspectorModal.ts')) && !uiSceneCode.includes('openArtifactInspector') && !uiSceneCode.includes('360')) {
+  qualityErrors.push('UI lacks 360° Archaeological Relic Inspector (missing ArtifactInspectorModal.ts or 360° flip card in UIScene)!');
+}
+
+// P. Interactive Didactic Station Modal Check
+if (!fs.existsSync(path.join(ROOT, 'src/ui/StationModal.ts')) && !uiSceneCode.includes('openStation')) {
+  qualityErrors.push('UI lacks interactive didactic station container (missing StationModal.ts or openStation handler)!');
+}
+
+// Q. Epoch Phase Timeline Check (Key Z)
+if (!uiSceneCode.includes("'Z'") && !uiSceneCode.includes('"Z"') && !uiSceneCode.includes('timeline') && !fs.existsSync(path.join(ROOT, 'src/ui/TimelineModal.ts'))) {
+  qualityErrors.push('Game lacks epoch phase timeline compare modal (Key Z / TimelineModal missing)!');
+}
+
 if (qualityErrors.length > 0) {
   console.error('\n❌ COMPREHENSIVE QUALITY GATE FAILURES:');
   qualityErrors.forEach((err) => console.error(`  - ${err}`));
   process.exit(1);
 } else {
-  console.log('✅ Comprehensive Quality Standards Verified (A2 Terrain, Flora, Atlas Decor, 5 Stations, 5 Relics, 27 Terms, Audio, Interior Scene & A4 Print Sheet).');
+  console.log('✅ Comprehensive Quality Standards Verified:');
+  console.log('   ✓ A2 Pixel Terrain Sampling & 100+ Flora Scatter');
+  console.log('   ✓ 3D Plateau Cliffs & Stairs Elevation');
+  console.log('   ✓ 5 Interactive Stations & 5 Relics with 360° Inspector');
+  console.log('   ✓ Strictly 27 Historical Lexicon Terms');
+  console.log('   ✓ Quest Compass & 1.32x Camera Dialog Zoom');
+  console.log('   ✓ Kinematic Chapter Banner & 7-Tile Pause Dashboard');
+  console.log('   ✓ 4-Surface Footsteps, Companion Dog & Interior Scene');
+  console.log('   ✓ A4 Didactic Student Print Sheet');
 }

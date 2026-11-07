@@ -1,0 +1,127 @@
+export interface PauseDashboardState {
+  distanceMeters: number;
+  playTimeMinutes: number;
+  unlockedLexiconCount: number;
+  totalLexiconCount: number;
+  discoveredRelicsCount: number;
+  totalRelicsCount: number;
+  completedStationsCount: number;
+  totalStationsCount: number;
+  studentCode: string;
+  chapterTitle: string;
+}
+
+export class PauseDashboardModal {
+  private overlay: HTMLElement | null = null;
+
+  public open(state: PauseDashboardState, onPrint: () => void, onResume: () => void): void {
+    if (!this.overlay) {
+      this.overlay = document.getElementById('pause-modal');
+      if (!this.overlay) {
+        this.overlay = document.createElement('div');
+        this.overlay.id = 'pause-modal';
+        document.body.appendChild(this.overlay);
+      }
+    }
+
+    this.overlay.style.cssText = `
+      position: fixed; inset: 0; background: rgba(12, 10, 16, 0.9);
+      backdrop-filter: blur(6px); z-index: 55; display: flex;
+      align-items: center; justify-content: center; padding: 16px;
+    `;
+
+    this.overlay.innerHTML = `
+      <div style="background: #1b1722; border: 2px solid #b45309; border-radius: 10px; max-width: 680px; width: 100%; color: #fef3c7; box-shadow: 0 15px 35px rgba(0,0,0,0.9); overflow: hidden; display: flex; flex-direction: column;">
+        <div style="background: #272033; padding: 14px 20px; border-bottom: 1px solid #78350f; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 11px; text-transform: uppercase; color: #fbbf24; letter-spacing: 1.5px; font-weight: bold;">Chronisten-Zentrale & Pause</div>
+            <h2 style="margin: 2px 0 0; font-size: 20px; color: #fff;">${state.chapterTitle}</h2>
+          </div>
+          <button id="pause-resume-btn" style="background: #3b5e2b; border: 1px solid #65a30d; color: #fff; font-weight: bold; padding: 6px 14px; border-radius: 6px; cursor: pointer;">▶ Weiterspielen (Esc)</button>
+        </div>
+
+        <div style="padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; background: #131019;">
+          <!-- 1. Kachel: Odometer -->
+          <div style="background: #221c2e; border: 1px solid #3d3152; border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 30px;">👣</span>
+            <div>
+              <div style="font-size: 18px; font-weight: bold; color: #fff;">${Math.round(state.distanceMeters)} m</div>
+              <div style="font-size: 11px; color: #94a3b8;">Gelaufene Strecke</div>
+            </div>
+          </div>
+
+          <!-- 2. Kachel: Spielzeit -->
+          <div style="background: #221c2e; border: 1px solid #3d3152; border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 30px;">⏱️</span>
+            <div>
+              <div style="font-size: 18px; font-weight: bold; color: #fff;">${state.playTimeMinutes} Min.</div>
+              <div style="font-size: 11px; color: #94a3b8;">Erkundungszeit</div>
+            </div>
+          </div>
+
+          <!-- 3. Kachel: Lexikon -->
+          <div style="background: #221c2e; border: 1px solid #3d3152; border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 30px;">📖</span>
+            <div>
+              <div style="font-size: 18px; font-weight: bold; color: #fbbf24;">${state.unlockedLexiconCount} / ${state.totalLexiconCount}</div>
+              <div style="font-size: 11px; color: #94a3b8;">Begriffe erforscht</div>
+            </div>
+          </div>
+
+          <!-- 4. Kachel: Relikte -->
+          <div style="background: #221c2e; border: 1px solid #3d3152; border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 30px;">🏺</span>
+            <div>
+              <div style="font-size: 18px; font-weight: bold; color: #f43f5e;">${state.discoveredRelicsCount} / ${state.totalRelicsCount}</div>
+              <div style="font-size: 11px; color: #94a3b8;">Relikte geborgen</div>
+            </div>
+          </div>
+
+          <!-- 5. Kachel: Stationen -->
+          <div style="background: #221c2e; border: 1px solid #3d3152; border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 30px;">⚒️</span>
+            <div>
+              <div style="font-size: 18px; font-weight: bold; color: #38bdf8;">${state.completedStationsCount} / ${state.totalStationsCount}</div>
+              <div style="font-size: 11px; color: #94a3b8;">Stationen gemeistert</div>
+            </div>
+          </div>
+
+          <!-- 6. Kachel: Hefter-Code -->
+          <div style="background: #221c2e; border: 1px solid #3d3152; border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 30px;">📋</span>
+            <div>
+              <div style="font-size: 16px; font-family: monospace; font-weight: bold; color: #4ade80;">${state.studentCode}</div>
+              <div style="font-size: 11px; color: #94a3b8;">Schüler-Heftercode</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Kachel: A4 Druck-Sektion -->
+        <div style="background: #1b1722; padding: 16px 20px; border-top: 1px solid #3d3152; display: flex; justify-content: space-between; align-items: center; gap: 16px;">
+          <div>
+            <div style="font-size: 13px; font-weight: bold; color: #fff;">A4 Didaktik-Hefterblatt für den Unterricht</div>
+            <div style="font-size: 11px; color: #94a3b8;">Druckt alle gesammelten Merksätze, Relikte & deinen Chronisten-Fortschritt tintensparend auf Papier.</div>
+          </div>
+          <button id="pause-print-btn" style="background: #b45309; border: 1px solid #f59e0b; color: #fff; font-weight: bold; padding: 8px 16px; border-radius: 6px; cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 6px;">
+            🖨️ Hefterblatt drucken
+          </button>
+        </div>
+      </div>
+    `;
+
+    this.overlay.style.display = 'flex';
+
+    this.overlay.querySelector('#pause-resume-btn')?.addEventListener('click', () => {
+      this.close();
+      onResume();
+    });
+
+    this.overlay.querySelector('#pause-print-btn')?.addEventListener('click', () => {
+      onPrint();
+    });
+  }
+
+  public close(): void {
+    if (this.overlay) this.overlay.style.display = 'none';
+  }
+}
