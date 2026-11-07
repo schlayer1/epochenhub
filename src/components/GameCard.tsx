@@ -158,23 +158,17 @@ export const GameCard: React.FC<GameCardProps> = ({
 
         </div>
 
-        {/* Discreet Last Updated Badge */}
+        {/* Discreet Last Updated Badge (Nur reine Statusanzeige, kein externer Klick/Link für Schüler) */}
         {updateInfo?.displayLabel ? (
-          <a
-            href={updateInfo.commitUrl || '#'}
-            target={updateInfo.commitUrl ? '_blank' : undefined}
-            rel={updateInfo.commitUrl ? 'noopener noreferrer' : undefined}
-            className="group/update pt-2 px-1 flex items-center justify-center text-center border-t border-[#231e38]/70 mt-0.5 min-h-[2rem] cursor-pointer transition-colors"
-            title={updateInfo.commitMessage ? `Commit #${updateInfo.commitSha}: ${updateInfo.commitMessage} (Klick für GitHub)` : undefined}
-          >
-            <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-0.5 text-[10px] font-mono leading-tight text-slate-400 group-hover/update:text-amber-300">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)] shrink-0 group-hover/update:scale-125 transition-transform mr-0.5" />
+          <div className="pt-2 px-1 flex items-center justify-center text-center border-t border-[#231e38]/70 mt-0.5 min-h-[2rem] select-none cursor-default">
+            <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-0.5 text-[10px] font-mono leading-tight text-slate-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)] shrink-0 mr-0.5" />
               <span>Letztes Update:</span>
               <span className="text-slate-300 font-medium whitespace-nowrap">{updateInfo.formattedDate} um {updateInfo.formattedTime}</span>
             </div>
-          </a>
+          </div>
         ) : (
-          <div className="pt-2 px-1 flex items-center justify-center gap-1.5 text-[10px] text-slate-600 border-t border-[#231e38]/40 mt-0.5 min-h-[2rem]">
+          <div className="pt-2 px-1 flex items-center justify-center gap-1.5 text-[10px] text-slate-600 border-t border-[#231e38]/40 mt-0.5 min-h-[2rem] select-none cursor-default">
             <span className="w-1.5 h-1.5 rounded-full bg-slate-600/70 shrink-0" />
             <span className="font-mono text-[10px]">Wird synchronisiert...</span>
           </div>
