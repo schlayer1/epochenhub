@@ -272,6 +272,29 @@ if (!chaptersCode.includes('music') && !chaptersCode.includes('trackId') && !cha
   qualityErrors.push('src/data/chapters.ts chapters lack dedicated chapter-music declarations (missing music: { trackId, title, mood, prompt })!');
 }
 
+// T. Strict 16x32 Character & Mentor Frame Size Enforcement (Steinzeit Benchmark)
+const bootScenePath = path.join(ROOT, 'src/scenes/BootScene.ts');
+if (fs.existsSync(bootScenePath)) {
+  const bootCode = fs.readFileSync(bootScenePath, 'utf8');
+  // Check for forbidden oversized 48x64 or 32x32 character spritesheet loading:
+  if (bootCode.includes("frameWidth: 48") && (bootCode.includes("'character'") || bootCode.includes("'player'") || bootCode.includes("'keep_") || bootCode.includes("npc_"))) {
+    qualityErrors.push('BootScene.ts loads forbidden 48x64 character sprites! Humanoid characters & mentors MUST strictly use { frameWidth: 16, frameHeight: 32 } (Steinzeit benchmark)!');
+  }
+  if (bootCode.includes("frameWidth: 32") && (bootCode.includes("farm_baker") || bootCode.includes("farm_farmer") || bootCode.includes("npc_"))) {
+    qualityErrors.push('BootScene.ts loads forbidden 32x32 character strip sprites! Humanoid characters & mentors MUST strictly use { frameWidth: 16, frameHeight: 32 } (Steinzeit benchmark)!');
+  }
+  // Check player spritesheet definition:
+  const playerRegex = /load\.spritesheet\(['"](?:player|character|player_male|player_female)['"][^}]+frameWidth:\s*(\d+)[^}]+frameHeight:\s*(\d+)/;
+  const pMatch = bootCode.match(playerRegex);
+  if (pMatch) {
+    const fw = parseInt(pMatch[1], 10);
+    const fh = parseInt(pMatch[2], 10);
+    if (fw !== 16 || fh !== 32) {
+      qualityErrors.push(`Player spritesheet loaded with invalid dimensions ${fw}x${fh}! Strictly 16x32 required (Steinzeit benchmark)!`);
+    }
+  }
+}
+
 if (qualityErrors.length > 0) {
   console.error('\n❌ COMPREHENSIVE QUALITY GATE FAILURES:');
   qualityErrors.forEach((err) => console.error(`  - ${err}`));
@@ -285,6 +308,7 @@ if (qualityErrors.length > 0) {
   console.log('   ✓ Quest Compass & 1.32x Camera Dialog Zoom');
   console.log('   ✓ Kinematic Chapter Banner & 7-Tile Pause Dashboard');
   console.log('   ✓ 4-Surface Footsteps, Companion Dog & Interior Scene');
+  console.log('   ✓ Strict 16x32 Character & Mentor Proportions (Steinzeit Benchmark)');
   console.log('   ✓ Dynamic Chapter Music Engine & Google Lyria Metadata');
   console.log('   ✓ A4 Didactic Student Print Sheet');
 }
