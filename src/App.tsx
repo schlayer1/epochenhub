@@ -12,8 +12,10 @@ import { Footer } from './components/Footer';
 import { EPOCH_GAMES } from './config/games.config';
 import { EpochGame } from './types/game';
 import { storageService } from './services/storageService';
+import { useGameUpdates } from './hooks/useGameUpdates';
 
 export const App: React.FC = () => {
+  const { updates } = useGameUpdates();
   const [viewMode, setViewMode] = useState<'timeline' | 'grid' | 'atlas'>(() => {
     const hash = window.location.hash.toLowerCase();
     const search = new URLSearchParams(window.location.search).get('view')?.toLowerCase();
@@ -138,6 +140,7 @@ export const App: React.FC = () => {
             exploredGameIds={exploredGameIds}
             onOpenDetails={(game) => setSelectedGame(game)}
             onOpenQr={(game) => setQrGame(game)}
+            updates={updates}
           />
         ) : viewMode === 'grid' ? (
           <GridView
@@ -145,6 +148,7 @@ export const App: React.FC = () => {
             exploredGameIds={exploredGameIds}
             onOpenDetails={(game) => setSelectedGame(game)}
             onOpenQr={(game) => setQrGame(game)}
+            updates={updates}
           />
         ) : (
           <AtlasView

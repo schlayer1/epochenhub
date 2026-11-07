@@ -1,5 +1,5 @@
 import React from 'react';
-import { EpochGame } from '../types/game';
+import { EpochGame, GameUpdateInfo } from '../types/game';
 import { GameCard } from './GameCard';
 import { Milestone, ChevronRight } from 'lucide-react';
 
@@ -8,6 +8,7 @@ interface TimelineViewProps {
   exploredGameIds: string[];
   onOpenDetails: (game: EpochGame) => void;
   onOpenQr: (game: EpochGame) => void;
+  updates?: Record<string, GameUpdateInfo>;
 }
 
 export const TimelineView: React.FC<TimelineViewProps> = ({
@@ -15,6 +16,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
   exploredGameIds,
   onOpenDetails,
   onOpenQr,
+  updates,
 }) => {
   // Sort games chronologically by yearStart
   const sortedGames = [...games].sort((a, b) => a.yearStart - b.yearStart);
@@ -77,6 +79,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
                   isExplored={isExplored}
                   onOpenDetails={onOpenDetails}
                   onOpenQr={onOpenQr}
+                  updateInfo={game.githubRepo ? updates?.[game.githubRepo] : undefined}
                 />
               </div>
             );

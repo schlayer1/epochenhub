@@ -1,5 +1,5 @@
 import React from 'react';
-import { EpochGame } from '../types/game';
+import { EpochGame, GameUpdateInfo } from '../types/game';
 import { GameCard } from './GameCard';
 import { LayoutGrid } from 'lucide-react';
 
@@ -8,6 +8,7 @@ interface GridViewProps {
   exploredGameIds: string[];
   onOpenDetails: (game: EpochGame) => void;
   onOpenQr: (game: EpochGame) => void;
+  updates?: Record<string, GameUpdateInfo>;
 }
 
 export const GridView: React.FC<GridViewProps> = ({
@@ -15,6 +16,7 @@ export const GridView: React.FC<GridViewProps> = ({
   exploredGameIds,
   onOpenDetails,
   onOpenQr,
+  updates,
 }) => {
   if (games.length === 0) {
     return (
@@ -42,6 +44,7 @@ export const GridView: React.FC<GridViewProps> = ({
             isExplored={exploredGameIds.includes(game.id)}
             onOpenDetails={onOpenDetails}
             onOpenQr={onOpenQr}
+            updateInfo={game.githubRepo ? updates?.[game.githubRepo] : undefined}
           />
         ))}
       </div>

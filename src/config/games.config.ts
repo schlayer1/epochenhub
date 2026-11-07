@@ -23,6 +23,8 @@ export const EPOCH_GAMES: EpochGame[] = [
     chaptersCount: 6,
     duration: 'ca. 45–60 Min.',
     liveUrl: 'https://retrolernspiel.vercel.app/',
+    githubRepo: 'schlayer1/retrolernspiel',
+    localFolderName: 'SNES Retro Game',
     coverImage: '/assets/covers/stone_age_cover.png',
     spriteImage: '/assets/sprites/alva_hero.png',
     theme: {
@@ -62,6 +64,8 @@ export const EPOCH_GAMES: EpochGame[] = [
     chaptersCount: 6,
     duration: 'ca. 45–60 Min.',
     liveUrl: 'https://retrolernspielegypt.vercel.app/',
+    githubRepo: 'schlayer1/retrolernspielegypt',
+    localFolderName: 'SNES Retro Game Aegypten',
     coverImage: '/assets/covers/egypt_cover.png',
     spriteImage: '/assets/sprites/egypt_hero.png',
     theme: {
@@ -101,6 +105,8 @@ export const EPOCH_GAMES: EpochGame[] = [
     chaptersCount: 10,
     duration: 'ca. 60–75 Min.',
     liveUrl: 'https://retrolernspielgreece.vercel.app/',
+    githubRepo: 'schlayer1/retrolernspielgreece',
+    localFolderName: 'SNES Retro Game Greek',
     coverImage: '/assets/covers/greek_cover.png',
     spriteImage: '/assets/sprites/greek_hero.png',
     theme: {
@@ -141,6 +147,8 @@ export const EPOCH_GAMES: EpochGame[] = [
     chaptersCount: 12,
     duration: 'ca. 60–90 Min.',
     liveUrl: 'https://retrospielrome.vercel.app/',
+    githubRepo: 'schlayer1/retrospielrome',
+    localFolderName: 'SNES Retro Game Rome',
     coverImage: '/assets/covers/rome_cover.png',
     spriteImage: '/assets/sprites/rome_hero.png',
     theme: {
@@ -180,6 +188,8 @@ export const EPOCH_GAMES: EpochGame[] = [
     chaptersCount: 8,
     duration: 'ca. 60–75 Min.',
     liveUrl: 'https://retrolernspielgermanic.vercel.app',
+    githubRepo: 'schlayer1/retrolernspielgermanic',
+    localFolderName: 'SNES Retro Game German Tribe',
     coverImage: '/assets/covers/german_cover.png',
     spriteImage: '/assets/sprites/german_avatar.png',
     theme: {
@@ -220,6 +230,8 @@ export const EPOCH_GAMES: EpochGame[] = [
     chaptersCount: 12,
     duration: 'ca. 75–90 Min.',
     liveUrl: 'https://retrolernspielvikings.vercel.app',
+    githubRepo: 'schlayer1/retrolernspielvikings',
+    localFolderName: 'SNES Retro Game Vikings',
     coverImage: '/assets/covers/vikings_cover.png',
     spriteImage: '/assets/sprites/vikings_avatar.png',
     theme: {
@@ -261,6 +273,8 @@ export const EPOCH_GAMES: EpochGame[] = [
     chaptersCount: 8,
     duration: 'ca. 45–60 Min.',
     liveUrl: 'https://retrolernspielmedfeudal.vercel.app/',
+    githubRepo: 'schlayer1/retrolernspielmedfeudal',
+    localFolderName: 'SNES Retro Game Medieval Feudal',
     coverImage: '/assets/covers/medieval_feudal_cover.png',
     spriteImage: '/assets/sprites/medieval_avatar.png',
     theme: {
@@ -301,6 +315,8 @@ export const EPOCH_GAMES: EpochGame[] = [
     chaptersCount: 8,
     duration: 'ca. 50–70 Min.',
     liveUrl: 'https://retrolernspielreformation.vercel.app/',
+    githubRepo: 'schlayer1/retrolernspielreformation',
+    localFolderName: 'SNES Retro Game Reformation',
     coverImage: '/assets/covers/reformation_cover.png',
     spriteImage: '/assets/sprites/reformation_avatar.png',
     theme: {

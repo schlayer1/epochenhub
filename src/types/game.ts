@@ -32,6 +32,19 @@ export interface EpochGame {
   didacticFocus: string[];
   tags: string[];
   companionMaterials?: CompanionMaterial[];
+  githubRepo?: string;
+  localFolderName?: string;
+}
+
+export interface GameUpdateInfo {
+  repo: string;
+  updatedAt: string;        // ISO timestamp
+  formattedDate: string;    // e.g. "07.11.2026"
+  formattedTime: string;    // e.g. "14:09 Uhr"
+  displayLabel: string;     // e.g. "Letztes Update am 07.11.2026 um 14:09 Uhr"
+  commitMessage?: string;
+  commitSha?: string;
+  commitUrl?: string;
 }
 
 export interface PassportProgress {
